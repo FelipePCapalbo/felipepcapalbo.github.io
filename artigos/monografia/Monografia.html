@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Monografia - Protocolo de Gêmeo Digital Autônomo</title>
+  <title>Monografia: Protocolo de Gêmeo Digital Autônomo para Otimização da Mistura de Algodão com Aprendizado por Reforço</title>
+  <meta name="description" content="A melhoria do processo de mistura de algodão na fiação têxtil envolve desafios devido à variabilidade da fibra e condições operacionais. Este trabalho propõe um protocolo de Gêmeo Digital Autônomo, integrando Aprendizado por Reforço e Simulação de Eventos Discretos, para otimizar a mistura de algodão considerando incertezas. A solução utiliza o algoritmo PPO, FlexSim para simulação, e integra dados em tempo real, visando maior eficiência e adaptação a cenários dinâmicos no setor têxtil." />
+  <meta name="keywords" content="Gêmeo Digital Autônomo, Aprendizado por Reforço, Simulação de Eventos Discretos, Fiação Têxtil, Mistura de Algodão, Proximal Policy Optimization, Programação Inteira Mista, Otimização de Processos, Indústria Têxtil" />
+  <meta name="author" content="Felipe Papa Capalbo" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Protocolo de Gêmeo Digital Autônomo no Processo da Mistura de Algodão na Fiação Têxtil com Aprendizado por Reforço e Simulação de Eventos Discretos",
+    "description": "Este trabalho propõe um protocolo de Gêmeo Digital Autônomo, integrando Aprendizado por Reforço, Simulação de Eventos Discretos e outras ferramentas de conectividade, para encontrar boas soluções para a mistura de algodão, considerando incertezas e variabilidades do processo produtivo real.",
+    "author": {
+      "@type": "Person",
+      "name": "Felipe Papa Capalbo"
+    },
+    "datePublished": "2025-02-28",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Universidade Federal de São Carlos"
+    },
+    "keywords": "Gêmeo Digital Autônomo, Aprendizado por Reforço, Simulação de Eventos Discretos, Fiação Têxtil, Mistura de Algodão, Proximal Policy Optimization, Programação Inteira Mista",
+    "isPartOf": {
+      "@type": "PublicationIssue",
+      "name": "Monografia em Engenharia de Produção"
+    },
+    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "inLanguage": "pt-BR"
+  }
+  </script>
   <style>
     html {
       color: #1a1a1a;
@@ -196,7 +223,7 @@ PRODUÇÃO</strong></span></p>
 </div>
 <div class="flushright">
 <div class="minipage">
-<p><strong>Dedico</strong> este trabalho à “Dedé”, meu exemplo de
+<p><strong>Dedico</strong> este trabalho à "Dedé", meu exemplo de
 criatividade, inteligência e liberdade. Obrigado por estar comigo do
 começo até o fim.</p>
 </div>
@@ -233,7 +260,7 @@ ferramentas de conectividade, para encontrar boas soluções para a
 mistura de algodão, considerando incertezas e variabilidades do processo
 produtivo real. A solução proposta permite lidar com múltiplas fontes de
 incerteza, incluindo a variabilidade nas propriedades do algodão, como
-grau de “amarelamento” (+b), refletância total (rd) e
+grau de "amarelamento" (+b), refletância total (rd) e
 <em>Micronaire</em> - que impactam diretamente na qualidade do fio e no
 custo da produção - e também aspectos logísticos externos, como a
 procedência desconhecida dos fardos de algodão entregues ao longo do
@@ -276,14 +303,14 @@ Event Simulation, and other connectivity tools to find suitable
 solutions for cotton blending, taking into account the uncertainties and
 variabilities of the actual production process. The proposed solution
 can handle multiple sources of uncertainty, including variability in the
-properties of cotton—such as the degree of “yellowness” (+b), total
+properties of cotton—such as the degree of "yellowness" (+b), total
 reflectance (rd), and Micronaire, which directly affect yarn quality and
 production costs—and external logistical factors, such as the unknown
 provenance of cotton bales delivered over time. The protocol
 incorporates a Management Information System, a Relational Database, and
 a process simulator to capture and process data from the physical
 environment. It implements the Proximal Policy Optimization (PPO)
-algorithm, which performs incremental and stable updates to the agent’s
+algorithm, which performs incremental and stable updates to the agent's
 policy, ensuring greater efficiency in adapting to stochastic scenarios.
 FlexSim is used as the environment for process simulation, while the
 MODBUS protocol, the PostgreSQL database, and an application developed
@@ -310,11 +337,11 @@ baseadas em Aprendizado por Reforço. Neste capítulo, são discutidos os
 desafios do problema, as ferramentas adotadas e os fundamentos que
 estruturam a pesquisa.</p>
 <h2 id="caracterização-do-tema">CARACTERIZAÇÃO DO TEMA</h2>
-<p>Segundo relatório da , “O Brasil está projetado para exportar 12,3
+<p>Segundo relatório da , "O Brasil está projetado para exportar 12,3
 milhões de fardos no ano comercial de 2023/24, tornando-se o maior
 exportador global de algodão pela primeira vez. A produção mais que
 dobrou nos últimos 7 anos, atingindo um recorde de 14,6 milhões de
-fardos em 2023/24”. O algodão, como recurso natural, apresenta
+fardos em 2023/24". O algodão, como recurso natural, apresenta
 variabilidade em suas propriedades físicas e químicas, o que pode
 introduzir desafios adicionais no processo de fiação. No entanto, quando
 as propriedades de algodão de diferentes procedências são combinadas, o
@@ -343,7 +370,7 @@ indústria de processos. O Aprendizado por Reforço, subcampo do AM,
 emerge como uma ferramenta útil para propor soluções simples para
 problemas com combinações de diferentes fontes de incerteza <span
 class="citation" data-cites="sutton_reinforcement_2014"></span>, bem
-como para integrar-se com outras ferramentas da “Indústria 4.0” <span
+como para integrar-se com outras ferramentas da "Indústria 4.0" <span
 class="citation" data-cites="del_real_torres_review_2022"></span>.</p>
 <p>Entre os algoritmos de Aprendizado por Reforço, destaca-se o
 <em>Proximal Policy Optimization</em> (PPO), pensado para aprimorar a
@@ -402,7 +429,7 @@ posteriormente.</p>
 <p>Neste trabalho, são exploradas as seguintes características do
 algodão:</p>
 <ul>
-<li><p><span>+b</span> (grau de “amarelamento”), que mede a intensidade
+<li><p><span>+b</span> (grau de "amarelamento"), que mede a intensidade
 da tonalidade marrom nas fibras. Valores mais altos de +b indicam uma
 coloração mais amarelada, o que pode influenciar o processo de
 tingimento e a percepção visual do tecido;</p></li>
@@ -678,8 +705,8 @@ que permite ao agente aprender explorando diferentes ações, e o conceito
 de recompensa atrasada (<em>delayed reward</em>), em que o impacto de
 uma ação pode não ser imediato, mas influenciar resultados futuros <span
 class="citation" data-cites="sutton_reinforcement_2014"></span>. Esse
-paradigma exige que o agente equilibre “exploração” (buscar novas ações
-para melhorar sua política) e “explotação” (usar ações conhecidas para
+paradigma exige que o agente equilibre "exploração" (buscar novas ações
+para melhorar sua política) e "explotação" (usar ações conhecidas para
 maximizar recompensas).</p>
 <p>A estabilidade do treinamento e a eficiência na utilização de
 amostras são fatores determinantes no AR, impactando diretamente a
@@ -715,7 +742,7 @@ OPTIMIZATION</em></h3>
 concebido para otimizar políticas em problemas de AR ao garantir
 melhorias monotônicas na performance. A ideia central do TRPO é limitar
 a divergência entre a nova política e a anterior, mantendo as
-atualizações dentro de uma “região de confiança”. Para isso, impõe
+atualizações dentro de uma "região de confiança". Para isso, impõe
 restrições explícitas durante o processo de atualização dos parâmetros
 da política, evitando mudanças abruptas que possam comprometer a
 estabilidade do treinamento.</p>
@@ -820,11 +847,11 @@ política atual.</p></li>
 </ul>
 <p>A principal característica do PPO é o uso da técnica de
 <em>clipping</em>, representada pela função: <span
-class="math display">CLIP(<em>r</em><sub><em>t</em></sub>(<em>θ</em>), 1 − <em>ϵ</em>, 1 + <em>ϵ</em>)</span></p>
+class="math display">CLIP(<em>r</em><sub><em>t</em></sub>(<em>θ</em>), 1 − <em>ϵ</em>, 1 + <em>ϵ)</span></p>
 <p>O <em>clipping</em> limita a razão de probabilidade <span
 class="math inline"><em>r</em><sub><em>t</em></sub>(<em>θ</em>)</span>
 dentro do intervalo <span
-class="math inline">[1 − <em>ϵ</em>, 1 + <em>ϵ</em>]</span>, onde <span
+class="math inline">[1 − <em>ϵ</em>, 1 + <em>ϵ]</span>, onde <span
 class="math inline"><em>ϵ</em></span> é um hiperparâmetro que define a
 tolerância para variações. Isso impede que a política seja atualizada de
 forma excessiva, o que poderia levar a mudanças abruptas e instabilidade
@@ -832,7 +859,7 @@ no treinamento. Assim, o PPO equilibra exploração e explotação,
 garantindo que as atualizações ocorram de forma progressiva e
 controlada. Ao longo do trabalho este hiperparâmetro será
 contextualizado à luz do problema.</p>
-<p>Como descrito a seguir, no Algoritmo <a
+<p>Como descrito a seguir, no Algoritmo <a
 href="#alg:aprendizado_reforco" data-reference-type="ref"
 data-reference="alg:aprendizado_reforco">[alg:aprendizado_reforco]</a>,
 o processo de aprendizado é iterativo, envolvendo múltiplos
@@ -1125,8 +1152,8 @@ style="width:100.0%" />
 <p>O conceito de Gêmeo Digital foi originalmente proposto por Michael
 Grieves em 2002, durante uma apresentação na Universidade de Michigan
 sobre <em>Product Lifecycle Management</em> (PLM), onde foi denominado
-como <em>“Mirrored Spaces Model”</em> e, posteriormente,
-<em>“Information Mirroring Model”</em> <span class="citation"
+como <em>"Mirrored Spaces Model"</em> e, posteriormente,
+<em>"Information Mirroring Model"</em> <span class="citation"
 data-cites="grieves_digital_2016"></span>. Desde então, esse conceito
 evoluiu significativamente e passou a ser amplamente adotado em diversas
 indústrias. Inicialmente, o Gêmeo Digital foi aplicado em áreas como
@@ -1177,28 +1204,28 @@ bidirecionais entre ambos <span class="citation"
 data-cites="JONES202036"></span>. Essa definição reforça a ideia de um
 ciclo contínuo de coleta, processamento e aplicação de informações,
 destacando os níveis progressivos de maturidade.</p>
-<p>No nível 0, <em>“No Twin”</em>, o Gêmeo Digital não está
+<p>No nível 0, <em>"No Twin"</em>, o Gêmeo Digital não está
 implementado. Há medições disponíveis, mas elas são isoladas e sem
 integração entre sensores e dados do mundo físico. Modelos teóricos ou
 físicos podem existir, mas sem conexão com dados reais, limitando sua
 aplicabilidade operacional.</p>
-<p>No nível 1, <em>“Status”</em>, o Gêmeo Digital é descritivo,
+<p>No nível 1, <em>"Status"</em>, o Gêmeo Digital é descritivo,
 coletando dados em tempo real e apresentando informações sobre o estado
 atual do ativo físico. Essa fase limita-se à visualização de dados, sem
 análise avançada.</p>
-<p>No nível 2, “Informativo”, o Gêmeo Digital combina dados históricos e
+<p>No nível 2, "Informativo", o Gêmeo Digital combina dados históricos e
 em tempo real. Essa integração permite identificar tendências e comparar
 o desempenho com padrões ou metas previamente estabelecidas, fornecendo
 mais contexto para a tomada de decisão.</p>
-<p>No nível 3, “Preditivo”, o Gêmeo Digital utiliza modelos matemáticos
+<p>No nível 3, "Preditivo", o Gêmeo Digital utiliza modelos matemáticos
 ou de aprendizado de máquina para prever o comportamento futuro do ativo
 com base em dados coletados. Essa etapa permite antecipar falhas e
 aprimorar, ou otimizar, decisões por meio de simulações.</p>
-<p>No nível 4, “Exploratório”, o Gêmeo Digital avalia cenários
+<p>No nível 4, "Exploratório", o Gêmeo Digital avalia cenários
 hipotéticos, ajudando a analisar o impacto de diferentes decisões. Nesta
 fase, o sistema suporta a escolha das melhores ações, ajustando
 parâmetros operacionais conforme necessário.</p>
-<p>No nível 5, “Autônomo”, o Gêmeo Digital atua de forma independente,
+<p>No nível 5, "Autônomo", o Gêmeo Digital atua de forma independente,
 realizando previsões, aprimorando ou otimizando processos e executando
 ações automaticamente para atingir os melhores resultados. Essa fase
 elimina a necessidade de intervenção humana direta no controle do
@@ -1631,8 +1658,8 @@ recompensa que atribui valores proporcionais ao custo total da solução —
 quanto menor o custo, maior a recompensa — facilita que o agente ajuste
 suas ações progressivamente, identificando políticas mais eficientes ao
 longo do tempo.</p>
-<p>Se a recompensa for discretizada, como ao atribuir “1” para ações
-viáveis e “0” para inviáveis, o agente ainda pode aprender, mas sua
+<p>Se a recompensa for discretizada, como ao atribuir "1" para ações
+viáveis e "0" para inviáveis, o agente ainda pode aprender, mas sua
 capacidade de distinguir soluções boas de ótimas será reduzida,
 potencialmente retardando a convergência para uma solução de alta
 qualidade.</p>
@@ -2127,7 +2154,7 @@ data-reference="figure:TelaInput">6.2</a>) em qualquer dispositivo.
 Nessa aplicação, ele selecionaria as procedências e a quantidade de
 fardos a serem adicionados ao Banco de Dados. Ainda nessa interface,
 existe a opção de zerar todos os registros ou, por fins didáticos,
-replicar o perfil de estoque ilustrado na Tabela <a
+replicar o perfil de estoque ilustrado na Tabela <a
 href="#tab:estoque_inicial" data-reference-type="ref"
 data-reference="tab:estoque_inicial">9.1</a>.</p>
 <figure id="figure:TelaInput">
@@ -2234,7 +2261,7 @@ procedência selecionada, eventuais ajustes na quantidade de fardos ou
 outra variável operacional. Esses registros são atualizados
 constantemente, de modo que a aplicação consiga refletir o estado atual
 do sistema.</p>
-<p>A Figura <a href="#figure:TelaOutput" data-reference-type="ref"
+<p>A Figura <a href="#figure:TelaOutput" data-reference-type="ref"
 data-reference="figure:TelaOutput">6.3</a> ilustra a tela de saída, onde
 as soluções provenientes do <em>FlexSim</em> são exibidas. Cada
 atualização no <em>FlexSim</em> escreve valores nos registradores
@@ -2589,7 +2616,7 @@ confiança.</p>
 do objetivo médio de cada mistura foi calculado. Em seguida, os dados
 foram agregados por réplica (calculando-se a média dos valores de
 objetivo médio para cada grupo).</p>
-<p>Os resultados obtidos são resumidos na Tabela <a
+<p>Os resultados obtidos são resumidos na Tabela <a
 href="#tab:resultados" data-reference-type="ref"
 data-reference="tab:resultados">7.4</a>.</p>
 <div id="tab:resultados">
@@ -2682,7 +2709,7 @@ longo das misturas pode ser observada ao longo das 10 réplicas:</p>
 <img src="figures/replicas.png" style="width:100.0%" />
 <figcaption>Réplicas (RL VII DIN).</figcaption>
 </figure>
-<p>Na Tabela <a href="#tab:testes" data-reference-type="ref"
+<p>Na Tabela <a href="#tab:testes" data-reference-type="ref"
 data-reference="tab:testes">7.5</a> são apresentados os resultados dos
 testes estatísticos realizados. Cada réplica contém os valores de
 objetivo para diversas misturas. Para cada réplica foram calculadas a
@@ -2904,7 +2931,7 @@ class="math inline">+<em>b</em></span></th>
 </thead>
 <tbody>
 <tr>
-<td colspan="5" style="text-align: center;">Table  – Estoque inicial e
+<td colspan="5" style="text-align: center;">Table – Estoque inicial e
 características médias por procedência</td>
 </tr>
 <tr>

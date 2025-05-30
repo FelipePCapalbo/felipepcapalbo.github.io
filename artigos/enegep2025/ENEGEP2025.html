@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Protocolo de Gêmeo Digital Autônomo - ENEGEP 2025</title>
+  <title>ENEGEP 2025: Protocolo de Gêmeo Digital Autônomo para Otimização da Mistura de Algodão na Indústria Têxtil</title>
+  <meta name="description" content="Artigo do ENEGEP 2025 propõe um protocolo de Gêmeo Digital Autônomo para otimizar a mistura de algodão na indústria têxtil. Integra Sistema de Informações Gerenciais (PostgreSQL, Flask), simulação de fluxo produtivo (FlexSim) e tomada de decisão em tempo real com Aprendizado por Reforço (PPO) para lidar com variações de matéria-prima e incertezas do processo." />
+  <meta name="keywords" content="Gêmeo Digital Autônomo, ENEGEP 2025, Mistura de Algodão, Aprendizado por Reforço, Simulação de Eventos Discretos, Otimização de Processos, Indústria Têxtil, FlexSim, PPO, PostgreSQL, Flask" />
+  <meta name="author" content="Felipe Papa Capalbo" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Protocolo de Gêmeo Digital Autônomo no Processo da Mistura de Algodão na Fiação Têxtil com Aprendizado por Reforço e Simulação de Eventos Discretos",
+    "description": "Este artigo propõe um protocolo de Gêmeo Digital Autônomo que integra um Sistema de Informações Gerenciais, modelagem do fluxo produtivo em simulador e tomada de decisão em tempo real com Aprendizado por Reforço (Proximal Policy Optimization) para otimizar a mistura de algodão.",
+    "author": {
+      "@type": "Person",
+      "name": "Felipe Papa Capalbo"
+    },
+    "datePublished": "2025",
+    "isPartOf": {
+      "@type": "PublicationVolume",
+      "name": "Anais do ENEGEP 2025"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ABEPRO - Associação Brasileira de Engenharia de Produção"
+    },
+    "keywords": "Gêmeo Digital Autônomo, Aprendizado por Reforço, Simulação de Eventos Discretos, Fiação Têxtil, Mistura de Algodão, Proximal Policy Optimization",
+    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "inLanguage": "pt-BR"
+  }
+  </script>
   <style>
     html {
       color: #1a1a1a;
@@ -295,7 +322,7 @@ operacionais.</p>
 ocorre por <em>sockets</em>, com transmissão estruturada de estados e
 ações sobre <em>TCP/IP</em>. Essa arquitetura viabiliza ajustes e
 validações em ambientes controlados, especialmente em contextos nos
-quais a experimentação direta é inviável. Na Figura <a
+quais a experimentação direta é inviável. Na Figura  <a
 href="#figure:sockets" data-reference-type="ref"
 data-reference="figure:sockets">1</a> tem-se uma representação da
 conexão entre AR e o simulador <em>FlexSim</em>.</p>
@@ -563,7 +590,7 @@ meio de blocos. O <em>Model 3D</em> é utilizado apenas para visualização
 e lógicas básicas de fluxo, enquanto o <em>Process Flow</em> gerencia o
 comportamento dinâmico dos fardos, a geração de novas chegadas e a
 integração com os gatilhos de Aprendizado por Reforço (AR).</p>
-<p>A Figura  <a href="#figure:modelo3d" data-reference-type="ref"
+<p>A Figura  <a href="#figure:modelo3d" data-reference-type="ref"
 data-reference="figure:modelo3d">[figure:modelo3d]</a> ilustra o modelo
 tridimensional do processo com 34 baias de estoque e um misturador, e o
 fluxo de eventos construído no <em>Process Flow</em> para controle e
@@ -634,7 +661,7 @@ Determinística</h2>
 quanto ao número de fardos usados na mistura e às disponibilidades das
 procedências em estoque, a fim de viabilizar a aplicação do AR,
 reduzindo o peso computacional sem alterar a natureza do sistema. A
-Tabela <a href="#tab:discretizacao" data-reference-type="ref"
+Tabela  <a href="#tab:discretizacao" data-reference-type="ref"
 data-reference="tab:discretizacao">2</a> mostra o impacto da
 discretização dos modelos de AR no tempo necessário para processar os
 18.432.000 <em>timesteps</em> (sendo D = 1 o modelo sem discretização,
@@ -679,7 +706,7 @@ data-label="tab:discretizacao"></span></p>
 esforço computacional diminui. A discretização <span
 class="math inline"><em>D</em> = 6</span> (25 fardos, ao invés de 150)
 foi adotada por reduzir o tempo de simulação sem comprometer a qualidade
-das soluções, conforme mostrado na Figura <a href="#figure:DiscD1D6RLI"
+das soluções, conforme mostrado na Figura  <a href="#figure:DiscD1D6RLI"
 data-reference-type="ref"
 data-reference="figure:DiscD1D6RLI">[figure:DiscD1D6RLI]</a> (compara-se
 o modelo matemático sem discretização, discretizado e o modelo de AR
@@ -694,7 +721,7 @@ discretizado).</p>
 <figcaption>Fonte: Elaborado pelos autores.</figcaption>
 </figure>
 <p>No ambiente estático, os modelos de Aprendizado por Reforço (RL)
-convergiram para soluções semelhantes após o treinamento. A Tabela <a
+convergiram para soluções semelhantes após o treinamento. A Tabela  <a
 href="#tab:comparacao_rl" data-reference-type="ref"
 data-reference="tab:comparacao_rl">3</a> compara o desempenho dos
 modelos.</p>
@@ -767,7 +794,7 @@ data-label="tab:comparacao_rl"></span></p>
 função objetivo das misturas) como referência. O RL VII obteve a menor
 variabilidade e maior consistência ao longo das misturas. Enquanto o MIP
 prioriza o instante atual, o RL distribui melhor os fardos ao longo do
-tempo, mantendo o desvio mais equilibrado, como mostrado na Figura <a
+tempo, mantendo o desvio mais equilibrado, como mostrado na Figura  <a
 href="#figure:ModeloMatematicoRLVII" data-reference-type="ref"
 data-reference="figure:ModeloMatematicoRLVII">5</a>. Essa uniformidade
 nas metas de mistura ao longo do tempo contribui para maior
@@ -775,7 +802,7 @@ previsibilidade operacional, estabilidade na qualidade do fio produzido
 e menor necessidade de ajustes frequentes no processo produtivo.</p>
 <h2 id="abordagem-dinâmica-e-estocástica-1">Abordagem Dinâmica e
 Estocástica</h2>
-<p>A Figura <a href="#figure:DINRLVII" data-reference-type="ref"
+<p>A Figura  <a href="#figure:DINRLVII" data-reference-type="ref"
 data-reference="figure:DINRLVII">[figure:DINRLVII]</a> compara os
 modelos estático (RL VII) e dinâmico (RL VII DIN). Considerando a
 chegada contínua de novos fardos, o modelo dinâmico apresenta menor
@@ -786,7 +813,7 @@ menos sujeito a ajustes corretivos, o que é desejável em ambientes
 industriais. Além disso, como o modelo dinâmico é treinado sob condições
 com maior aleatoriedade, ele desenvolve maior robustez e generalização,
 tornando-se mais adequado para aplicação em cenários reais com
-incertezas operacionais. A Figura <a href="#figure:replicas"
+incertezas operacionais. A Figura  <a href="#figure:replicas"
 data-reference-type="ref" data-reference="figure:replicas">6</a>
 apresenta a variabilidade das soluções propostas pelo agente de AR ao
 longo das misturas, resultante das diferentes réplicas do modelo de
