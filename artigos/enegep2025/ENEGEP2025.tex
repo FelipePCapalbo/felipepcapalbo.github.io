@@ -1,0 +1,489 @@
+% =====================================================
+% PREÂMBULO AJUSTADO - ARTIGO ENEGEP + MELHORIAS
+% =====================================================
+\documentclass[a4paper,12pt]{article}
+
+% Pacotes básicos obrigatórios
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+%\usepackage{indentfirst}
+
+% --- Melhorias adicionais aproveitadas da monografia ---
+\usepackage{amsfonts, amsmath} % matemática
+\usepackage{relsize}            % tamanhos relativos de fonte
+\usepackage{mdframed}           % quadros
+\usepackage{subcaption}         % subfiguras
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{lscape}             % páginas em paisagem
+\usepackage[ruled,vlined,linesnumbered,portuguese]{algorithm2e} % algoritmos
+
+% BibTeX estilo ABNT
+\usepackage[alf]{abntex2cite}
+\renewcommand{\refname}{Referências}
+
+
+% Margens específicas do congresso
+\geometry{
+  a4paper,
+  left=2.5cm, right=2.5cm,
+  top=1.2cm, bottom=2cm,
+  includehead, includefoot,
+  headheight=55pt,
+  headsep=10pt,
+  footskip=30pt
+}
+
+% Cabeçalho e Rodapé
+\fancypagestyle{bodyhead}{%
+  \fancyhf{}
+  \fancyhead[L]{\raisebox{-0.4\height}{\includegraphics[height=1.7cm]{figures/LOGO-ENEGEP-2025.png}}}
+  \fancyhead[R]{\parbox[b]{0.72\textwidth}{\raggedleft\fontsize{8}{9.5}\selectfont
+    \textbf{XLV ENCONTRO NACIONAL DE ENGENHARIA DE PRODUÇÃO}\\
+    "Produção inteligente para um futuro renovável"\\
+    {\color[rgb]{0.45,0.45,0.45}Natal, Rio Grande do Norte, 14 a 17 de outubro de 2025}}}
+  \fancyfoot[R]{\fontsize{10}{12}\selectfont\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{bodyhead}
+
+% Definições dos comandos para o ambiente algorithm2e:
+\SetKwInput{KwEntrada}{Entrada}         % Define a palavra-chave para a entrada
+\SetKwInput{KwSaida}{Saída}               % Define a palavra-chave para a saída
+\SetKwFor{Enquanto}{enquanto}{fazer}{fim enquanto}  % Define o laço de repetição "enquanto"
+\SetKwFor{Para}{para}{fazer}{fim para}     % Define o laço de repetição "para"
+\SetKwIF{Se}{SenaoSe}{Senao}{se}{então}{senão se}{senão}{fim se}  % Define a estrutura condicional "se"
+\SetKw{Retorne}{retorne}                 % Define o comando para retorno
+
+
+% Títulos de Seção e Subseção
+\titleformat{\section}{\bfseries\normalsize}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.25\baselineskip}
+\titleformat{\subsection}{\bfseries\normalsize}{\thesubsection.}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{1.25\baselineskip}{0.25\baselineskip}
+
+% Listas
+\setlist[itemize]{label=\textbullet,leftmargin=*}
+\setlist[enumerate,1]{label=\alph*),leftmargin=*}
+
+% Legendas
+\captionsetup{font={small},labelfont=bf,labelsep=space,justification=centering}
+\captionsetup[table]{name=Tabela,skip=6pt}
+\captionsetup[figure]{name=Figura,skip=6pt}
+
+% --- Configurações dos Metadados do PDF ---
+\makeatletter
+\newcommand{\PROTOCOLO}{PROTOCOLO DE GÊMEO DIGITAL AUTÔNOMO NO PROCESSO DA MISTURA DE ALGODÃO NA FIAÇÃO TÊXTIL COM APRENDIZADO POR REFORÇO E SIMULAÇÃO DE EVENTOS DISCRETOS}
+\newcommand{\AUTOR}{Felipe Papa Capalbo}
+\makeatother
+
+\hypersetup{
+    %pagebackref=true,  % Descomente se desejar a listagem das páginas de citações
+    pdftitle={\PROTOCOLO},
+    pdfauthor={\AUTOR},
+    pdfsubject={A melhoria do processo de mistura de algodão na fiação têxtil envolve desafios, em grande parte devido à variabilidade nas propriedades físicas e químicas da fibra de algodão, assim como nas condições operacionais do processo. Esses fatores, influenciados por aspectos ambientais e logísticos, tornam o planejamento dos fardos adequados uma tarefa complexa, especialmente em cenários incertos. Historicamente, métodos de programação matemática são empregados para abordar essas questões; entretanto, a introdução do Aprendizado por Reforço, aliado à Simulação de Eventos Discretos, oferece novas possibilidades para a proposição de soluções em ambientes dinâmicos e estocásticos, além de viabilizar a integração de dados físicos em tempo real.
+    O objetivo deste artigo é apresentar um protocolo de Gêmeo Digital Autônomo, integrando Aprendizado por Reforço, Simulação de Eventos Discretos e outras ferramentas de conectividade, para encontrar boas soluções para a mistura de algodão, considerando incertezas e variabilidades do processo produtivo real. A solução proposta permite lidar com múltiplas fontes de incerteza, incluindo a variabilidade nas propriedades do algodão, como grau de “amarelamento” (+b), refletância total (rd) e \textit{Micronaire} – que impactam diretamente na qualidade do fio e no custo da produção – e também aspectos logísticos externos, como a procedência desconhecida dos fardos de algodão entregues ao longo do tempo.},
+    pdfcreator={Felipe Papa Capalbo},
+    pdfkeywords={Gêmeo Digital Autônomo, aprendizado por Reforço, Simulação de Eventos Discretos, Fiação Têxtil, Mistura de Algodão, Poximal Policy Optimization, Programação Inteira Mista},
+    colorlinks=true,      % true: links coloridos
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+
+
+% Início do Documento
+\begin{document}
+\onehalfspacing
+\justifying
+\setlength{\parindent}{0pt}
+\pagenumbering{arabic}
+
+\section{Introdução}
+
+A produção de fios de algodão exige a mistura de fardos de matéria-prima com propriedades físico-químicas (\mbox{+b}, \textit{rd} e \textit{Micronaire}) que variam segundo origem, clima, e armazenamento. Pressões por menores custos, padronização e redução de desperdício tornam as decisões de mistura mais complexas.
+
+Modelos de Programação Matemática, tradicionalmente utilizados, como em \cite{greene_cotton_blending_1965}, assumem estoques fixos e dados determinísticos, oferecendo suporte limitado em ambientes com entradas contínuas e perturbações estocásticas \cite{takahashi_2016} no estoque de algodão. A demanda por integração de sensores e simulação reforça essa limitação.
+
+Este artigo propõe um protocolo de Gêmeo Digital Autônomo que integra: (i) um Sistema de Informações Gerenciais em \textit{PostgreSQL} e \textit{Flask}, para registrar o estoque e transmitir as informações informadas à operação; (ii) modelagem do fluxo produtivo no simulador \textit{FlexSim}, para incorporar as incertezas do processo; e (iii) tomada de decisão em tempo real com Aprendizado por Reforço (\textit{Proximal Policy Optimization}). A transmissão de dados para o ambiente físico é proposta pelo protocolo \textit{MODBUS}.
+
+\section{Revisão de Literatura}
+
+A seguir, são apresentadas as propriedades do algodão como matéria-prima e sua relevância para o processo de fiação. Na sequência, introduzem-se os conceitos de Aprendizado por Reforço e Simulação de Eventos Discretos. Por fim, discute-se a definição de Gêmeo Digital Autônomo e seus requisitos.
+
+\subsection{Processo de fiação na Indústria Têxtil}
+
+O algodão apresenta propriedades que impactam diretamente o desempenho da fiação e a qualidade do fio, como o \textit{Micronaire} (finura e maturidade), comprimento, resistência, tonalidade de cor, grau de amarelamento (\textit{+b}) e refletância (\textit{rd}) \cite{waters_effect_1961, fang_physical_2018}. Entre essas propriedades, destaca-se o \textit{Micronaire}, por combinar dois aspectos fundamentais da fibra.
+
+O teste \textit{Micronaire} mede a permeabilidade ao ar e reflete a interação entre finura e maturidade \cite{lord19562}. Fibras finas e maduras favorecem a fiação, enquanto fibras imaturas aumentam a irregularidade. 
+
+Considerando a variabilidade dessas propriedades entre lotes, a mistura de algodões torna-se uma prática essencial para equilibrar custo e qualidade, além de reduzir incertezas no processo produtivo \cite{takahashi_2016}. Nesse contexto, \citeonline{greene_cotton_blending_1965} introduziram um modelo de programação linear que leva em conta o valor, as propriedades das fibras e sua disponibilidade em estoque, assumindo linearidade nas características das misturas \cite{waters_effect_1961}. 
+
+\subsection{Aprendizado por Reforço}
+
+O Aprendizado por Reforço (AR) é um paradigma de aprendizado baseado em tentativa e erro, no qual um agente interage com o ambiente para maximizar recompensas ao longo do tempo. Diferentemente do aprendizado supervisionado, o AR ajusta suas ações de acordo com o sinal de recompensa recebido \cite{sutton_reinforcement_2014}. Nesse contexto, o agente observa o estado do ambiente \((s_t)\), executa uma ação \((a_t)\) e recebe uma recompensa \((r_{t+1})\); o ambiente devolve o novo estado e o \textit{feedback} numérico que avalia a qualidade da ação. A estratégia que mapeia estados em ações é chamada de política \((\pi)\), enquanto a função de valor estima o benefício esperado de determinados estados ou ações, servindo de orientação para aprimorar a política ao longo de episódios — sequências de interações encerradas por uma condição de término.
+
+Esse processo de \textit{trial-and-error} está sujeito ao dilema exploração–explotação: balancear a busca por novas ações promissoras com a utilização das melhores ações já conhecidas. Para aplicações em sistemas produtivos, dois aspectos são cruciais: (i) estabilidade durante o treinamento e (ii) eficiência no uso de amostras. Entre os algoritmos que endereçam esses pontos, destacam-se os baseados em valor, como DQN e DDQN, que reutilizam experiências e mitigam superestimações \cite{hasselt2015deep}, e os baseados em gradiente de política, como o \textit{Proximal Policy Optimization} (PPO) \cite{schulman_proximal_2017}. 
+
+O PPO, derivado do \textit{Trust Region Policy Optimization}, impõe limites à variação da política a cada iteração, evitando oscilações abruptas, preservando estabilidade no aprendizado e mantendo baixo custo computacional, o que o torna particularmente atrativo para ambientes industriais em que interrupções de produção são críticas.
+
+
+\subsection{Simulação de Eventos Discretos}
+
+A Simulação de Eventos Discretos (SED) modela sistemas em que mudanças de estado ocorrem em momentos específicos, como a chegada de clientes ou a conclusão de operações. Diferentemente de sistemas contínuos, as transições na SED são pontuais e permitem avaliar impactos sob diferentes condições. Segundo \citeonline{banks_discrete-event_2010}, a SED é amplamente utilizada em manufatura, logística, saúde, telecomunicações e redes, sendo uma ferramenta eficaz para estruturar ambientes de aprendizado em AR.
+
+O modelo de SED define eventos, entidades, atributos e recursos, e sua análise ocorre por meio de simulações numéricas voltadas à identificação de padrões e suporte à decisão. Entre os principais softwares para essa finalidade destaca-se o \textit{FlexSim}, uma plataforma orientada a objetos para modelagem, visualização e monitoramento de processos dinâmicos em \textit{2D}, \textit{3D} e realidade virtual \cite{nordgren_flexsim_2003}. O \textit{FlexSim} valida dados estatisticamente e disponibiliza o \textit{FlexScript}, linguagem baseada em C++ que permite a customização de objetos e a integração externa via \textit{sockets}, o que viabiliza a conexão com ambientes como o \textit{Python}.
+
+A integração entre AR e SED possibilita que agentes aprendam estratégias de controle em ambientes estocásticos, ajustando políticas conforme as respostas do sistema \cite{FlexSim_RL_2023}. Com SED, pode-se modelar operações produtivas realistas e fornecer o contexto necessário para o treinamento dos agentes, enquanto a separação entre ambiente e algoritmo preserva a flexibilidade da implementação. Por exemplo, \citeonline{Damian_2024} demonstrou essa aplicação ao utilizar um Gêmeo Digital baseado em SED como ambiente de treinamento para algoritmos A3C (\textit{Asynchronous Advantage Actor Critic}) e PPO, aplicados à alocação de processos em linhas paralelas. Os agentes superaram regras tradicionais, melhoraram o balanceamento de carga e reduziram a ociosidade, adaptando-se a diferentes condições operacionais.
+
+No \textit{FlexSim}, a comunicação entre o simulador e o agente de AR ocorre por \textit{sockets}, com transmissão estruturada de estados e ações sobre \textit{TCP/IP}. Essa arquitetura viabiliza ajustes e validações em ambientes controlados, especialmente em contextos nos quais a experimentação direta é inviável. Na Figura~\ref{figure:sockets} tem-se uma representação da conexão entre AR e o simulador \textit{FlexSim}.
+
+\begin{figure}[hbt]
+\centering
+  \caption{Representação da estrutura na conexão entre AR e \textit{FlexSim}.}
+  \label{figure:sockets}
+  \includegraphics[width=0.7\textwidth]{figures/Imagem Python Sockets FlexSim RL.png}
+  \caption*{\small Fonte: Elaborado pelos autores.}
+\end{figure}
+
+\subsection{Gêmeo Digital}
+
+O conceito de Gêmeo Digital, proposto em \cite{grieves_digital_2016}, refere-se à criação de uma réplica digital de sistemas físicos para monitoramento, simulação e otimização em tempo real. Inicialmente aplicado em projetos da NASA, expandiu-se para setores como manufatura, energia e infraestrutura urbana.
+
+Segundo \citeonline{tao_digital_2022}, o Gêmeo Digital abrange dimensões geométrica, física, comportamental e de regras, permitindo a representação do objeto e sua resposta a estímulos. Os níveis de maturidade e eficácia de um Gêmeo Digital refletem o grau de integração entre dados e controle do processo físico \cite{metcalfe_digital_2023, JONES202036}. A evolução é descrita em cinco estágios: o nível 0 (\textit{No Twin}) corresponde à ausência de integração entre medições e o modelo digital; o nível 1 (\textit{Status}) refere-se à coleta de dados em tempo real para visualização do estado atual; o nível 2 (Informativo) combina dados históricos e atuais para identificar tendências; o nível 3 (Preditivo) emprega modelos matemáticos ou técnicas de aprendizado de máquina para previsão de comportamento futuro; o nível 4 (Exploratório) permite a avaliação de cenários para apoiar decisões; e o nível 5 (Autônomo) realiza a execução automática de ações sem intervenção humana.
+
+Por outro lado, quando tratamos de maiores capacidades de comunicação, protocolos como o \textit{MODBUS} são amplamente utilizados em indústrias para facilitar a comunicação entre dispositivos, como Controladores Lógicos Programáveis (CLPs) e sistemas de supervisão. Ele é um protocolo de comunicação serial aberto, desenvolvido em 1979, que se destaca por ser simples de implementar e por ser compatível com diversas mídias de comunicação, como \textit{RS-232}, \textit{RS-485}, \textit{Ethernet} e até mesmo redes sem fio \cite{tamboli_implementation_2015}.
+
+\section{Método de Pesquisa}
+
+O artigo fundamenta-se na abordagem de Modelagem e Simulação, amplamente aplicada na Engenharia de Produção e na Gestão de Operações \cite{ganga_metodologia_2011}. Essa metodologia permite analisar, projetar e aprimorar sistemas produtivos, conferindo robustez e flexibilidade à tomada de decisão. As etapas da pesquisa foram desenvolvidas da seguinte forma: i) Definição do problema: propõe-se um método alternativo à programação matemática para resolver o problema da mistura de algodão na fiação têxtil, adotando o algoritmo PPO em razão de sua robustez em ambientes dinâmicos, embora seu desempenho seja inferior em ambientes estáticos; ii) Coleta de dados e definição do modelo conceitual: utiliza-se a base de dados de \cite{takahashi_2016} para o modelo estático, incorporando variações aleatórias para a construção do modelo dinâmico; iii) Construção do modelo: as restrições do modelo matemático original são incorporadas implicitamente por meio das recompensas no AR, definidas a partir da função objetivo, enquanto a simulação replica características comuns do processo produtivo; iv) Solução do modelo: o algoritmo PPO resolve o problema de forma iterativa utilizando o ambiente de simulação; v) Validação do Modelo: o desempenho do agente de AR é comparado às soluções ótimas obtidas pelo modelo matemático, permitindo avaliar sua eficácia; vi) Implementação da solução em ambiente simulado: a inferência do modelo treinado é aplicada no protocolo de Gêmeo Digital Autônomo, processando dados reais de novos fardos registrados no sistema.
+
+
+\section{Modelo Matemático}
+
+O modelo de programação inteira-mista apresentado em \cite{takahashi_2016} visa selecionar fardos das procedências $(p=1,\dots,P )$ para formar misturas $(k=1,\dots,K )$ que atinjam valores-alvo nas características luminosidade \((+b)\), grau de reflexão \((rd)\) e \emph{Micronaire} \((m)\).  Cada mistura utiliza \(D_k\) fardos e pode repetir-se \(Q_k\) vezes; fixa-se \(Q_k=1\) para manter flexibilidade logística.  O estoque inicial é \(E_p\), os valores das características nos fardos são \(+b_p\), \(rd_p\) e \(m_p\) e os valores-alvo são \(+b^{\!\star}\), \(rd^{\!\star}\) e \(m^{\!\star}\).  Diferenças de ordem de grandeza são eliminadas pelos pesos \(\boldsymbol{\lambda}^{+b}=1/\overline{+b}\), \(\boldsymbol{\lambda}^{rd}=1/\overline{rd}\) e \(\boldsymbol{\lambda}^{m}=1/\overline{m}\).  
+
+As variáveis de decisão: $X_{pk} \in Z^+$ indica número de fardos da procedência \(p\) na mistura \(k\), e \(A_k,B_k,C_k\ge0\) indicam os desvios absolutos de \(+b\), \(rd\) e \(m\) em cada mistura $k$, respectivamente.  Os desvios são definidos pelas equações (\ref{eq:Ak}–\ref{eq:Ck}):
+
+\begin{equation}\label{eq:Ak}
+\left|\frac{\sum_{p=1}^{P} (+b_p\,X_{pk})}{D_k}-+b^{\!\star}\right| = A_k, \qquad \forall k
+\end{equation}
+
+\begin{equation}\label{eq:Bk}
+\left|\frac{\sum_{p=1}^{P} (rd_p\,X_{pk})}{D_k}-rd^{\!\star}\right| = B_k, \qquad \forall k
+\end{equation}
+
+\begin{equation}\label{eq:Ck}
+\left|\frac{\sum_{p=1}^{P} (m_p\,X_{pk})}{D_k}-m^{\!\star}\right| = C_k, \qquad \forall k
+\end{equation}
+
+Para linearizar o valor absoluto basta exigir, por exemplo,  
+\(A_k \ge \tfrac{\sum_p (+b_p X_{pk})}{D_k}-+b^{\!\star}\) e  
+\(A_k \ge +b^{\!\star}-\tfrac{\sum_p (+b_p X_{pk})}{D_k}\). Restrições análogas são impostas a \(B_k\) e \(C_k\).
+
+A função objetivo visa minimizar a soma ponderada dos desvios:
+
+\begin{equation}\label{eq:obj}
+\min \sum_{k=1}^{K} \bigl(\boldsymbol{\lambda}^{+b}A_k+\boldsymbol{\lambda}^{rd}B_k+\boldsymbol{\lambda}^{m}C_k\bigr)Q_k
+\end{equation}
+
+A alocação dos fardos de algodão da mistura e o limite de estoque são controlados por
+
+\begin{equation}
+\sum_{p=1}^{P} X_{pk} = D_k, \qquad \forall k\label{eq:mix}
+\end{equation}
+
+\begin{equation}\label{eq:stock}
+\sum_{k=1}^{K} X_{pk}Q_k \le E_p, \qquad \forall p
+\end{equation}
+
+Após a seleção dos fardos e sua implementação na produção, obtidos de cada solução, os estoques são atualizados, subtraindo-se os fardos consumidos. O processo repete-se até que não haja solução factível, registrando-se os resultados em cada etapa. Desta forma, obtemos todas as possíveis misturas de fardos de algodão e seus respectivos desvios nos valores-alvo das características. 
+
+\begin{table}[ht]
+\centering
+\caption{Médias no estoque, valores-alvo e pesos \(\boldsymbol{\lambda}\).}
+\label{tab:valores_lambda}
+\begin{tabular}{lccc}
+\toprule
+Característica & Média em estoque & Valor-alvo & \(\boldsymbol{\lambda}\) \\
+\midrule
+\(rd\)         & 73{,}90 & 74{,}35 & 0{,}0135 \\
+\(+b\)         & 9{,}98  & 9{,}34  & 0{,}1002 \\
+Micronaire     & 3{,}88  & 3{,}90  & 0{,}2535 \\
+\bottomrule
+\end{tabular}
+\caption*{\small Fonte: Adaptado de \citeonline{takahashi_2016}.}
+
+\end{table}
+
+\section{Modelo de Aprendizado por Reforço}
+
+Diferentemente da programação matemática, o Aprendizado por Reforço (AR) resolve problemas por tentativa e erro, sem restrições explícitas. A função de recompensa guia o agente, atribuindo \textit{feedback} positivo ou negativo conforme o atendimento às condições do problema. A função objetivo é incorporada à recompensa, favorecendo ações progressivamente melhores. 
+
+\subsection{Abordagem Estática e Determinística}
+
+Inicialmente, o problema foi analisado considerando os dados estáticos e determinísticos: o estoque é fixo e as propriedades de interesse dos fardos são conhecidas, os mesmos utilizados no modelo matemático da seção anterior. O objetivo é modelar o problema de maneira diretamente comparável à modelagem apresentada em \cite{takahashi_2016}, a fim de encontrar boas extrapolações para cenários incertos.
+
+A formulação base, do ponto de vista do Aprendizado por Reforço (AR), consiste na seleção de 150 fardos de algodão no tempo \(t\) como ações; no registro das escolhas já realizadas no tempo \(t-1\) como observações; e na definição da recompensa como $( R = 1/(1 + \text{FO}) )$, em que FO representa a função objetivo.
+
+A partir da formulação base, funções de recompensas alternativas foram testadas, a fim de encontrar aquela com a melhor performance: \textbf{RL I}: recompensa inversamente proporcional à função objetivo (FO), com penalização fixa para misturas com menos fardos do que o esperado; \textbf{RL II}: adição de penalização proporcional aos desvios percentuais das propriedades (\(rd\), \(+b\) e \textit{Micronaire}), e inclusão da observação da quantidade de estoque por procedência; \textbf{RL III}: aumento da penalização para soluções infactíveis de \(-1\) para \(-2\); \textbf{RL IV}: expansão da observação para incluir dois períodos anteriores, \(t-1\) e \(t-2\); \textbf{RL V}: penalização extrema (\(-33\)) para misturas com quantidade de fardos insuficiente, forçando o respeito à restrição; \textbf{RL VI}: incentivo adicional de \(+2\) para soluções onde \(\text{FO} = 0\), reforçando a busca por soluções ótimas; \textbf{RL VII}: alteração da observação do estoque para formato binário, indicando apenas presença ou ausência de fardos.
+
+\subsection{Abordagem Dinâmica e Estocástica}
+
+O modelo dinâmico parte de um estoque inicial conhecido (usado na abordagem estática e determinística), mas as novas chegadas após o gradativo consumo são aleatórias. Os tempos de mistura \((T_m)\) e de reposição \((T_r)\) são assumidos normais e ajustados para preservar o equilíbrio do sistema, expresso por
+\begin{equation}
+\frac{C}{T_m} \;=\; \frac{\mathbb{E}[R]}{T_r},
+\end{equation}
+em que, \(C\) é a capacidade do misturador, e \(R\sim\mathcal{N}(\mu_R,\sigma^{2})\) representa o tamanho do lote reposto, sob incertezas.
+
+A chegada de novos fardos respeita as proporções iniciais do estoque, convergindo ao longo do tempo em termos de quantidades e procedências. Para representar a variabilidade nas propriedades de interesse dos fardos (\(rd\), \(+b\) e \emph{Micronaire}), cada valor é ajustado individualmente dentro de uma faixa de \(\pm10\%\) em torno de seu valor médio. Assim, para cada procedência, a propriedade \(P\) é dada por
+\[
+P = P_0 + U(-0{,}1P_0, 0{,}1P_0)
+\]
+em que \(P_0\) representa o valor médio da propriedade e \(U\) indica uma variação aleatória uniforme dentro do intervalo definido.
+
+\section{Modelo de Simulação}
+
+Para integrar as premissas do ambiente de aprendizado e as ferramentas de conectividade, foi utilizado o simulador de eventos discretos e Gêmeo Digital \textit{FlexSim}. O \textit{FlexSim} permite a representação gráfica tridimensional do processo, aproximando a simulação do contexto real e facilitando a interpretação dos resultados. O simulador é dividido em duas partes: o \textit{Model 3D}, que representa fisicamente o fluxo de fardos no sistema, e o \textit{Process Flow}, que organiza logicamente os eventos e ações do processo por meio de blocos. O \textit{Model 3D} é utilizado apenas para visualização e lógicas básicas de fluxo, enquanto o \textit{Process Flow} gerencia o comportamento dinâmico dos fardos, a geração de novas chegadas e a integração com os gatilhos de Aprendizado por Reforço (AR).
+
+A Figura ~\ref{figure:modelo3d} ilustra o modelo tridimensional do processo com 34 baias de estoque e um misturador, e o fluxo de eventos construído no \textit{Process Flow} para controle e atualização do ambiente de simulação, na Figura \ref{figure:ProcessFlow}.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{Representação \textit{3D} do processo.}
+    \label{figure:modelo3d}
+    \includegraphics[width=1\linewidth]{figures/modelo3d.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{\textit{Process Flow} do fluxo.}
+    \label{figure:ProcessFlow}
+    \includegraphics[width=1\linewidth]{figures/ProcessFlow.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\end{figure}
+
+Inicialmente, o \textit{Process Flow} gera os fardos e sorteia suas propriedades, reproduzindo o estoque inicial e controlando as novas chegadas aleatórias ao longo do tempo. Em paralelo, gerencia o direcionamento dos fardos entre as baias de estoque e o misturador, sincronizando as operações e mantendo o ambiente atualizado para a interação com o agente de AR.
+
+
+\section{Sistema de Informações Gerenciais}
+
+Um Sistema de Informações Gerenciais (SIG) conecta o ambiente físico ao digital no protocolo proposto, substituindo a aleatoriedade da simulação por dados reais por meio do comissionamento virtual, como ilustrado na Figura \ref{figure:SIG}.
+
+\begin{figure}[hbt]
+\centering
+\caption{Diagrama sequencial do protocolo.}
+\label{figure:SIG}
+\includegraphics[width=1\textwidth]{figures/SIG.png}
+\caption*{\small Fonte: Elaborado pelos autores.}
+\end{figure}
+
+Desenvolvido em \textit{Python} com \textit{Flask}, \textit{SQLAlchemy} e \textit{MODBUS}, o SIG gerencia procedências e estoques, consolidando dados em um Banco de Dados \textit{PostgreSQL}. A aplicação \textit{web} permite a inserção e atualização de registros por meio de uma interface simples, conforme ilustrado nas Figuras \ref{figure:TelaInput} e \ref{figure:TelaOutput}.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{Tela de registro de novos fardos.}
+    \label{figure:TelaInput}
+    \includegraphics[width=1\linewidth]{figures/TelaInput.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{Tela de saída com informações recebidas.}
+    \label{figure:TelaOutput}
+    \includegraphics[width=1\linewidth]{figures/TelaOutput.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\end{figure}
+
+No registro de entrada, o operador seleciona a procedência e a quantidade de fardos a serem adicionados ao Banco de Dados. Na tela de saída, exibem-se as decisões do agente de Aprendizado por Reforço (AR) recebidas via protocolo \textit{MODBUS}.
+
+A sincronização entre o Banco de Dados e o modelo de simulação utiliza a biblioteca \textit{SQLAPI++}, enquanto o servidor \textit{MODBUS} transmite comandos e estados entre o SIG e o \textit{FlexSim}. Os dados são armazenados nos registros \textit{holding} do \textit{DataBank} e disponibilizados em formato \textit{JSON} para a aplicação \textit{web}.
+
+
+\section{Resultados}
+
+As simulações e execuções dos modelos foram realizadas com processador i5-11400F, 16~GB de memória RAM e GPU Nvidia GeForce RTX 3060 Ti.
+
+\subsection{Abordagem Estática e Determinística}
+
+Devido à alta demanda computacional, o problema foi discretizado quanto ao número de fardos usados na mistura e às disponibilidades das procedências em estoque, a fim de viabilizar a aplicação do AR, reduzindo o peso computacional sem alterar a natureza do sistema. A Tabela~\ref{tab:discretizacao} mostra o impacto da discretização dos modelos de AR no tempo necessário para processar os 18.432.000 \textit{timesteps} (sendo D = 1 o modelo sem discretização, com 150 fardos na mistura; e D = 2 o modelo discretizado, com 75 fardos na mistura, e assim para as demais discretizações).
+
+\begin{table}[htp]
+    \centering
+    \caption{Impacto da discretização no tempo computacional.}
+    \begin{tabular}{c c}
+    \toprule
+    Discretização (D) & Tempo (horas) \\
+    \midrule
+    \(1\) & 646,71 \\
+    \(2\) & 345,23 \\
+    \(3\) & 156,11 \\
+    \(5\) & 97,62  \\
+    \(6\) & 62,49  \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:discretizacao}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{table}
+
+Com o aumento de \(D\), o esforço computacional diminui. A discretização \(D=6\) (25 fardos, ao invés de 150) foi adotada por reduzir o tempo de simulação sem comprometer a qualidade das soluções, conforme mostrado na Figura~\ref{figure:DiscD1D6RLI} (compara-se o modelo matemático sem discretização, discretizado e o modelo de AR discretizado).
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{Comparação entre MIP D1, MIP D6, RL I.}
+    \label{figure:DiscD1D6RLI}
+    \includegraphics[width=1\linewidth]{figures/MIPD1D6RL1.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{Comparação entre MIP D6, RL VII.}
+    \label{figure:ModeloMatematicoRLVII}
+    \includegraphics[width=1\linewidth]{figures/ModeloMatematicoRLVII.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\end{figure}
+
+No ambiente estático, os modelos de Aprendizado por Reforço (RL) convergiram para soluções semelhantes após o treinamento. A Tabela~\ref{tab:comparacao_rl} compara o desempenho dos modelos.
+
+\begin{table}[htp]
+    \centering
+    \caption{Comparação entre modelos quanto à factibilidade, objetivo e \textit{gap} de otimalidade.}
+    \begin{tabular}{l c c c}
+    \toprule
+    Modelo & Mist. Factíveis & Soma dos Objetivos & \textit{Gap} \\
+    \midrule
+    MIP (D6)        & 33 & 19,67  & -       \\
+    RL I            & 30 & 19,26  & 57,7\%  \\
+    RL II           & 29 & 13,88  & 32,9\%  \\
+    RL III          & 30 & 15,38  & 25,9\%  \\
+    RL IV           & 29 & 15,48  & 48,2\%  \\
+    RL V            & 26 & 17,83  & 194,8\% \\
+    RL VI           & 31 & 17,33  & 21,5\%  \\
+    RL VII          & 30 & 14,29  & 17,0\%  \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:comparacao_rl}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{table}
+
+O MIP apresentou o melhor desempenho (quanto a soma dos valores da função objetivo das misturas) como referência. O RL VII obteve a menor variabilidade e maior consistência ao longo das misturas. Enquanto o MIP prioriza o instante atual, o RL distribui melhor os fardos ao longo do tempo, mantendo o desvio mais equilibrado, como mostrado na Figura~\ref{figure:ModeloMatematicoRLVII}. Essa uniformidade nas metas de mistura ao longo do tempo contribui para maior previsibilidade operacional, estabilidade na qualidade do fio produzido e menor necessidade de ajustes frequentes no processo produtivo.
+
+\subsection{Abordagem Dinâmica e Estocástica}
+
+A Figura~\ref{figure:DINRLVII} compara os modelos estático (RL VII) e dinâmico (RL VII DIN). Considerando a chegada contínua de novos fardos, o modelo dinâmico apresenta menor variação nos valores do objetivo, melhor aderência aos parâmetros desejados e redução da variabilidade e dos picos de erro. Essa estabilidade contribui para um processo produtivo mais previsível e menos sujeito a ajustes corretivos, o que é desejável em ambientes industriais. Além disso, como o modelo dinâmico é treinado sob condições com maior aleatoriedade, ele desenvolve maior robustez e generalização, tornando-se mais adequado para aplicação em cenários reais com incertezas operacionais. A Figura~\ref{figure:replicas} apresenta a variabilidade das soluções propostas pelo agente de AR ao longo das misturas, resultante das diferentes réplicas do modelo de simulação e do consumo progressivo do estoque inicial.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+  \caption{RL VII estático e dinâmico.}
+  \label{figure:DINRLVII}
+  \includegraphics[width=1\textwidth]{figures/DINRLVII.png}
+  \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \centering
+    \caption{Réplicas RL VII dinâmico.}
+    \label{figure:replicas}
+    \includegraphics[width=1\textwidth]{figures/replicas.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{minipage}
+\end{figure}
+
+\subsection{Parâmetros de Treinamento}
+
+A Figura \ref{fig:Recompensa} apresenta a evolução da recompensa nos treinamentos estático e dinâmico. No modelo estático (Figura \ref{fig:RecompensaESTATICO}), a recompensa cresce de forma gradual, com oscilações reduzidas e rápida estabilização, refletindo a previsibilidade do ambiente. No modelo dinâmico (Figura \ref{fig:RecompensaDINAMICO}), o crescimento é mais lento, acompanhado de oscilações intensas, o que evidencia a necessidade de adaptação contínua do agente às variações no ambiente.
+
+\begin{figure}[hbt]
+\centering
+\caption{Recompensas no treinamento do AR.}
+\label{fig:Recompensa}
+\begin{subfigure}{0.48\textwidth}
+    \centering
+    \caption{Modelo estático.}
+    \label{fig:RecompensaESTATICO}
+    \includegraphics[width=1\textwidth]{figures/RecompensaESTATICO.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
+    \centering
+    \caption{Modelo dinâmico.}
+    \label{fig:RecompensaDINAMICO}
+    \includegraphics[width=1\textwidth]{figures/RecompensaDIN.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{subfigure}
+\end{figure}
+
+A Figura \ref{fig:ClipFraction} mostra a evolução do parâmetro \textit{clip\_fraction}, que indica a fração de atualizações de política limitadas pelo mecanismo de \textit{clipping}. No modelo estático (Figura \ref{fig:ClipFractionESTATICO}), o valor cai rapidamente no início e se mantém baixo, com oscilações esporádicas. No modelo dinâmico (Figura \ref{fig:ClipFractionDINAMICO}), a redução é mais lenta, e as oscilações são mais frequentes e intensas, sugerindo maior dificuldade de estabilização das políticas.
+
+\begin{figure}[hbt]
+\centering
+\caption{\textit{clip\_fraction} no treinamento do AR.}
+\label{fig:ClipFraction}
+\begin{subfigure}{0.48\textwidth}
+    \centering
+    \caption{Modelo Estático.}
+    \label{fig:ClipFractionESTATICO}
+    \includegraphics[width=1\textwidth]{figures/ClipFractionESTATICO.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
+    \centering
+    \caption{Modelo Dinâmico.}
+    \label{fig:ClipFractionDINAMICO}
+    \includegraphics[width=1\textwidth]{figures/ClipFractionDIN.png}
+    \caption*{\small Fonte: Elaborado pelos autores.}
+\end{subfigure}
+\end{figure}
+
+
+\section{Conclusão}
+
+O artigo propõe um método alternativo para a mistura de algodão na fiação têxtil, desenvolvendo um protocolo de Gêmeo Digital Autônomo que integra dados reais e Aprendizado por Reforço (AR). A abordagem permite ajustes contínuos frente à variabilidade do algodão e das condições operacionais, superando limitações de métodos determinísticos, como o alto tempo de processamento e a dificuldade de adaptação a cenários estocásticos. O AR, por sua vez, apresenta decisões instantâneas e robustas diante de incertezas.
+
+O protocolo atinge o nível 5 de maturidade do Gêmeo Digital, automatizando decisões por meio da integração entre dados operacionais e AR, caracterizando as Dimensões Física e Comportamental. As decisões são continuamente atualizadas a montante e a jusante no processo.
+
+A validação considerou diferentes configurações de simulação e funções de recompensa. O AR apresentou um \textit{gap} de otimalidade de 17\% em relação ao modelo matemático, mostrando viabilidade para o planejamento das misturas, apesar de limitações computacionais. Em cenário dinâmico, o AR ajustou progressivamente as decisões conforme novos fardos chegavam no estoque, mesmo sem conhecimento prévio e exato de suas propriedades.
+
+A integração com o Sistema de Informações Gerenciais e Banco de Dados Relacional viabiliza a atualização automática do ambiente simulado e a transmissão de decisões via protocolo \textit{MODBUS}, permitindo a aplicação prática do protocolo no chão de fábrica.
+
+Para avanços futuros, é desejável incorporar de forma mais precisa as incertezas presentes no processo produtivo, bem como viabilizar a execução das inferências diretamente em CLPs industriais.
+
+\bibliographystyle{abntex2-alf}
+\bibliography{bibliografia}      
+
+\end{document}

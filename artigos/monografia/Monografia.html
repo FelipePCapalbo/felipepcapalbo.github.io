@@ -1,0 +1,3349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Monografia - Protocolo de Gêmeo Digital Autônomo</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Monografia - Protocolo de Gêmeo Digital Autônomo</h1>
+</header>
+<div class="center">
+<p><span><strong>UNIVERSIDADE FEDERAL DE SÃO
+CARLOS</strong></span><br />
+<span>CENTRO DE CIÊNCIAS EXATAS E DE TECNOLOGIA</span><br />
+<span>DEPARTAMENTO DE ENGENHARIA DE PRODUÇÃO</span><br />
+</p>
+<p><img src="figures/UFSCar.png" style="width:80.0%" alt="image" /></p>
+<p><span><strong>PROTOCOLO DE GÊMEO DIGITAL AUTÔNOMO NO PROCESSO DA
+MISTURA DE ALGODÃO NA FIAÇÃO TÊXTIL COM APRENDIZADO POR REFORÇO E
+SIMULAÇÃO DE EVENTOS DISCRETOS</strong></span><br />
+</p>
+<p><span>Felipe Papa Capalbo</span><br />
+</p>
+<p><span><strong>MONOGRAFIA EM ENGENHARIA DE
+PRODUÇÃO</strong></span></p>
+</div>
+<div class="fichacatalografica">
+
+</div>
+<div class="folhadeaprovacao">
+
+</div>
+<div class="flushright">
+<div class="minipage">
+<p><strong>Dedico</strong> este trabalho à “Dedé”, meu exemplo de
+criatividade, inteligência e liberdade. Obrigado por estar comigo do
+começo até o fim.</p>
+</div>
+</div>
+<div class="flushright">
+<div class="minipage">
+<p><strong>Agradeço</strong> àqueles que me trouxeram até aqui.</p>
+<p>À minha família: pela vida, cuidados e sacrifícios.</p>
+<p>Ao meu professor Victor: pelo tempo, confiança e sabedoria
+investidos.</p>
+<p>À FlexSim Brasil: Michael Machado, pela visão, recursos e
+parceria.</p>
+</div>
+</div>
+<div class="flushright">
+<p>Bloco 885.760; 84.437.<br />
+28/02/2025</p>
+</div>
+<div class="resumo">
+<p>A melhoria do processo de mistura de algodão na fiação têxtil envolve
+desafios, em grande parte devido à variabilidade nas propriedades
+físicas e químicas da fibra de algodão, assim como nas condições
+operacionais do processo. Esses fatores, influenciados por aspectos
+ambientais e logísticos, tornam o planejamento dos fardos adequados uma
+tarefa complexa, especialmente em cenários incertos. Historicamente,
+métodos de programação matemática são empregados para abordar essas
+questões; entretanto, a introdução do Aprendizado por Reforço, aliado à
+Simulação de Eventos Discretos, oferece novas possibilidades para a
+proposição de soluções em ambientes dinâmicos e estocásticos, além de
+viabilizar a integração de dados físicos em tempo real. O objetivo deste
+trabalho é propor um protocolo de Gêmeo Digital Autônomo, integrando
+Aprendizado por Reforço, Simulação de Eventos Discretos e outras
+ferramentas de conectividade, para encontrar boas soluções para a
+mistura de algodão, considerando incertezas e variabilidades do processo
+produtivo real. A solução proposta permite lidar com múltiplas fontes de
+incerteza, incluindo a variabilidade nas propriedades do algodão, como
+grau de “amarelamento” (+b), refletância total (rd) e
+<em>Micronaire</em> - que impactam diretamente na qualidade do fio e no
+custo da produção - e também aspectos logísticos externos, como a
+procedência desconhecida dos fardos de algodão entregues ao longo do
+tempo. O protocolo incorpora um Sistema de Informações Gerenciais, um
+Banco de Dados Relacional e um simulador de processos para capturar e
+processar dados do ambiente físico. Implementa o algoritmo <em>Proximal
+Policy Optimization</em> (PPO), que realiza atualizações incrementais e
+estáveis na política do agente, garantindo maior eficiência na adaptação
+a cenários de incerteza. O <em>FlexSim</em> é o ambiente utilizado para
+a simulação do processo, enquanto o protocolo <em>MODBUS</em>, o Banco
+de Dados <em>PostgreSQL</em> e a aplicação desenvolvida em
+<em>Flask</em> asseguram a integração entre as diversas camadas do
+sistema. Os resultados obtidos incluem a comparação entre as soluções
+propostas pelo Aprendizado por Reforço e as soluções ótimas, propostas
+por um modelo de Programação Inteira Mista, além da extrapolação para
+cenários dinâmicos, com aleatoriedade. O trabalho avança no uso dos
+Gêmeos Digitais Autônomos como ferramenta estratégica para o setor
+têxtil.</p>
+<p><strong>Palavras-chave</strong>: Gêmeo Digital Autônomo, Aprendizado
+por Reforço, Simulação de Eventos Discretos, Fiação Têxtil, Mistura de
+Algodão, <em>Proximal Policy Optimization</em>, Programação Inteira
+Mista.</p>
+</div>
+<div class="resumo">
+<div class="otherlanguage*">
+<p><span>english</span></p>
+<p>Improving the cotton blending process in textile spinning poses
+challenges, largely due to the variability in the physical and chemical
+properties of cotton fibers, as well as operational conditions. These
+factors, influenced by environmental and logistical aspects, make
+planning the appropriate cotton bales a complex task, especially in
+uncertain scenarios. Traditionally, mathematical programming methods
+have been employed to address these issues; however, the introduction of
+Reinforcement Learning, combined with Discrete Event Simulation, offers
+new possibilities for proposing solutions in dynamic and stochastic
+environments, in addition to enabling the integration of real-world data
+in real time. The objective of this work is to propose an Autonomous
+Digital Twin protocol by integrating Reinforcement Learning, Discrete
+Event Simulation, and other connectivity tools to find suitable
+solutions for cotton blending, taking into account the uncertainties and
+variabilities of the actual production process. The proposed solution
+can handle multiple sources of uncertainty, including variability in the
+properties of cotton—such as the degree of “yellowness” (+b), total
+reflectance (rd), and Micronaire, which directly affect yarn quality and
+production costs—and external logistical factors, such as the unknown
+provenance of cotton bales delivered over time. The protocol
+incorporates a Management Information System, a Relational Database, and
+a process simulator to capture and process data from the physical
+environment. It implements the Proximal Policy Optimization (PPO)
+algorithm, which performs incremental and stable updates to the agent’s
+policy, ensuring greater efficiency in adapting to stochastic scenarios.
+FlexSim is used as the environment for process simulation, while the
+MODBUS protocol, the PostgreSQL database, and an application developed
+in Flask ensure integration across the various layers of the system. The
+results obtained include a comparison between the solutions proposed by
+Reinforcement Learning and the optimal solutions proposed by a Mixed
+Integer Programming model, as well as extrapolation to dynamic and
+stochastic scenarios. The work advances the use of Autonomous Digital
+Twins as a strategic tool for the textile sector.</p>
+<p><strong>Keywords</strong>: Autonomous Digital Twin, Reinforcement
+Learning, Discrete Event Simulation, Textile Spinning, Cotton Blending,
+Proximal Policy Optimization, Mixed Integer Programming.</p>
+</div>
+</div>
+<h1 id="introdução">INTRODUÇÃO</h1>
+<p>A mistura de algodão na fiação têxtil é influenciada por múltiplas
+fontes de variabilidade, incluindo as propriedades físico-químicas da
+fibra e as condições operacionais do processo produtivo. A incerteza na
+composição dos fardos e nas dinâmicas produtivas exige estratégias que
+conciliem previsibilidade e flexibilidade na tomada de decisão.
+Diferentes métodos são empregados para lidar com essas questões, desde
+abordagens tradicionais, baseadas na Pesquisa Operacional, até técnicas
+baseadas em Aprendizado por Reforço. Neste capítulo, são discutidos os
+desafios do problema, as ferramentas adotadas e os fundamentos que
+estruturam a pesquisa.</p>
+<h2 id="caracterização-do-tema">CARACTERIZAÇÃO DO TEMA</h2>
+<p>Segundo relatório da , “O Brasil está projetado para exportar 12,3
+milhões de fardos no ano comercial de 2023/24, tornando-se o maior
+exportador global de algodão pela primeira vez. A produção mais que
+dobrou nos últimos 7 anos, atingindo um recorde de 14,6 milhões de
+fardos em 2023/24”. O algodão, como recurso natural, apresenta
+variabilidade em suas propriedades físicas e químicas, o que pode
+introduzir desafios adicionais no processo de fiação. No entanto, quando
+as propriedades de algodão de diferentes procedências são combinadas, o
+resultado dessa mistura pode ser tratado de forma linear, como mostrado
+por .</p>
+<p>Essa variabilidade nas propriedades do algodão não se restringe
+apenas à sua procedência, mas também é influenciada por fatores
+ambientais como temperatura e umidade, que afetam diretamente
+características essenciais da fibra, incluindo resistência, uniformidade
+e comprimento. Estudos indicam que, por exemplo, temperaturas mais altas
+durante o desenvolvimento das cápsulas aumentam a resistência da fibra,
+enquanto temperaturas noturnas mais elevadas podem melhorar sua
+estrutura, embora essas mesmas condições possam restringir seu
+comprimento <span class="citation"
+data-cites="istipliler_impact_2024"></span>, tornando as propriedades de
+interesse da matéria-prima significativamente incertas, mesmo entre
+fardos da mesma origem.</p>
+<p>Métodos tradicionais de programação matemática já foram validados
+para lidar com a otimização do processo de fiação, como demonstrado por
+, entretanto, oportunidades na aplicação de métodos alternativos que
+ofereçam boas soluções e maior simplicidade para o processo de
+modelagem, como será demonstrado no trabalho, revelam-se possíveis.</p>
+<p>O Aprendizado de Máquina (AM) abrange um conjunto de ferramentas que
+sistematicamente vêm impactando desde a ciência de dados, até a
+indústria de processos. O Aprendizado por Reforço, subcampo do AM,
+emerge como uma ferramenta útil para propor soluções simples para
+problemas com combinações de diferentes fontes de incerteza <span
+class="citation" data-cites="sutton_reinforcement_2014"></span>, bem
+como para integrar-se com outras ferramentas da “Indústria 4.0” <span
+class="citation" data-cites="del_real_torres_review_2022"></span>.</p>
+<p>Entre os algoritmos de Aprendizado por Reforço, destaca-se o
+<em>Proximal Policy Optimization</em> (PPO), pensado para aprimorar a
+tomada de decisão por meio de um processo de ajustes sucessivos. Em cada
+nova tentativa, pequenas mudanças são feitas com base em experiências
+anteriores, permitindo que o modelo se adapte de forma controlada e
+estável às variabilidades inerentes ao processo estudado e às
+consequências das decisões tomadas <span class="citation"
+data-cites="schulman_proximal_2017"></span>. Assim, o algoritmo se
+destaca pela eficiência na adaptação a cenários complexos com múltiplas
+incertezas, as quais foram representadas e analisadas estatisticamente
+por meio da Simulação de Eventos Discretos (SED).</p>
+<p>A SED permite a modelagem e análise de processos, incorpora
+variabilidades e incertezas probabilísticas, introduz a criação de
+diferentes cenários que refletem parte das condições reais do processo
+produtivo e facilita a avaliação e o ajuste de estratégias operacionais
+antes de sua implementação no ambiente real <span class="citation"
+data-cites="banks_discrete-event_2010"></span>. O <em>FlexSim</em>,
+neste mesmo sentido, é o ambiente virtual a ser utilizado no trabalho,
+graças à sua conectividade, representatividade visual e robustez
+estatística. Trata-se de um <em>software</em> 3D de Gêmeos Digitais com
+ênfase em SED, onde a modelagem estatística e conceitual do problema
+será desenvolvida. Para implementar a melhoria com AR, a conexão com o
+<em>Python</em> e algumas bibliotecas é feita através dos
+<em>sockets</em>.</p>
+<p>A biblioteca <em>Stable-Baselines3</em> fornece implementações
+padronizadas de algoritmos de Aprendizado por Reforço, enquanto a
+<em>Gymnasium</em> (antiga <em>OpenAI Gym</em>) oferece uma API
+(<em>Application Programming Interface</em>) para a criação de ambientes
+de simulação e interação do agente com o ambiente. Para visualizar as
+melhorias implementadas, através dos resultados do treinamento e da
+inferência do modelo treinado, as bibliotecas <em>Tensorboard</em> e
+<em>MatPlotLib</em> são utilizadas.</p>
+<p>Por fim, para possibilitar a conectividade entre o ambiente físico, o
+simulador e o Aprendizado por Reforço, um Banco de Dados Relacional,
+alimentado por um Sistema de Informações Gerenciais, é implementado. O
+protocolo do Banco de Dados a ser utilizado é o <em>PostgreSQL</em>, por
+se tratar de um sistema estável e de código aberto <span
+class="citation" data-cites="PostgreSQL"></span>. O Sistema de
+Informações Gerenciais será implementado em <em>Python</em>, utilizando
+a biblioteca <em>Flask</em> para executar a interface e manipular os
+dados entre os diferentes componentes do sistema.</p>
+<h2 id="formulação-do-problema-e-objetivo-da-pesquisa">FORMULAÇÃO DO
+PROBLEMA E OBJETIVO DA PESQUISA</h2>
+<p>Para tornar as características do produto mais previsíveis, uma
+mistura de fardos diversos, com características conhecidas, é feita,
+antes da fiação propriamente dita <span class="citation"
+data-cites="zago_2005"></span>. As características escolhidas para
+quantificar cada mistura variam entre cada empresa, a depender de seus
+objetivos específicos <span class="citation"
+data-cites="camargo2012"></span>. Estes podem ser desde a minimização do
+custo da mistura, restrito por valores fixos nas propriedades do
+algodão, até a minimização da diferença dos valores das propriedades
+entre misturas, atual e anterior, como será destrinchado
+posteriormente.</p>
+<p>Neste trabalho, são exploradas as seguintes características do
+algodão:</p>
+<ul>
+<li><p><span>+b</span> (grau de “amarelamento”), que mede a intensidade
+da tonalidade marrom nas fibras. Valores mais altos de +b indicam uma
+coloração mais amarelada, o que pode influenciar o processo de
+tingimento e a percepção visual do tecido;</p></li>
+<li><p><span>rd</span> (Refletância Total), que mede a refletância total
+da fibra de algodão, representando o quão clara ou escura a fibra
+aparece. Valores mais altos de rd indicam fibras mais claras;</p></li>
+<li><p><span><em>Micronaire</em></span>, que é uma medida combinada de
+finura e maturidade da fibra de algodão. Essa propriedade impacta
+diretamente a processabilidade da fibra durante a fiação e a qualidade
+do fio produzido. Fibras com <em>Micronaire</em> baixo tendem a ser
+finas e frágeis, enquanto valores elevados podem indicar fibras mais
+grossas e imaturas <span class="citation"
+data-cites="fang_physical_2018"></span>.</p></li>
+</ul>
+<p>propõe soluções para a problemática descrita a partir de métodos
+exatos e heurísticos, em um contexto no qual se trabalha apenas com
+variáveis determinísticas e valores conhecidos para o estoque inicial,
+que não é renovado, e características dos fardos. No entanto, a ausência
+de uma abordagem que considere a incerteza associada ao fluxo contínuo
+de fardos e às variações do ambiente produtivo limita a capacidade
+desses métodos de lidarem com cenários dinâmicos.</p>
+<p>Para superar essas limitações, a abordagem proposta neste trabalho
+inclui a utilização de um Sistema de Informações Gerenciais (SIG) para
+registrar as informações de estoque em um Banco de Dados relacional,
+<em>PostgreSQL</em>, que alimenta o simulador de processos. Esse
+simulador é integrado a um algoritmo de Aprendizado por Reforço, o
+<em>Proximal Policy Optimization</em> (PPO), que ajusta as decisões de
+mistura de acordo com as condições do momento. Diferentemente dos
+métodos tradicionais, essa abordagem permite não apenas considerar
+restrições fixas, mas também aprender padrões e responder às incertezas
+de forma adaptativa. A Simulação de Eventos Discretos (SED) é utilizada
+para modelar as variações do processo produtivo e a influência das
+decisões sobre ele, permitindo a avaliação da robustez das estratégias
+propostas antes de sua implementação real. Após determinar a solução
+para a composição da mistura, o simulador transmite os dados de volta ao
+SIG por meio do protocolo <em>MODBUS</em>, possibilitando a execução das
+decisões no ambiente físico em tempo real.</p>
+<p>Assim, restam os questionamentos:</p>
+<ul>
+<li><p>Quais diferenças em modelagens e soluções na resolução do
+problema da mistura de algodão na fiação têxtil utilizando Aprendizado
+por Reforço e métodos tradicionais?</p></li>
+<li><p>Ao considerar eventos estocásticos no problema da mistura de
+algodão na fiação têxtil, o Aprendizado por Reforço em conjunto com a
+Simulação de Eventos Discretos pode ser utilizado como método de
+soluções?</p></li>
+<li><p>Quais são os requisitos de um protocolo de Gêmeo Digital
+Autônomo, ao integrar dados do ambiente físico em tempo real, estando
+ele a montante e a jusante?</p></li>
+</ul>
+<p>Em consequência, revela-se que o objetivo da pesquisa é propor um
+protocolo integrado de Gêmeo Digital Autônomo para o aprimoramento do
+processo de mistura de algodão na fiação têxtil. Este protocolo abrange
+desde métodos alternativos de aprimoramento, considerando abordagens
+estáticas e determinísticas, até soluções dinâmicas e estocásticas,
+incorporando a integração de dados em tempo real.</p>
+<h2 id="justificativa-da-pesquisa">JUSTIFICATIVA DA PESQUISA</h2>
+<p>A otimização do processo de mistura de algodão na indústria têxtil é
+fundamental não apenas para aprimorar a qualidade do produto, mas também
+para reduzir custos operacionais e aumentar a eficiência produtiva. A
+variabilidade intrínseca das matérias-primas e as exigências de um
+mercado globalizado impõem desafios constantes à indústria têxtil.</p>
+<p>A integração de ferramentas de conectividade, como o Aprendizado por
+Reforço e a Simulação de Eventos Discretos, oferece uma abordagem
+promissora para enfrentar esses desafios. Essas ferramentas permitem
+modelar e analisar processos complexos, considerando as variabilidades
+inerentes à produção têxtil. Ao implementar essas metodologias, é
+possível desenvolver estratégias de tomada de decisão mais robustas e
+adaptativas, resultando em processos mais eficientes e produtos de
+qualidade superior. Além disso, a adoção dessas tecnologias contribui
+para a sustentabilidade da produção, otimizando o uso de recursos e
+minimizando desperdícios, aspectos essenciais para a competitividade no
+mercado atual.</p>
+<h1 id="revisão-de-literatura">REVISÃO DE LITERATURA</h1>
+<p>Este capítulo apresenta o embasamento teórico deste trabalho por meio
+de uma revisão bibliográfica que introduz os conteúdos específicos de
+forma contextualizada e abrangente. O objetivo é fundamentar as
+propriedades do algodão como matéria-prima e sua relevância para a
+indústria têxtil; o Aprendizado por Reforço e o algoritmo <em>Proximal
+Policy Optimization</em> (PPO), utilizado no protocolo proposto; a
+Simulação de Eventos Discretos (SED) como ambiente de simulação e
+treinamento escolhido; e, por fim, a integração do sistema como um Gêmeo
+Digital Autônomo, detalhando como a conexão entre o simulador e o
+Sistema de Informações Gerenciais é estabelecida, incluindo o uso do
+Banco de Dados relacional <em>PostgreSQL</em> e do protocolo
+<em>MODBUS</em>.</p>
+<h2 id="processo-de-fiação-na-indústria-têxtil">PROCESSO DE FIAÇÃO NA
+INDÚSTRIA TÊXTIL</h2>
+<p>O algodão, como matéria-prima, possui propriedades intrínsecas que
+afetam diretamente o desempenho no processo de fiação e a qualidade do
+fio. Entre essas propriedades, podemos destacar aquelas que têm um
+caráter mais funcional para a fiação, como <em>Micronaire</em>
+(indicador combinado de finura e maturidade da fibra), comprimento,
+resistência, uniformidade e índice de maturidade das fibras <span
+class="citation" data-cites="waters_effect_1961"></span>. Além disso,
+características visuais, como as diferentes tonalidades de cor, também
+desempenham um papel fundamental, pois influenciam o tingimento e a
+aparência do tecido <span class="citation"
+data-cites="fang_physical_2018"></span>.</p>
+<p>Para garantir um desempenho adequado no processo produtivo, a
+avaliação da finura e da maturidade da fibra se torna essencial, sendo
+frequentemente realizada por meio do teste <em>Micronaire</em>. Esse
+teste mede a permeabilidade ao ar através de um <em>plug</em> de fibras
+compactadas e é amplamente utilizado na indústria têxtil devido à sua
+praticidade. No entanto, sua interpretação exige cuidado, pois o valor
+do <em>Micronaire</em> resulta da interação entre a finura e a
+maturidade da fibra <span class="citation"
+data-cites="lord19562"></span>. Enquanto fibras finas e maduras
+proporcionam melhor desempenho na fiação, fibras finas e imaturas podem
+gerar maior irregularidade no fio. Da mesma forma, fibras com
+<em>Micronaire</em> elevado tendem a ser mais grossas, o que favorece a
+resistência mecânica do fio, mas pode comprometer sua maleabilidade e
+uniformidade <span class="citation"
+data-cites="montalvo2005relationships"></span>.</p>
+<p>Diante da variabilidade dessas propriedades, a mistura de diferentes
+tipos de algodão é uma estratégia fundamental para equilibrar custo e
+qualidade. Esse equilíbrio pode ser alcançado tanto para minimizar os
+custos da matéria-prima sem comprometer as especificações desejadas
+quanto para reduzir incertezas inerentes ao processo produtivo,
+garantindo maior consistência no produto <span class="citation"
+data-cites="takahashi_2016"></span>. Para atender a essas demandas,
+métodos de otimização vêm sendo amplamente aplicados na definição da
+composição ideal da mistura, levando em conta restrições operacionais e
+metas de desempenho do fio.</p>
+<p>Um dos primeiros trabalhos de otimização voltados ao Problema da
+Mistura na Fiação Têxtil foi proposto por , utilizando um modelo de
+programação linear. Esse modelo possibilita a avaliação simultânea de
+múltiplos fatores, como preço, propriedades físicas das fibras e
+disponibilidade de diferentes fardos de algodão, permitindo a formulação
+de misturas de menor custo que atendam às especificações desejadas. Como
+as características do algodão apresentam comportamento linear após a
+mistura <span class="citation" data-cites="waters_effect_1961"></span>,
+a programação linear pode ser utilizada para ajustar as proporções
+desses atributos, garantindo que a composição final atenda às
+necessidades pré-estabelecidas.</p>
+<p>Além de permitir a definição de misturas balanceadas, a aplicação de
+modelos de programação linear também facilita a adaptação a condições de
+mercado variáveis. Mudanças no preço e na disponibilidade do algodão
+podem ser incorporadas no modelo, permitindo ajustes estratégicos que
+maximizem a eficiência produtiva. Como destacado por , essa abordagem
+não apenas minimiza custos ao possibilitar a substituição de fibras mais
+caras por alternativas viáveis, mas também garante maior previsibilidade
+na qualidade do fio ao controlar rigorosamente as proporções dos
+componentes na mistura.</p>
+<h2 id="processo-de-decisão-de-markov">PROCESSO DE DECISÃO DE
+MARKOV</h2>
+<p>O Processo de Decisão de Markov (MDP) é uma estrutura matemática
+utilizada para modelar a tomada de decisão em ambientes incertos. Um MDP
+consiste em um sistema que evolui ao longo do tempo, controlado por um
+agente que toma decisões observando o estado atual do sistema.</p>
+<p>Entende-se como agente a entidade que toma decisões dentro do
+sistema. No contexto de AR e MDP, um agente observa o estado do ambiente
+e escolhe ações com o objetivo de maximizar uma função de recompensa
+cumulativa ao longo do tempo. O agente interage com o ambiente, tomando
+ações que afetam o estado futuro do sistema, e ajusta suas decisões com
+base nas recompensas que recebe após cada ação.</p>
+<p>A estrutura do MDP se destaca quando há incertezas sobre o futuro, e
+as decisões devem ser tomadas com base no estado presente, sem depender
+de eventos passados, caracterizando a propriedade de Markov <span
+class="citation" data-cites="puterman_chapter_1990"></span>.</p>
+<p>Um MDP foi formalmente definido por:</p>
+<ul>
+<li><p><span class="math inline"><em>T</em></span>: o conjunto de épocas
+de decisão ou estágios nos quais o agente observa o estado do sistema e
+decide suas ações;</p></li>
+<li><p><span class="math inline"><em>S</em><sub><em>t</em></sub></span>:
+o conjunto de estados possíveis em um tempo <span
+class="math inline"><em>t</em></span>;</p></li>
+<li><p><span
+class="math inline"><em>A</em><sub><em>s</em>, <em>t</em></sub></span>:
+o conjunto de ações disponíveis após observar o estado <span
+class="math inline"><em>s</em></span> no tempo <span
+class="math inline"><em>t</em></span>;</p></li>
+<li><p><span
+class="math inline"><em>P</em><sub><em>t</em></sub>(<em>j</em> ∣ <em>s</em>, <em>a</em>)</span>:
+as probabilidades de transição para o estado <span
+class="math inline"><em>j</em></span> em <span
+class="math inline"><em>t</em> + 1</span>, dado o estado atual <span
+class="math inline"><em>s</em></span> e a ação <span
+class="math inline"><em>a</em></span> escolhida em <span
+class="math inline"><em>t</em></span>;</p></li>
+<li><p>A recompensa imediata <span
+class="math inline"><em>r</em><sub><em>t</em></sub>(<em>s</em>, <em>a</em>)</span>
+em um determinado estado <span class="math inline"><em>s</em></span>,
+após realizar uma ação <span class="math inline"><em>a</em></span>, é
+calculada como a soma ponderada das recompensas <span
+class="math inline"><em>r</em><sub><em>t</em></sub>(<em>s</em>, <em>a</em>, <em>j</em>)</span>
+associadas à transição para o próximo estado <span
+class="math inline"><em>j</em></span>, multiplicada pela probabilidade
+<span
+class="math inline"><em>P</em><sub><em>t</em></sub>(<em>j</em> ∣ <em>s</em>, <em>a</em>)</span>
+dessa transição ocorrer. Portanto, a recompensa esperada pode ser
+representada por: <span
+class="math display"><em>r</em><sub><em>t</em></sub>(<em>s</em>, <em>a</em>) = ∑<sub><em>j</em> ∈ <em>S</em><sub><em>t</em> + 1</sub></sub><em>r</em><sub><em>t</em></sub>(<em>s</em>, <em>a</em>, <em>j</em>)<em>P</em><sub><em>t</em></sub>(<em>j</em> ∣ <em>s</em>, <em>a</em>)</span></p></li>
+</ul>
+<p>Esses componentes servem de base para modelar sistemas complexos,
+onde o agente busca uma política ótima que maximize a soma das
+recompensas esperadas ao longo do tempo. Essa política define a melhor
+ação para cada estado, visando o maior retorno possível.</p>
+<p>A Figura <a href="#figure:markov" data-reference-type="ref"
+data-reference="figure:markov">2.1</a> ilustra os componentes do MDP em
+um ambiente estocástico. As probabilidades atribuídas a cada ação estão
+representadas, associadas aos estados resultantes e suas respectivas
+recompensas.</p>
+<figure id="figure:markov">
+<img src="figures/Imagem Processo Decisão de Markov.png"
+style="width:100.0%" />
+<figcaption>Ilustração do Processo de Decisão de Markov</figcaption>
+</figure>
+<h2 id="aprendizado-por-reforço">APRENDIZADO POR REFORÇO</h2>
+<p>O Aprendizado por Reforço (AR) é um paradigma de aprendizado baseado
+em tentativa e erro, no qual um agente aprende a interagir com o
+ambiente para maximizar recompensas ao longo do tempo. Diferentemente do
+aprendizado supervisionado, que utiliza exemplos rotulados para indicar
+as ações corretas, o AR permite que o agente ajuste suas ações com base
+em um sinal de recompensa recebido em resposta às interações realizadas
+<span class="citation"
+data-cites="sutton_reinforcement_2014"></span>.</p>
+<p>No AR, os conceitos fundamentais incluem:</p>
+<ul>
+<li><p><span>Agente</span>: é a entidade responsável por tomar decisões.
+Em intervalos discretos de tempo <span
+class="math inline"><em>t</em> = 0, 1, 2, …</span>, o agente observa o
+estado do ambiente (<span
+class="math inline"><em>s</em><sub><em>t</em></sub> ∈ <em>S</em></span>),
+toma uma ação (<span
+class="math inline"><em>a</em><sub><em>t</em></sub> ∈ <em>A</em>(<em>s</em><sub><em>t</em></sub>)</span>)
+e recebe uma recompensa (<span
+class="math inline"><em>r</em><sub><em>t</em> + 1</sub> ∈ <em>R</em></span>)
+associada à ação escolhida. A interação contínua entre agente e ambiente
+permite o aprendizado com base em experiências passadas.</p></li>
+<li><p><span>Ambiente</span>: é o sistema com o qual o agente interage.
+Ele informa o estado atual (<span
+class="math inline"><em>s</em><sub><em>t</em></sub></span>) e fornece a
+recompensa (<span
+class="math inline"><em>r</em><sub><em>t</em> + 1</sub></span>) com base
+na ação tomada pelo agente. É também no ambiente que ocorrem as
+transições de estados, formando o espaço de estados acessíveis.</p></li>
+<li><p><span>Ação</span>: representa a decisão tomada pelo agente em
+determinado estado do ambiente. Cada ação gera recompensas específicas,
+sendo o objetivo do agente selecionar a ação que maximize o retorno
+acumulado ao longo do tempo.</p></li>
+<li><p><span>Recompensa</span>: <em>feedback</em> numérico que o agente
+recebe para avaliar os resultados de suas ações. Ela direciona o
+aprendizado do agente, incentivando escolhas que resultem em maiores
+retornos acumulados no futuro, mesmo que uma ação de curto prazo possa
+não gerar um benefício imediato.</p></li>
+<li><p><span>Política (<span
+class="math inline"><em>π</em></span>)</span>: estratégia que mapeia
+estados para ações. Em termos formais, é uma função probabilística <span
+class="math inline"><em>π</em>(<em>s</em>, <em>a</em>)</span> que define
+a probabilidade de tomar a ação <span
+class="math inline"><em>a</em></span> dado o estado <span
+class="math inline"><em>s</em></span>. A política pode ser ajustada com
+base nas experiências acumuladas pelo agente.</p></li>
+<li><p><span>Função de valor</span>: quantifica o benefício esperado de
+estar em um estado específico ou de tomar uma ação, com base na política
+atual do agente. Ela auxilia o agente a prever recompensas futuras e a
+melhorar sua política.</p></li>
+<li><p><span>Episódio</span>: representa uma sequência finita de
+interações entre o agente e o ambiente, iniciando em um estado inicial e
+terminando quando uma condição de término é atingida. Durante um
+episódio, o agente executa ações, recebe recompensas e transita entre
+estados, acumulando experiência, ao atualizar a política. O término pode
+ocorrer devido a critérios definidos pelo ambiente, como alcançar um
+estado objetivo, exceder um número máximo de passos ou entrar em um
+estado terminal. Após o encerramento de um episódio, o agente pode
+reiniciar o processo, utilizando as informações coletadas para ajustar
+sua política e melhorar seu desempenho ao longo do tempo.</p></li>
+</ul>
+<p>O AR baseia-se em dois princípios: o <em>trial-and-error search</em>,
+que permite ao agente aprender explorando diferentes ações, e o conceito
+de recompensa atrasada (<em>delayed reward</em>), em que o impacto de
+uma ação pode não ser imediato, mas influenciar resultados futuros <span
+class="citation" data-cites="sutton_reinforcement_2014"></span>. Esse
+paradigma exige que o agente equilibre “exploração” (buscar novas ações
+para melhorar sua política) e “explotação” (usar ações conhecidas para
+maximizar recompensas).</p>
+<p>A estabilidade do treinamento e a eficiência na utilização de
+amostras são fatores determinantes no AR, impactando diretamente a
+viabilidade de sua aplicação em sistemas produtivos. Algoritmos como o
+<em>Proximal Policy Optimization</em> (PPO) implementam restrições para
+controlar a magnitude das atualizações, reduzindo oscilações e tornando
+o treinamento mais estável <span class="citation"
+data-cites="schulman_proximal_2017"></span>. Em contrapartida,
+abordagens baseadas em <em>Deep Q-Network</em> (DQN) e <em>Double
+DQN</em> (DDQN) focam na eficiência da amostragem por meio da
+reutilização de experiências armazenadas, mitigando a superestimação dos
+valores de ação <span class="citation"
+data-cites="hasselt2015deep"></span>.</p>
+<p>A aplicação do AR em sistemas produtivos tem se mostrado uma
+abordagem promissora para o aprimoramento de processos industriais
+complexos. Um exemplo é o trabalho de , que utilizou o AR para aprimorar
+a logística de dispositivos de armazenamento em fábricas. O estudo
+demonstrou que a utilização dessa técnica em simulações de fábricas
+inteligentes permite aprimorar a eficiência de processos produtivos por
+meio da tomada de decisão autônoma e adaptativa. Essa capacidade de
+adaptação tem impulsionado sua adoção em diferentes domínios
+industriais, permitindo melhorias na gestão de recursos e na otimização
+de operações.</p>
+<p>Nesse contexto, o AR tem se consolidado como uma ferramenta presente
+entre ambientes industriais informatizados, viabilizando a automação
+inteligente de processos produtivos e logísticos. Segundo , sua
+integração com esses ambientes aprimora a capacidade de resposta em
+tempo real, possibilitando ajustes dinâmicos conforme mudanças no
+ambiente produtivo.</p>
+<h3 id="trust-region-policy-optimization"><em>TRUST REGION POLICY
+OPTIMIZATION</em></h3>
+<p>O algoritmo <em>Trust Region Policy Optimization</em> (TRPO) foi
+concebido para otimizar políticas em problemas de AR ao garantir
+melhorias monotônicas na performance. A ideia central do TRPO é limitar
+a divergência entre a nova política e a anterior, mantendo as
+atualizações dentro de uma “região de confiança”. Para isso, impõe
+restrições explícitas durante o processo de atualização dos parâmetros
+da política, evitando mudanças abruptas que possam comprometer a
+estabilidade do treinamento.</p>
+<p>O TRPO utiliza a divergência de <em>Kullback-Leibler</em> (KL) como
+critério para garantir que cada atualização resulte em uma melhoria ou,
+no mínimo, não reduza o desempenho da política. Essa restrição é
+aplicada por meio de uma função objetivo <em>surrogate</em>, que estima
+como a política pode ser aprimorada sem exigir a coleta contínua de
+novos dados do ambiente. Em vez de realizar atualizações arbitrárias nos
+parâmetros da rede neural, o TRPO resolve um problema de otimização
+restrita, no qual as modificações da política são mantidas dentro de um
+limite pré-definido da divergência KL. Isso assegura que o treinamento
+ocorra de forma estável, evitando oscilações indesejadas na tomada de
+decisão <span class="citation"
+data-cites="schulman_trust_2015"></span>.</p>
+<p>Uma das principais vantagens do TRPO está na sua robustez para lidar
+com espaços de ação contínuos e ambientes altamente dinâmicos, sendo
+amplamente utilizado em aplicações que exigem controle fino e adaptação
+a condições variáveis. Ele tem sido aplicado com sucesso em tarefas que
+requerem tomada de decisão em tempo real, como controle de robôs,
+aprendizado de locomoção e jogos do Atari. Em experimentos com agentes
+aprendendo a nadar, andar e pular, o TRPO demonstrou ser capaz de
+desenvolver comportamentos complexos por meio da análise de interações
+sucessivas com o ambiente <span class="citation"
+data-cites="schulman_trust_2015"></span>.</p>
+<p>No entanto, apesar de sua eficácia, o TRPO apresenta desafios
+computacionais que limitam sua escalabilidade. A imposição rígida da
+divergência KL pode restringir o tamanho das atualizações, reduzindo a
+taxa de aprendizado em ambientes de alta complexidade. Além disso, a
+necessidade de resolver um problema de otimização com restrições em cada
+iteração adiciona um custo computacional significativo ao treinamento.
+Métodos mais recentes, como o <em>Proximal Policy Optimization</em>
+(PPO), foram desenvolvidos para contornar essas limitações, introduzindo
+restrições mais adaptativas que permitem atualizações mais eficientes
+sem comprometer a estabilidade do aprendizado <span class="citation"
+data-cites="schulman_proximal_2017"></span>.</p>
+<h3 id="proximal-policy-optimization"><em>PROXIMAL POLICY
+OPTIMIZATION</em></h3>
+<p>O <em>Proximal Policy Optimization</em> (PPO) <span class="citation"
+data-cites="schulman_proximal_2017"></span> constitui um algoritmo de AR
+fundamentado em gradiente de política, projetado para balancear a
+complexidade computacional, a estabilidade durante o treinamento e a
+eficiência na utilização das amostras. Trata-se de uma evolução do
+<em>Trust Region Policy Optimization</em> (TRPO), apresentando um
+refinamento na otimização da política ao restringir a magnitude das
+atualizações da política, mitigando oscilações abruptas e promovendo um
+aprendizado mais robusto e confiável. Para alcançar essa estabilidade, o
+algoritmo utiliza o gradiente de política, que ajusta diretamente os
+parâmetros da política do agente na direção que maximiza a recompensa
+esperada, garantindo uma adaptação eficiente ao ambiente sem comprometer
+a consistência do aprendizado.</p>
+<p>A função objetivo do PPO regula a atualização da política ao
+restringir mudanças abruptas que possam comprometer a estabilidade do
+aprendizado. Para isso, utiliza uma razão de probabilidade que compara a
+política atual com a anterior, limitando o quanto a política pode se
+afastar da versão anterior por meio de um fator de <em>clipping</em>
+<span class="citation" data-cites="schulman_proximal_2017"></span>. Esse
+mecanismo evita que grandes variações prejudiquem a eficiência do
+aprendizado, garantindo um ajuste progressivo e reduzindo oscilações no
+comportamento do agente.</p>
+<p>A função objetivo do PPO pode ser representada da seguinte forma:</p>
+<p><span class="math display">$$L_{CLIP}\left(\theta\right) =
+\mathbb{E}_t \left[ \min \left( r_t\left(\theta\right)\widehat{A_t}, \,
+\text{CLIP}\left(r_t\left(\theta\right), 1 - \epsilon, 1 +
+\epsilon\right)\widehat{A_t} \right) \right]$$</span></p>
+<p>Nesta equação:</p>
+<ul>
+<li><p><span
+class="math inline"><em>r</em><sub><em>t</em></sub>(<em>θ</em>)</span>
+representa a razão de probabilidade entre a nova e a antiga política:
+<span class="math display">$$r_t(\theta) =
+\frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)}$$</span></p>
+<ul>
+<li><p><span
+class="math inline"><em>π</em><sub><em>θ</em></sub>(<em>a</em><sub><em>t</em></sub>|<em>s</em><sub><em>t</em></sub>)</span>
+é a nova política, que define a probabilidade de escolher a ação <span
+class="math inline"><em>a</em><sub><em>t</em></sub></span> dado o estado
+<span
+class="math inline"><em>s</em><sub><em>t</em></sub></span>.</p></li>
+<li><p><span
+class="math inline"><em>π</em><sub><em>θ</em><sub><em>o</em><em>l</em><em>d</em></sub></sub>(<em>a</em><sub><em>t</em></sub>|<em>s</em><sub><em>t</em></sub>)</span>
+é a política antes da atualização.</p></li>
+</ul></li>
+<li><p><span class="math inline">$\widehat{A_t}$</span> é a vantagem
+estimada, que quantifica o impacto da ação <span
+class="math inline"><em>a</em><sub><em>t</em></sub></span> em relação ao
+esperado, definida como: <span class="math display">$$\widehat{A_t} =
+Q(s_t, a_t) - V(s_t)$$</span></p>
+<ul>
+<li><p><span
+class="math inline"><em>Q</em>(<em>s</em><sub><em>t</em></sub>, <em>a</em><sub><em>t</em></sub>)</span>
+estima o retorno esperado ao executar a ação <span
+class="math inline"><em>a</em><sub><em>t</em></sub></span> no estado
+<span
+class="math inline"><em>s</em><sub><em>t</em></sub></span>.</p></li>
+<li><p><span
+class="math inline"><em>V</em>(<em>s</em><sub><em>t</em></sub>)</span>
+estima o valor do estado <span
+class="math inline"><em>s</em><sub><em>t</em></sub></span> seguindo a
+política atual.</p></li>
+</ul></li>
+</ul>
+<p>A principal característica do PPO é o uso da técnica de
+<em>clipping</em>, representada pela função: <span
+class="math display">CLIP(<em>r</em><sub><em>t</em></sub>(<em>θ</em>), 1 − <em>ϵ</em>, 1 + <em>ϵ</em>)</span></p>
+<p>O <em>clipping</em> limita a razão de probabilidade <span
+class="math inline"><em>r</em><sub><em>t</em></sub>(<em>θ</em>)</span>
+dentro do intervalo <span
+class="math inline">[1 − <em>ϵ</em>, 1 + <em>ϵ</em>]</span>, onde <span
+class="math inline"><em>ϵ</em></span> é um hiperparâmetro que define a
+tolerância para variações. Isso impede que a política seja atualizada de
+forma excessiva, o que poderia levar a mudanças abruptas e instabilidade
+no treinamento. Assim, o PPO equilibra exploração e explotação,
+garantindo que as atualizações ocorram de forma progressiva e
+controlada. Ao longo do trabalho este hiperparâmetro será
+contextualizado à luz do problema.</p>
+<p>Como descrito a seguir, no Algoritmo <a
+href="#alg:aprendizado_reforco" data-reference-type="ref"
+data-reference="alg:aprendizado_reforco">[alg:aprendizado_reforco]</a>,
+o processo de aprendizado é iterativo, envolvendo múltiplos
+episódios.</p>
+<div class="algorithm">
+<p>Inicialize(Agente) <strong>fim</strong></p>
+</div>
+<ol>
+<li><p>Inicialização do agente e do ambiente: O algoritmo inicia
+configurando o agente e preparando o ambiente para o estado inicial,
+estabelecendo as condições necessárias para o começo do primeiro
+episódio.</p></li>
+<li><p>Laço principal (enquanto <span
+class="math inline"><em>t</em> ≤ maxTimeStep</span>): Este laço externo
+controla a execução de múltiplos episódios, garantindo que o aprendizado
+ocorra por um número predefinido de iterações. Cada iteração deste laço
+representa um episódio completo.</p></li>
+<li><p>Inicialização do episódio: Antes de cada episódio, o ambiente é
+reinicializado, e os valores iniciais do estado (<span
+class="math inline"><em>s</em><sub><em>t</em></sub></span>) e da
+recompensa (<span
+class="math inline"><em>r</em><sub><em>t</em></sub></span>) são
+definidos para dar início às interações dentro do episódio.</p></li>
+<li><p>Laço interno de execução do episódio (enquanto o ambiente não
+finalizar): O laço interno controla as interações entre o agente e o
+ambiente durante um episódio, repetindo as ações até que o critério de
+término do episódio seja atingido.</p></li>
+<li><p>Atualização da política: Com base no estado atual (<span
+class="math inline"><em>s</em><sub><em>t</em></sub></span>) e na
+recompensa recebida (<span
+class="math inline"><em>r</em><sub><em>t</em></sub></span>), o agente
+ajusta sua política. Essa atualização visa aprimorar a tomada de decisão
+para interações futuras.</p></li>
+<li><p>Escolha e execução da ação: O agente seleciona a próxima ação
+(<span class="math inline"><em>a</em><sub><em>t</em></sub></span>) de
+acordo com a política atual e executa essa ação no ambiente, o que
+resulta na modificação do estado do mesmo.</p></li>
+<li><p>Execução no ambiente: Ao executar a ação, o ambiente sofre uma
+alteração que leva à transição para um novo estado.</p></li>
+<li><p>Observação do ambiente: Após a execução da ação, o agente observa
+o novo estado (<span
+class="math inline"><em>s</em><sub><em>t</em> + 1</sub></span>) e a
+recompensa resultante (<span
+class="math inline"><em>r</em><sub><em>t</em> + 1</sub></span>),
+informações que serão utilizadas na próxima iteração.</p></li>
+<li><p>Atualização das variáveis: Os valores do estado e da recompensa
+são atualizados: <span
+class="math inline"><em>s</em><sub><em>t</em></sub></span> passa a
+assumir o valor de <span
+class="math inline"><em>s</em><sub><em>t</em> + 1</sub></span> e <span
+class="math inline"><em>r</em><sub><em>t</em></sub></span> o de <span
+class="math inline"><em>r</em><sub><em>t</em> + 1</sub></span>.</p></li>
+<li><p>Incremento do contador de tempo: O contador <span
+class="math inline"><em>t</em></span> é incrementado, sinalizando o
+avanço para a próxima interação.</p></li>
+<li><p>Finalização do episódio: Ao atingir o critério de término, o
+episódio é finalizado. O ambiente é encerrado e os recursos utilizados
+são liberados, preparando o sistema para o início de um novo
+episódio.</p></li>
+<li><p>Retorno do agente treinado: Após a conclusão de todos os
+episódios, o algoritmo retorna o agente treinado, que agora possui uma
+política ajustada para tomar decisões de forma otimizada.</p></li>
+</ol>
+<h3 id="ambiente-de-aprendizado">AMBIENTE DE APRENDIZADO</h3>
+<p>O ambiente no AR define o espaço onde o agente interage, determinando
+os estados, ações e recompensas que guiam sua aprendizagem. Segundo
+<span class="citation" data-cites="sutton_reinforcement_2014"></span>,
+sua modelagem deve representar com precisão as dinâmicas do sistema
+analisado, garantindo que as transições de estado e os efeitos das ações
+sejam condizentes com o problema estudado.</p>
+<p>Uma abordagem para estruturar essas interações de forma controlada e
+replicável é a Simulação de Eventos Discretos (SED). Essa técnica
+permite representar a evolução do sistema por meio de mudanças discretas
+no tempo, possibilitando a análise de cenários dinâmicos sem necessidade
+de intervenção direta em um sistema real. Como a SED é amplamente
+utilizada para modelar processos produtivos <span class="citation"
+data-cites="banks_discrete-event_2010"></span>, sua integração com AR
+permite que o agente aprenda a tomar decisões a partir de uma
+representação estruturada do ambiente, onde cada evento influencia a
+transição entre estados.</p>
+<h2 id="simulação-de-eventos-discretos">SIMULAÇÃO DE EVENTOS
+DISCRETOS</h2>
+<p>A Simulação de Eventos Discretos (SED) é uma técnica utilizada para
+modelar sistemas nos quais as mudanças de estado ocorrem em momentos
+específicos, desencadeadas por eventos discretos. Diferentemente de
+sistemas contínuos, onde as variáveis evoluem de forma ininterrupta ao
+longo do tempo, na SED as transições acontecem em pontos bem definidos,
+como a chegada de um cliente a um serviço ou a conclusão de uma etapa em
+um processo produtivo. A simulação rastreia essas mudanças e avalia seu
+impacto no desempenho do sistema, permitindo a análise de cenários sob
+diferentes condições operacionais.</p>
+<p>De acordo com , a SED é amplamente utilizada em setores como
+manufatura, logística, sistemas de saúde, telecomunicações e redes de
+computadores. Muitos processos produtivos podem ser modelados como uma
+sequência de eventos discretos interdependentes, influenciando variáveis
+como tempo de espera, alocação de recursos e eficiência operacional.
+Essa característica torna a SED uma alternativa viável para representar
+o ambiente de aprendizado no AR, permitindo que o agente interaja com
+uma modelagem estruturada do sistema.</p>
+<p>O processo de modelagem em SED envolve a definição de eventos,
+entidades, atributos e recursos do sistema. Um evento é qualquer
+ocorrência que altera o estado do sistema, como a chegada de um cliente
+ou a conclusão de um processamento. As entidades representam os objetos
+de interesse (clientes, produtos, máquinas), enquanto os atributos
+descrevem suas características, como o tempo de serviço ou prioridade na
+fila. Os recursos são os elementos necessários para a execução das
+atividades, como operadores ou equipamentos.</p>
+<p>A análise dos modelos de eventos discretos é realizada por meio de
+simulações numéricas, em vez de soluções analíticas exatas. O modelo é
+executado várias vezes por meio de um <em>software</em>, registrando os
+resultados para posterior análise estatística. Essa abordagem permite
+avaliar o desempenho do sistema sob diferentes condições de incerteza,
+possibilitando a identificação de padrões e a tomada de decisões
+informadas para aprimorar a eficiência operacional.</p>
+<p>O <em>FlexSim</em>, por sua vez, é um <em>software</em> construído
+sob a programação orientada a objetos, utilizado para modelar, simular,
+visualizar e monitorar processos de fluxo dinâmico. Ele permite a
+obtenção de dados simulados, validados estatisticamente, aplicados a
+sistemas complexos e incertos, possibilitando a identificação de
+melhorias por meio de simulações detalhadas e experimentação virtual. O
+<em>FlexSim</em> é amplamente empregado em setores como manufatura,
+logística, manuseio de materiais e controle de processos. Além disso, o
+software oferece suporte à criação de modelos em <em>2D</em>,
+<em>3D</em> e realidade virtual, facilitando a análise visual e o
+entendimento das operações simuladas <span class="citation"
+data-cites="nordgren_flexsim_2003"></span>.</p>
+<p>Dentro do <em>software</em>, temos o <em>FlexScript</em>, uma
+biblioteca baseada em C++ pré-compilada, que permite que o usuário
+desenvolva aplicações completas e customize interfaces gráficas de
+usuário e bibliotecas de objetos específicos.</p>
+<p>Graças ao seu grau de liberdade para customização, é possível
+estabelecer conexões externas ao <em>software</em>, de envio e
+recebimento de dados, com o <em>Python</em>, por exemplo, expandindo a
+capacidade analítica das modelagens. Para tal, a comunicação com
+<em>sockets</em>, que será explorada ao longo do trabalho, é
+utilizada.</p>
+<h3 id="precisão-estatística-na-sed">PRECISÃO ESTATÍSTICA NA SED</h3>
+<p>A precisão estatística dos resultados de uma simulação depende da
+quantidade de réplicas e da variabilidade dos dados obtidos <span
+class="citation" data-cites="banks_discrete-event_2010"></span>. Em
+contextos como a mistura de algodão na fiação têxtil, a variabilidade
+das propriedades dos fardos e das condições operacionais pode impactar
+diretamente a qualidade final do fio. Assim, definir corretamente o
+número de réplicas na Simulação de Eventos Discretos (SED) é essencial
+para garantir que as estimativas reflitam adequadamente o comportamento
+do processo produtivo.</p>
+<p>Para estimar a média de uma métrica de interesse, como a refletância
+total (<em>RD</em>) de um lote de algodão após a mistura, o número
+mínimo de réplicas <span class="math inline"><em>n</em></span> pode ser
+calculado por:</p>
+<p><span class="math display">$$n = \left( \frac{Z_{\alpha/2} \, S}{E}
+\right)^2
+\label{eq:n_replicas}$$</span></p>
+<p>Onde:</p>
+<ul>
+<li><p><span
+class="math inline"><em>Z</em><sub><em>α</em>/2</sub></span> é o valor
+crítico da distribuição normal (ex.: <span
+class="math inline">1, 96</span> para um nível de confiança de
+95%);</p></li>
+<li><p><span class="math inline"><em>S</em></span> é o desvio padrão
+estimado da variável analisada a partir de uma fase piloto;</p></li>
+<li><p><span class="math inline"><em>E</em></span> é a margem de erro
+desejada na estimativa da média.</p></li>
+</ul>
+<p>Por exemplo, suponha-se que uma execução piloto com 10 réplicas
+forneceu um desvio padrão de <span
+class="math inline"><em>S</em> = 2, 3</span> para a refletância total
+(<em>RD</em>) da mistura, e deseja-se uma margem de erro <span
+class="math inline"><em>E</em> = 0, 5</span> com nível de confiança de
+95% (<span
+class="math inline"><em>Z</em><sub>0, 025</sub> = 1, 96</span>).
+Aplicando na equação:</p>
+<p><span class="math display">$$n = \left( \frac{1{,}96 \times
+2{,}3}{0{,}5} \right)^2 = \left( \frac{4{,}508}{0{,}5} \right)^2 \approx
+(9{,}016)^2 \approx 81{,}3$$</span></p>
+<p>Arredondando, são necessárias 82 réplicas para garantir que a média
+da refletância total seja estimada com a precisão desejada.</p>
+<p>Quando o número de réplicas é pequeno, o intervalo de confiança para
+a média utiliza a distribuição <em>t</em> de <em>Student</em>, dada
+por:</p>
+<p><span class="math display">$$\bar{X} \pm t_{\alpha/2,\,
+n-1}\frac{S}{\sqrt{n}}
+\label{eq:ci_t}$$</span></p>
+<p>Onde <span
+class="math inline"><em>t</em><sub><em>α</em>/2, <em>n</em> − 1</sub></span>
+é o valor crítico para <span class="math inline"><em>n</em> − 1</span>
+graus de liberdade. Suponha que <span
+class="math inline"><em>n</em> = 10</span>, <span
+class="math inline"><em>S</em> = 2, 3</span> e o nível de confiança seja
+95%, resultando em <span
+class="math inline"><em>t</em><sub>0, 025, 9</sub> ≈ 2, 262</span>:</p>
+<p><span class="math display">$$E = 2{,}262 \times
+\frac{2{,}3}{\sqrt{10}} \approx 2{,}262 \times 0{,}727 \approx
+1{,}645$$</span></p>
+<p>Ou seja, com apenas 10 réplicas, a incerteza da estimativa é maior,
+exigindo um intervalo de confiança mais amplo.</p>
+<p>Além da média, a variância da métrica também pode ser analisada. O
+intervalo de confiança para a variância <span
+class="math inline"><em>σ</em><sup>2</sup></span> é expresso como:</p>
+<p><span class="math display">$$\left(
+\frac{(n-1)S^2}{\chi^2_{1-\alpha/2,\, n-1}},
+\frac{(n-1)S^2}{\chi^2_{\alpha/2,\, n-1}} \right)
+\label{eq:ci_variancia}$$</span></p>
+<p>Onde <span
+class="math inline"><em>χ</em><sub><em>α</em>/2, <em>n</em> − 1</sub><sup>2</sup></span>
+e <span
+class="math inline"><em>χ</em><sub>1 − <em>α</em>/2, <em>n</em> − 1</sub><sup>2</sup></span>
+são quantis da distribuição qui-quadrado com <span
+class="math inline"><em>n</em> − 1</span> graus de liberdade. Para <span
+class="math inline"><em>n</em> = 10</span> e <span
+class="math inline"><em>S</em><sup>2</sup> = (2, 3)<sup>2</sup> ≈ 5, 29</span>,
+considerando um nível de confiança de 95% com <span
+class="math inline"><em>χ</em><sub>0, 025, 9</sub><sup>2</sup> ≈ 19, 0</span>
+e <span
+class="math inline"><em>χ</em><sub>0, 975, 9</sub><sup>2</sup> ≈ 2, 7</span>,
+os limites do intervalo são:</p>
+<p><span class="math display">$$\begin{aligned}
+\text{Limite inferior} &amp;= \frac{9 \times 5{,}29}{19{,}0} \approx
+2{,}505, \\
+\text{Limite superior} &amp;= \frac{9 \times 5{,}29}{2{,}7} \approx
+17{,}63.
+\end{aligned}$$</span></p>
+<p>Isso significa que a variância real da refletância total
+(<em>rd</em>) da mistura está entre 2,505 e 17,63, com 95% de
+confiança.</p>
+<p>A importância da aplicação rigorosa desses métodos estatísticos para
+a validação dos resultados da simulação é enfatizada em e , os quais
+reforçam o uso de análises estatísticas robustas na determinação do
+número de réplicas e na avaliação de medidas de desempenho.</p>
+<h2
+id="simulação-de-eventos-discretos-e-aprendizado-por-reforço">SIMULAÇÃO
+DE EVENTOS DISCRETOS E APRENDIZADO POR REFORÇO</h2>
+<p>A integração entre AR e SED tem se mostrado uma abordagem promissora
+para resolver problemas complexos em ambientes estocásticos, como
+pôde-se observar na alocação de itens para armazenagem <span
+class="citation" data-cites="FlexSim_RL_2023"></span>. A SED oferece uma
+representação precisa das operações produtivas, permitindo a simulação
+do fluxo de produtos, dados e recursos em um sistema. Quando integrada
+ao AR, essa abordagem possibilita que agentes aprendam estratégias de
+controle e tomada de decisão por meio de interações iterativas com o
+ambiente simulado, ajustando suas políticas conforme a resposta do
+sistema.</p>
+<p>Um exemplo dessa abordagem é apresentado por <span class="citation"
+data-cites="Damian_2024"></span>, onde um Gêmeo Digital baseado em SED
+foi utilizado como ambiente de treinamento para um agente de Aprendizado
+por Reforço em um sistema de produção. O estudo abordou o problema de
+alocação de processos em linhas de produção paralelas, onde a sequência
+de execução dos produtos impacta diretamente na eficiência operacional.
+O modelo desenvolvido permitiu que o agente, treinado com os algoritmos
+<em>Asynchronous Advantage Actor–Critic</em> (A3C) e <em>Proximal Policy
+Optimization</em> (PPO), interagisse com o ambiente simulado para
+aprimorar a alocação de tarefas.</p>
+<p>Os resultados mostraram que a política aprendida superou regras
+tradicionais de despacho, melhorando o balanceamento de carga entre as
+linhas e reduzindo tempos ociosos. Além disso, a estrutura baseada em
+Gêmeo Digital permitiu a adaptação do modelo a diferentes condições
+operacionais, garantindo maior flexibilidade na resposta a variações da
+demanda e na disponibilidade de recursos.</p>
+<p>A comunicação entre um ambiente de simulação e um sistema de
+treinamento de AR requer a troca contínua de informações, permitindo que
+o agente interaja com o modelo simulado e ajuste suas decisões com base
+no comportamento observado. Para viabilizar essa interação, utilizam-se
+<em>sockets</em>, que estabelecem canais de comunicação entre diferentes
+processos ou aplicações. Esses canais operam sobre protocolos como
+<em>TCP/IP</em>, garantindo a transmissão de dados de forma estruturada
+e bidirecional.</p>
+<p>No contexto da integração entre AR e SED, a implementação de um
+<em>socket</em> permite que o agente receba o estado do ambiente
+simulado, tome decisões e envie as ações de volta ao simulador. Essa
+estrutura viabiliza o treinamento em tempo real, onde as políticas são
+ajustadas iterativamente à medida que novas interações ocorrem. Além
+disso, a separação entre ambiente de simulação e algoritmo de
+aprendizado proporciona flexibilidade na modelagem do problema,
+possibilitando a substituição ou ajuste de componentes sem comprometer a
+estrutura geral do sistema.</p>
+<p>O uso dessa abordagem é particularmente relevante em cenários onde a
+modelagem direta do ambiente real não é viável, seja por questões
+operacionais, custos ou riscos associados à experimentação.</p>
+<p>Na Figura <a href="#figure:sockets" data-reference-type="ref"
+data-reference="figure:sockets">2.2</a>, há uma representação visual de
+como essa conexão ocorre, orientada ao AR.</p>
+<figure id="figure:sockets">
+<img src="figures/Imagem Python Sockets FlexSim RL.png"
+style="width:100.0%" />
+<figcaption>Representação da estrutura na conexão entre AR e
+<em>FlexSim</em>.</figcaption>
+</figure>
+<h2 id="gêmeo-digital">GÊMEO DIGITAL</h2>
+<p>O conceito de Gêmeo Digital foi originalmente proposto por Michael
+Grieves em 2002, durante uma apresentação na Universidade de Michigan
+sobre <em>Product Lifecycle Management</em> (PLM), onde foi denominado
+como <em>“Mirrored Spaces Model”</em> e, posteriormente,
+<em>“Information Mirroring Model”</em> <span class="citation"
+data-cites="grieves_digital_2016"></span>. Desde então, esse conceito
+evoluiu significativamente e passou a ser amplamente adotado em diversas
+indústrias. Inicialmente, o Gêmeo Digital foi aplicado em áreas como
+militar e aeroespacial, sendo adotado pela NASA em projetos de
+exploração espacial e veículos de próxima geração. Atualmente, o
+conceito é amplamente utilizado em setores como manufatura, energia e
+infraestrutura urbana, integrando o mundo físico e digital de maneira
+robusta.</p>
+<p>Essa tecnologia permite a criação de uma réplica digital de um
+sistema físico, possibilitando monitoramento, simulação e otimização em
+tempo real, o que resulta em maior eficiência operacional e redução de
+custos. Nos últimos anos, a relevância do Gêmeo Digital tem sido
+amplamente reconhecida, sendo destacada como uma das principais
+tendências tecnológicas estratégicas.</p>
+<p>Em relação à sua caracterização, podemos pensá-lo em relação à sua
+dimensão, assim como é proposto por :</p>
+<ul>
+<li><p>Dimensão Geométrica: Representa a forma, o tamanho e a estrutura
+do objeto no ambiente virtual;</p></li>
+<li><p>Dimensão Física: Inclui as propriedades físicas do objeto, como
+massa, resistência e outras características relacionadas ao desempenho
+no mundo real;</p></li>
+<li><p>Dimensão Comportamental: Refere-se à resposta do sistema a
+estímulos e eventos, tanto em condições normais quanto em situações não
+usuais;</p></li>
+<li><p>Dimensão de Regras: Baseia-se em dados históricos e conhecimento
+acumulado, permitindo ao Gêmeo Digital identificar padrões, prever
+eventos e otimizar processos.</p></li>
+</ul>
+<p>A funcionalidade de um Gêmeo Digital, entretanto, não se limita à sua
+representação geométrica, física, comportamental ou lógica. Seu impacto
+depende do nível de integração com o sistema físico e da capacidade de
+interpretar dados para gerar <em>insights</em> relevantes. Nesse
+sentido, sua aplicabilidade é determinada pelo grau de maturidade do
+modelo, que define a extensão da conectividade e do controle sobre o
+ambiente real.</p>
+<h3 id="maturidade-do-gêmeo-digital">MATURIDADE DO GÊMEO DIGITAL</h3>
+<p>Os níveis de maturidade de um Gêmeo Digital variam conforme o
+desenvolvimento das capacidades associadas ao uso de dados e ao controle
+do processo físico representado. De acordo com , esses níveis estão
+estruturados de forma progressiva, indo de uma fase inicial, onde há
+pouca ou nenhuma conexão entre o sistema físico e o digital, até um
+estágio avançado de autonomia total. São cinco os níveis principais de
+maturidade que descrevem a evolução de um Digital Twin.</p>
+<p>O conceito de Gêmeo Digital é comumente descrito como uma
+representação virtual de um ativo físico, integrando dados e processos
+bidirecionais entre ambos <span class="citation"
+data-cites="JONES202036"></span>. Essa definição reforça a ideia de um
+ciclo contínuo de coleta, processamento e aplicação de informações,
+destacando os níveis progressivos de maturidade.</p>
+<p>No nível 0, <em>“No Twin”</em>, o Gêmeo Digital não está
+implementado. Há medições disponíveis, mas elas são isoladas e sem
+integração entre sensores e dados do mundo físico. Modelos teóricos ou
+físicos podem existir, mas sem conexão com dados reais, limitando sua
+aplicabilidade operacional.</p>
+<p>No nível 1, <em>“Status”</em>, o Gêmeo Digital é descritivo,
+coletando dados em tempo real e apresentando informações sobre o estado
+atual do ativo físico. Essa fase limita-se à visualização de dados, sem
+análise avançada.</p>
+<p>No nível 2, “Informativo”, o Gêmeo Digital combina dados históricos e
+em tempo real. Essa integração permite identificar tendências e comparar
+o desempenho com padrões ou metas previamente estabelecidas, fornecendo
+mais contexto para a tomada de decisão.</p>
+<p>No nível 3, “Preditivo”, o Gêmeo Digital utiliza modelos matemáticos
+ou de aprendizado de máquina para prever o comportamento futuro do ativo
+com base em dados coletados. Essa etapa permite antecipar falhas e
+aprimorar, ou otimizar, decisões por meio de simulações.</p>
+<p>No nível 4, “Exploratório”, o Gêmeo Digital avalia cenários
+hipotéticos, ajudando a analisar o impacto de diferentes decisões. Nesta
+fase, o sistema suporta a escolha das melhores ações, ajustando
+parâmetros operacionais conforme necessário.</p>
+<p>No nível 5, “Autônomo”, o Gêmeo Digital atua de forma independente,
+realizando previsões, aprimorando ou otimizando processos e executando
+ações automaticamente para atingir os melhores resultados. Essa fase
+elimina a necessidade de intervenção humana direta no controle do
+processo de tomada de decisão.</p>
+<h2 id="sistema-de-informações-gerenciais">SISTEMA DE INFORMAÇÕES
+GERENCIAIS</h2>
+<p>A fim de centralizar, automatizar e atualizar as informações dos
+fardos em estoque e as misturas passadas e futuras, um Sistema de
+Informações Gerenciais é proposto. Este sistema integra os processos de
+registro, análise e distribuição das informações.</p>
+<p>Sistemas de informações gerenciais representam uma abordagem centrada
+na arquitetura para o desenvolvimento de sistemas de informações
+empresariais. Eles incorporam três principais visões: funcional,
+estrutural e comportamental. A visão funcional descreve o comportamento
+externo do sistema, enquanto a visão estrutural representa os
+componentes internos do sistema e suas inter-relações. A visão
+comportamental captura os aspectos dinâmicos do sistema, demonstrando
+como os objetos e componentes interagem para realizar os processos de
+negócios <span class="citation"
+data-cites="dennis_systems_2009"></span>.</p>
+<h3 id="diagrama-sequencial">DIAGRAMA SEQUENCIAL</h3>
+<p>Os diagramas de sequência representam a interação temporal entre os
+componentes de um sistema em um cenário específico. Para o Sistema de
+Informações Gerenciais, o diagrama sequencial desempenha as seguintes
+funções:</p>
+<ul>
+<li><p>Representar as trocas de informações entre os componentes do
+sistema (ex.: Banco de Dados, <em>FlexSim</em>, SIG e
+Misturador);</p></li>
+<li><p>Demonstrar o fluxo operacional, do registro de fardos até a
+atualização dos estoques;</p></li>
+<li><p>Identificar gargalos ou falhas na comunicação entre os sistemas,
+como atrasos na transmissão de dados via protocolos como <em>MODBUS</em>
+ou <em>SQLAPI++</em>;</p></li>
+<li><p>Alinhar os aspectos funcionais, estruturais e comportamentais do
+sistema, garantindo a modelagem de acordo com os requisitos do
+negócio.</p></li>
+</ul>
+<p>O diagrama sequencial para o Sistema de Informações Gerenciais está
+apresentado na Figura <a href="#figure:SIG" data-reference-type="ref"
+data-reference="figure:SIG">6.1</a>. Ele mostra o ciclo completo de
+operações, desde o registro dos fardos pelo funcionário até a execução
+da mistura no misturador e a subsequente atualização dos estoques no
+Banco de Dados.</p>
+<p>Os Diagramas Sequenciais permitem aos analistas representarem o
+comportamento dinâmico de um sistema, enfocando a interação temporal
+entre os objetos envolvidos. Eles são utilizados para modelar a
+colaboração entre atores e objetos, facilitando a validação de casos de
+uso e requisitos funcionais <span class="citation"
+data-cites="dennis_systems_2009"></span>.</p>
+<p>Um diagrama de sequência, no contexto do trabalho, é composto
+por:</p>
+<ul>
+<li><p>Atores e objetos: representam as entidades que participam da
+interação. No sistema, incluem-se o Funcionário, o Banco de Dados
+Central, o <em>FlexSim</em>, o SIG e o Misturador;</p></li>
+<li><p>Mensagens: indicam as interações entre os componentes, como
+consultas ao Banco de Dados ou comandos enviados via protocolo
+<em>MODBUS</em>;</p></li>
+<li><p>Linha de Vida: denota a existência de um objeto durante a
+sequência de interações;</p></li>
+<li><p>Retângulos de Execução: indicam quando um objeto está ativo,
+enviando ou processando mensagens.</p></li>
+</ul>
+<p>As etapas representadas são:</p>
+<ol>
+<li><p>O funcionário registra os fardos no Sistema de Gestão de
+Fardos;</p></li>
+<li><p>O sistema atualiza o Banco de Dados Central com as informações
+dos fardos;</p></li>
+<li><p>O Banco de Dados transmite os dados atualizados para o
+<em>FlexSim</em>, que processa a solução de mistura usando AR;</p></li>
+<li><p>A solução é enviada ao SIG, que é consultado para arranjar o
+Misturador, que executará a mistura;</p></li>
+<li><p>Após a execução, o <em>FlexSim</em> atualiza os estoques no Banco
+de Dados, reiniciando o ciclo.</p></li>
+</ol>
+<h2 id="protocolos-de-comunicação-em-gêmeos-digitais">PROTOCOLOS DE
+COMUNICAÇÃO EM GÊMEOS DIGITAIS</h2>
+<p>O protocolo <em>MODBUS</em>, por exemplo, é amplamente utilizado em
+indústrias para facilitar a comunicação entre dispositivos, como
+Controladores Lógicos Programáveis (CLPs) e sistemas de supervisão. Ele
+é um protocolo de comunicação serial aberto, desenvolvido em 1979, que
+se destaca por ser simples de implementar e por ser compatível com
+diversas mídias de comunicação, como <em>RS-232</em>, <em>RS-485</em>,
+<em>Ethernet</em> e até mesmo redes sem fio <span class="citation"
+data-cites="tamboli_implementation_2015"></span>.</p>
+<p>A comunicação <em>MODBUS</em> pode ser realizada de duas formas
+principais: <em>MODBUS RTU</em> e <em>MODBUS TCP</em>. O <em>MODBUS
+RTU</em> opera em redes seriais, utilizando geralmente <em>RS-232</em>
+ou <em>RS-485</em> como meio físico. No <em>RS-232</em>, a comunicação
+ocorre de maneira duplex (envio e recebimento simultâneos), enquanto no
+<em>RS-485</em>, a comunicação é <em>half-duplex</em>, ou seja, envio e
+recebimento ocorrem de forma alternada. Já o <em>MODBUS TCP</em>,
+aplicado no trabalho, utiliza o protocolo <em>TCP/IP</em> sobre redes
+<em>Ethernet</em>, permitindo uma comunicação mais rápida e eficiente,
+especialmente em grandes redes industriais.</p>
+<p>Um aspecto importante da implementação do <em>MODBUS</em> é o modelo
+cliente-servidor. No <em>MODBUS TCP</em>, o cliente é quem solicita
+informações ou envia comandos, enquanto o servidor responde a essas
+solicitações. Essa relação pode ser flexível e, em muitos casos,
+reversível, dependendo do contexto de uso. Como dito, essa relação será
+explorada em ambas as vias.</p>
+<h1 id="método-de-pesquisa">MÉTODO DE PESQUISA</h1>
+<p>A pesquisa deste trabalho fundamenta-se na abordagem de Modelagem e
+Simulação, amplamente aplicada na Engenharia de Produção e na Gestão de
+Operações <span class="citation"
+data-cites="ganga_metodologia_2011"></span>. Esta metodologia permite
+analisar, projetar e aprimorar sistemas produtivos de bens e serviços,
+garantindo robustez e flexibilidade na tomada de decisão.</p>
+<p>Para representar as etapas do processo de pesquisa empregados no
+presente trabalho, etapas exclusivas do Método de Modelagem foram usadas
+em conjunto com etapas exclusivas do Método de Simulação:</p>
+<ol>
+<li><p>Definição do Problema: um dos objetivos é propor um método
+alternativo à programação matemática para resolver o problema da mistura
+de algodão na fiação têxtil. Para isso, algoritmos de Aprendizado por
+Reforço (AR) como DQN, A3C e TRPO foram considerados, mas, devido à sua
+robustez em ambientes incertos, o PPO foi o escolhido. Sabe-se que,
+quando o PPO é aplicado em ambientes estáticos, seu desempenho é
+inferior ao observado em ambientes dinâmicos.</p></li>
+<li><p>Coleta de Dados e Definição do modelo Conceitual: os dados usados
+no modelo estático são aqueles do trabalho de . Para o modelo dinâmico,
+os mesmos dados foram usados, porém incorporando aleatoriedades de
+diferentes naturezas.</p></li>
+<li><p>Construção do modelo: as restrições do modelo matemático original
+foram incorporadas implicitamente ao AR, direcionando o comportamento do
+agente por meio das recompensas, que por sua vez foram definidas com
+base na função objetivo do problema analisado. A simulação, por sua vez,
+foi construída incorporando características comuns à organização do
+processo produtivo.</p></li>
+<li><p>Solução do modelo: o PPO, utilizando o modelo de simulação como
+ambiente de aprendizado, resolve o problema de forma iterativa.</p></li>
+<li><p>Validação do modelo: o modelo matemático apresenta soluções
+ótimas para o problema, é possível comparar diretamente o desempenho do
+AR e avaliar sua performance em relação ao modelo exato.</p></li>
+<li><p>Implementação da Solução: no protocolo de Gêmeo Digital Autônomo
+proposto, a implementação final consiste na inferência do modelo de AR
+treinado, processando novos fardos de algodão registrados no
+sistema.</p></li>
+</ol>
+<figure id="figure:MetodoPesquisa">
+<img src="figures/Metodo de pesquisa.png" style="width:90.0%" />
+<figcaption>Fluxo do Método de Pesquisa</figcaption>
+</figure>
+<h1 id="modelo-matemático">MODELO MATEMÁTICO</h1>
+<p>A fim de validar o método alternativo de aprimoramento a ser
+proposto, emprega-se o modelo matemático desenvolvido por como parâmetro
+de comparação. Esse modelo fornece soluções ótimas ao problema e será
+usado como <em>benchmark</em> para avaliar a eficácia da abordagem
+alternativa proposta.</p>
+<p>Entre as diversas formulações apresentadas no referido trabalho,
+opta-se especificamente por aquela dedicada a auxiliar a decisão na
+escolha de fardos em estoque com base em características não
+categorizáveis. Essa seleção justifica-se porque tais características
+exercem impacto direto na qualidade final do produto e exigem maior
+precisão no momento da mistura.</p>
+<p>Em seguida, detalham-se os tipos de características do algodão
+classificados como não categorizáveis. Cada uma dessas propriedades deve
+ser considerada e respeitada em sua média na mistura, de modo que o
+resultado atenda às especificações pré-estabelecidas pela empresa.</p>
+<p>O objetivo consiste em fazer com que a média de cada característica
+atinja um valor-alvo específico, de forma a minimizar a diferença entre
+as médias obtidas na mistura e o alvo, garantindo que o produto atenda
+aos padrões de qualidade definidos.</p>
+<p>Considerando as características <span
+class="math inline">+<em>b</em></span>, <span
+class="math inline"><em>r</em><em>d</em></span> e <span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span>
+a serem controladas, definem-se os seguintes elementos do modelo:</p>
+<p>Parâmetros:</p>
+<ul>
+<li><p><span class="math inline">+<em>b</em><sub><em>p</em></sub></span>
+= valor de <span class="math inline">+<em>b</em></span> nos fardos da
+procedência <span class="math inline"><em>p</em></span>.</p></li>
+<li><p><span
+class="math inline"><em>r</em><em>d</em><sub><em>p</em></sub></span> =
+valor de <span class="math inline"><em>r</em><em>d</em></span> nos
+fardos da procedência <span
+class="math inline"><em>p</em></span>.</p></li>
+<li><p><span class="math inline"><em>m</em><sub><em>p</em></sub></span>
+= valor de <span class="math inline"><em>m</em></span>
+(<em>Micronaire</em>) nos fardos da procedência <span
+class="math inline"><em>p</em></span>.</p></li>
+<li><p><span class="math inline"><em>E</em><sub><em>p</em></sub></span>
+= quantidade de fardos de procedência <span
+class="math inline"><em>p</em></span> em estoque.</p></li>
+<li><p><span class="math inline"><em>D</em><sub><em>k</em></sub></span>
+= número total de fardos utilizados na mistura <span
+class="math inline"><em>k</em></span>.</p></li>
+<li><p><span class="math inline"><em>Q</em><sub><em>k</em></sub></span>
+= quantidade de repetições na mistura <span
+class="math inline"><em>k</em></span>.</p></li>
+<li><p><span class="math inline">(+<em>b</em>)</span> = valor-alvo para
+a característica <span class="math inline">+<em>b</em></span> na
+mistura.</p></li>
+<li><p><span class="math inline">(<em>r</em><em>d</em>)</span> =
+valor-alvo para a característica <span
+class="math inline"><em>r</em><em>d</em></span> na mistura.</p></li>
+<li><p><span class="math inline">(<em>m</em>)</span> = valor-alvo para a
+característica <span class="math inline"><em>m</em></span>
+(<em>Micronaire</em>) na mistura.</p></li>
+<li><p><span class="math inline"><em>λ</em><sup>+<em>b</em></sup></span>
+= peso de normalização da característica <span
+class="math inline">+<em>b</em></span>.</p></li>
+<li><p><span
+class="math inline"><em>λ</em><sup><em>r</em><em>d</em></sup></span> =
+peso de normalização da característica <span
+class="math inline"><em>r</em><em>d</em></span>.</p></li>
+<li><p><span class="math inline"><em>λ</em><sup><em>m</em></sup></span>
+= peso de normalização da característica <span
+class="math inline"><em>m</em></span>.</p></li>
+</ul>
+<p>Variáveis de decisão:</p>
+<ul>
+<li><p><span
+class="math inline"><em>X</em><sub><em>p</em><em>k</em></sub></span> =
+quantidade de fardos de procedência <span
+class="math inline"><em>p</em></span> utilizados na mistura <span
+class="math inline"><em>k</em></span>.</p></li>
+<li><p><span class="math inline"><em>A</em><sub><em>k</em></sub></span>
+= diferença absoluta entre a média de <span
+class="math inline">+<em>b</em></span> na mistura <span
+class="math inline"><em>k</em></span> e o valor-alvo.</p></li>
+<li><p><span class="math inline"><em>B</em><sub><em>k</em></sub></span>
+= diferença absoluta entre a média de <span
+class="math inline"><em>r</em><em>d</em></span> na mistura <span
+class="math inline"><em>k</em></span> e o valor-alvo.</p></li>
+<li><p><span class="math inline"><em>C</em><sub><em>k</em></sub></span>
+= diferença absoluta entre a média de <span
+class="math inline"><em>m</em></span> na mistura <span
+class="math inline"><em>k</em></span> e o valor-alvo.</p></li>
+</ul>
+<p>A seguir, apresentam-se as diferenças entre as médias de cada
+característica para uma mistura <span
+class="math inline"><em>k</em></span>. O termo dentro do valor absoluto
+é a subtração entre a média da nova mistura (primeiro termo) e o
+valor-alvo que se deseja atingir (segundo termo).</p>
+<p><span class="math display">$$\left| \frac{\sum_{p=1}^{P} (+b_p *
+X_{pk})}{D_k} - (+b) \right| = A_k$$</span></p>
+<p><span class="math display">$$\left| \frac{\sum_{p=1}^{P} (rd_p *
+X_{pk})}{D_k} - (rd) \right| = B_k$$</span></p>
+<p><span class="math display">$$\left| \frac{\sum_{p=1}^{P} (m_p *
+X_{pk})}{D_k} - (m) \right| = C_k$$</span></p>
+<p>Como <span
+class="math inline"><em>A</em><sub><em>k</em></sub></span>, <span
+class="math inline"><em>B</em><sub><em>k</em></sub></span> e <span
+class="math inline"><em>C</em><sub><em>k</em></sub></span> são
+resultados de grandezas distintas, torna-se imprescindível ponderar cada
+diferença para evitar que uma característica sobreponha as outras na
+busca pela solução ótima. Para tanto, atribuem-se pesos de normalização,
+conforme segue:</p>
+<ul>
+<li><p><span class="math inline"><em>λ</em><sup>+<em>b</em></sup></span>
+= peso para normalizar a grandeza <span
+class="math inline">+<em>b</em></span>.</p></li>
+<li><p><span
+class="math inline"><em>λ</em><sup><em>r</em><em>d</em></sup></span> =
+peso para normalizar a grandeza <span
+class="math inline"><em>r</em><em>d</em></span>.</p></li>
+<li><p><span class="math inline"><em>λ</em><sup><em>m</em></sup></span>
+= peso para normalizar a grandeza <span
+class="math inline"><em>m</em></span>.</p></li>
+</ul>
+<p>Para definição desses pesos, utiliza-se a média da característica
+observada nos fardos em estoque:</p>
+<p><span class="math display">$$\lambda = \frac{1}{\text{média da
+característica nos fardos em estoque}}$$</span></p>
+<p>A função objetivo minimiza as diferenças absolutas entre as médias
+das características <span class="math inline">+<em>b</em></span>, <span
+class="math inline"><em>r</em><em>d</em></span> e <span
+class="math inline"><em>m</em></span> nas misturas e os valores-alvo,
+ponderadas pelos pesos normalizadores <span
+class="math inline"><em>λ</em></span>. É definida como:</p>
+<p><span class="math display">$$\text{Minimizar } \sum_{k=1}^{K} \left(
+\lambda^{+b} \cdot A_k + \lambda^{rd} \cdot B_k + \lambda^{m} \cdot C_k
+\right) \cdot Q_k$$</span></p>
+<p>As diferenças absolutas das características <span
+class="math inline">+<em>b</em></span>, <span
+class="math inline"><em>r</em><em>d</em></span> e <span
+class="math inline"><em>m</em></span> em relação aos valores-alvo são
+definidas pelas seguintes restrições:</p>
+<p><span class="math display">$$A_k \geq \frac{\sum_{p=1}^{P} (+b_p
+\cdot X_{pk})}{D_k} - (+b), \quad \forall k$$</span></p>
+<p><span class="math display">$$A_k \geq (+b) - \frac{\sum_{p=1}^{P}
+(+b_p \cdot X_{pk})}{D_k}, \quad \forall k$$</span></p>
+<p><span
+class="math display"><em>A</em><sub><em>k</em></sub> ≥ 0,  ∀<em>k</em></span></p>
+<p><span class="math display">$$B_k \geq \frac{\sum_{p=1}^{P} (rd_p
+\cdot X_{pk})}{D_k} - (rd), \quad \forall k$$</span></p>
+<p><span class="math display">$$B_k \geq (rd) - \frac{\sum_{p=1}^{P}
+(rd_p \cdot X_{pk})}{D_k}, \quad \forall k$$</span></p>
+<p><span
+class="math display"><em>B</em><sub><em>k</em></sub> ≥ 0,  ∀<em>k</em></span></p>
+<p><span class="math display">$$C_k \geq \frac{\sum_{p=1}^{P} (m_p \cdot
+X_{pk})}{D_k} - (m), \quad \forall k$$</span></p>
+<p><span class="math display">$$C_k \geq (m) - \frac{\sum_{p=1}^{P} (m_p
+\cdot X_{pk})}{D_k}, \quad \forall k$$</span></p>
+<p><span
+class="math display"><em>C</em><sub><em>k</em></sub> ≥ 0,  ∀<em>k</em></span></p>
+<p>As restrições de demanda e estoque garantem que o total de fardos
+utilizados satisfaça a demanda e respeite os limites do estoque
+disponível:</p>
+<p><span class="math display">$$\sum_{p=1}^{P} X_{pk} = D_k, \quad
+\forall k$$</span></p>
+<p><span class="math display">$$\sum_{k=1}^{K} (X_{pk} \cdot Q_k) \leq
+E_p, \quad \forall p$$</span></p>
+<p>Por fim, o domínio das variáveis define que <span
+class="math inline"><em>X</em><sub><em>p</em><em>k</em></sub></span>, a
+quantidade de fardos de procedência <span
+class="math inline"><em>p</em></span> na mistura <span
+class="math inline"><em>k</em></span>, seja um número inteiro não
+negativo:</p>
+<p><span
+class="math display"><em>X</em><sub><em>p</em><em>k</em></sub> ∈ ℤ<sup>+</sup>,  ∀<em>p</em>, ∀<em>k</em></span></p>
+<h2 id="atualização-do-estoque">ATUALIZAÇÃO DO ESTOQUE</h2>
+<p>No modelo matemático empregado, a otimização busca determinar a
+mistura ideal com base exclusivamente no estoque disponível no momento
+da resolução, sem considerar a evolução dos estoques ou decisões em
+períodos futuros.</p>
+<p>Em cada iteração, o modelo resolve o problema de mistura, calculando
+as quantidades de fardos <span
+class="math inline"><em>X</em><sub><em>p</em><em>k</em></sub></span> a
+serem utilizados. Após a obtenção da solução, os estoques são ajustados,
+subtraindo-se os fardos consumidos, e o processo é repetido até que não
+haja mais uma solução factível, com os resultados sendo registrados a
+cada etapa.</p>
+<h2 id="repetição-das-misturas">REPETIÇÃO DAS MISTURAS</h2>
+<p>O parâmetro <span
+class="math inline"><em>Q</em><sub><em>k</em></sub></span> define o
+número de vezes que uma determinada mistura <span
+class="math inline"><em>k</em></span> deve ser repetida. Alterar o valor
+de <span class="math inline"><em>Q</em><sub><em>k</em></sub></span>
+possibilita diferentes estratégias de otimização. Por exemplo, ao
+definir <span
+class="math inline"><em>Q</em><sub><em>k</em></sub> &gt; 1</span>,
+impõe-se uma repetição fixa para cada mistura, o que pode ser útil em
+cenários onde se busca uniformidade na produção ou quando há restrições
+logísticas que favoreçam um número constante de misturas. Por outro
+lado, valores menores de <span
+class="math inline"><em>Q</em><sub><em>k</em></sub></span>, como <span
+class="math inline"><em>Q</em><sub><em>k</em></sub> = 1</span>,
+flexibilizam a abordagem, permitindo maior variação nas combinações e
+adaptando as misturas conforme a disponibilidade de estoque e as
+condições de qualidade exigidas.</p>
+<p>Além disso, controlar <span
+class="math inline"><em>Q</em><sub><em>k</em></sub></span> pode impactar
+diretamente na estabilidade das características médias ao longo do
+processo produtivo. Um <span
+class="math inline"><em>Q</em><sub><em>k</em></sub></span> maior tende a
+gerar lotes mais homogêneos ao custo de reduzir a diversidade de
+misturas. Já <span
+class="math inline"><em>Q</em><sub><em>k</em></sub></span> menores
+promovem maior variação, o que pode ser vantajoso em situações onde a
+prioridade é atender à demanda com máxima eficiência no uso dos estoques
+disponíveis.</p>
+<p>Na solução alternativa proposta, bem como na configuração do modelo
+matemático, opta-se por definir <span
+class="math inline"><em>Q</em><sub><em>k</em></sub> = 1</span>. Dessa
+forma, não se estabelece um número fixo de repetições para as misturas,
+permitindo que estas possam se repetir, mas sem que isso seja uma
+restrição no modelo.</p>
+<h2 id="estoque-inicial-e-valor-alvo">ESTOQUE INICIAL E VALOR-ALVO</h2>
+<p>A Tabela <a href="#tab:valores_lambda" data-reference-type="ref"
+data-reference="tab:valores_lambda">4.1</a> apresenta a média aritmética
+para todas as procedências em estoque, para cada característica estudada
+(<em>rd</em>, <em><span class="math inline">+<em>b</em></span></em> e
+<em>Micronaire</em>), o valor-alvo adotado (definido internamente pela
+empresa estudada, no trabalho de ) e os respectivos pesos
+normalizadores, obtidos a partir do inverso das médias de cada uma das
+características, a fim de remover as diferentes ordens de grandeza para
+a formulação da função objetivo.</p>
+<div id="tab:valores_lambda">
+<table>
+<caption>Cálculo das médias, valores-alvo e pesos normalizadores (<span
+class="math inline"><em>λ</em></span>).</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Característica</th>
+<th style="text-align: center;">Média no Estoque</th>
+<th style="text-align: center;">Valor Alvo</th>
+<th style="text-align: center;"><span
+class="math inline"><em>λ</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline"><em>r</em><em>d</em></span></td>
+<td style="text-align: center;">73,90</td>
+<td style="text-align: center;">74,35</td>
+<td style="text-align: center;">0,0135318</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">+<em>b</em></span></td>
+<td style="text-align: center;">9,98</td>
+<td style="text-align: center;">9,34</td>
+<td style="text-align: center;">0,1001669</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span></td>
+<td style="text-align: center;">3,88</td>
+<td style="text-align: center;">3,90</td>
+<td style="text-align: center;">0,2535018</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:valores_lambda"
+data-label="tab:valores_lambda"></span></p>
+<h1 id="modelo-de-aprendizado-por-reforço">MODELO DE APRENDIZADO POR
+REFORÇO</h1>
+<p>Diferentemente da programação matemática, o AR resolve problemas
+explorando o ambiente por tentativa e erro, sem restrições explícitas. O
+comportamento do agente é guiado por uma função de recompensa, que
+avalia suas ações com base em condições pré-estabelecidas e atribui um
+<em>feedback</em> correspondente. As restrições do problema são
+implicitamente representadas pela função de recompensa: ações que levam
+a soluções infactíveis recebem <em>feedbacks</em> negativos, enquanto as
+factíveis são positivamente recompensadas, proporcionalmente ao objetivo
+do problema.</p>
+<p>A função objetivo de um modelo matemático pode ser representada na
+função de recompensa do AR, retornando valores que reflitam o objetivo
+do problema. Embora o AR não exija estritamente que esses valores sejam
+contínuos, ele se beneficia significativamente dessa característica. Por
+exemplo, em um problema de otimização de custos, uma função de
+recompensa que atribui valores proporcionais ao custo total da solução —
+quanto menor o custo, maior a recompensa — facilita que o agente ajuste
+suas ações progressivamente, identificando políticas mais eficientes ao
+longo do tempo.</p>
+<p>Se a recompensa for discretizada, como ao atribuir “1” para ações
+viáveis e “0” para inviáveis, o agente ainda pode aprender, mas sua
+capacidade de distinguir soluções boas de ótimas será reduzida,
+potencialmente retardando a convergência para uma solução de alta
+qualidade.</p>
+<h2 id="discretização">DISCRETIZAÇÃO</h2>
+<p>Por ser um método iterativo de melhoria que utiliza a simulação de
+eventos discretos como ambiente de aprendizado, a demanda computacional
+é significativa. Para isso, testes computacionais foram realizados para
+encontrar o valor mínimo de discretização viável.</p>
+<p>O problema, em sua forma integral, considera 150 fardos em cada
+mistura, resultando em 150 variáveis de decisão no campo das ações e,
+para cada uma delas, 60 valores de procedências possíveis. Para reduzir
+a demanda computacional, foram testadas discretizações reduzindo a
+quantidade de fardos por mistura, com valores de 75 fardos (<span
+class="math inline"><em>D</em> = 2</span>), 50 fardos (<span
+class="math inline"><em>D</em> = 3</span>), 30 fardos (<span
+class="math inline"><em>D</em> = 5</span>), 25 fardos (<span
+class="math inline"><em>D</em> = 6</span>) e 15 fardos (<span
+class="math inline"><em>D</em> = 10</span>). Para preservar a natureza
+do problema, a quantidade de itens em estoque para cada procedência
+também foi proporcionalmente reduzida, dividindo-a pelo valor de <span
+class="math inline"><em>D</em></span>.</p>
+<h2 id="abordagem-estática-e-determinística">ABORDAGEM ESTÁTICA E
+DETERMINÍSTICA</h2>
+<p>Para validar diretamente as soluções encontradas pelo AR em relação
+ao modelo matemático, o problema é modelado com premissas estáticas e
+determinísticas.</p>
+<p>Nesse cenário, o estoque inicial é fixo, sem renovação, e todas as
+variáveis do processo são consideradas conhecidas e imutáveis,
+eliminando incertezas. Os mesmos dados utilizados no modelo matemático
+são reaproveitados, incluindo os valores de estoque das procedências,
+suas respectivas características e os valores-alvo previamente
+definidos.</p>
+<p>Dito isso, o problema é tratado, inicialmente, da seguinte forma:</p>
+<ul>
+<li><p>Ações: escolha das procedências dos fardos a serem misturados
+(150 no total) no período <span
+class="math inline"><em>t</em></span>.</p></li>
+<li><p>Observações: registro dos fardos escolhidos no período anterior
+(<span class="math inline"><em>t</em> − 1</span>).</p></li>
+<li><p>Recompensa: valor inversamente proporcional à função objetivo,
+variando entre 0 e 1.</p></li>
+</ul>
+<p>A recompensa é definida como:</p>
+<p><span class="math display">$$R = \frac{1}{1 + \text{FO}}$$</span></p>
+<p><span class="math inline">FO</span> representa o valor da função
+objetivo, calculado com base na diferença do valor das propriedades
+<span class="math inline"><em>r</em><em>d</em></span>, <span
+class="math inline">+<em>b</em></span> e <span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span>
+em relação aos valores-alvo. Quando <span class="math inline">FO</span>
+é igual a zero, as propriedades atingem exatamente os valores-alvo,
+resultando no valor máximo de <span
+class="math inline"><em>R</em> = 1</span>. À medida que <span
+class="math inline">FO</span> aumenta, indicando desvios crescentes em
+relação aos alvos, o valor de <span
+class="math inline"><em>R</em></span> tende a zero, desincentivando
+soluções distantes dos objetivos estabelecidos.</p>
+<p>Do ponto de vista das restrições do problema, no AR, não se pode
+impô-las diretamente ao agente, como ocorre em modelos matemáticos. Ao
+contrário disso, a função de recompensa e o ambiente de aprendizado
+devem ser construídos para representar as limitações e requisitos do
+problema real.</p>
+<p>Em um modelo matemático, as restrições são definidas de forma exata:
+soluções que violam essas restrições são automaticamente descartadas
+pelo otimizador, garantindo que apenas resultados factíveis sejam
+considerados. Por exemplo, se uma restrição determina que a soma das
+variáveis deve ser menor ou igual a um limite específico, qualquer
+solução que exceda esse limite será rejeitada sem uma avaliação
+gradual.</p>
+<p>No AR, adotar essa abordagem direta é contraproducente para o
+aprendizado do agente. Se todas as violações forem tratadas como
+igualmente infactíveis, atribuindo-se um mesmo valor de punição a todas
+elas, o agente não consegue distinguir entre violações graves e leves.
+Isso dificulta sua capacidade de ajustar as ações para se aproximar de
+soluções factíveis.</p>
+<p>Para contornar esse problema, a função de recompensa deve incluir
+incentivos graduais que penalizem o agente proporcionalmente à gravidade
+das violações das restrições.</p>
+<h3 id="rl-i-função-de-recompensa-padrão">RL I: FUNÇÃO DE RECOMPENSA
+PADRÃO</h3>
+<p>Nesta abordagem inicial, a recompensa é definida como inversamente
+proporcional à função objetivo (<span class="math inline">FO</span>),
+que mede os desvios das características <span
+class="math inline"><em>r</em><em>d</em></span>, <span
+class="math inline">+<em>b</em></span>, e <span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span>
+em relação aos valores-alvo. Adicionalmente, uma penalização fixa de
+<span class="math inline">−1</span> é aplicada quando a mistura contém
+menos fardos do que o esperado (<span
+class="math inline"><em>D</em><sub><em>k</em></sub> &lt; Esperado</span>).
+A recompensa é representada por:</p>
+<p><span class="math display">$$R = \frac{1}{1 + \text{FO}} - \delta(D_k
+&lt; \text{Esperado})$$</span></p>
+<p>O termo <span
+class="math inline"><em>δ</em>(<em>D</em><sub><em>k</em></sub> &lt; Esperado)</span>
+é definido como: <span class="math display">$$\delta(D_k &lt;
+\text{Esperado}) =
+\begin{cases}
+1, &amp; \text{se } D_k &lt; \text{Esperado}, \\
+0, &amp; \text{caso contrário.}
+\end{cases}$$</span></p>
+<p>A natureza binária da penalização reflete diretamente a implementação
+no código, onde uma instrução condicional (<code>if</code>) avalia se a
+quantidade de fardos na mistura está abaixo do valor esperado.</p>
+<h3
+id="rl-ii-punição-proporcional-às-propriedades-distantes-do-alvo-e-observação-do-estoque">RL
+II: PUNIÇÃO PROPORCIONAL ÀS PROPRIEDADES DISTANTES DO ALVO E OBSERVAÇÃO
+DO ESTOQUE</h3>
+<p>Nesta versão, além das características do RL I, é adicionada uma
+penalização proporcional à distância percentual de cada propriedade
+(<span class="math inline">+<em>b</em></span>, <span
+class="math inline"><em>r</em><em>d</em></span> e <span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span>)
+em relação aos valores-alvo. Adicionalmente, o agente recebe como
+observação a quantidade de fardos restantes no estoque para cada
+procedência, permitindo melhores ajustes considerando o horizonte de
+planejamento, de forma que irá associar determinadas ações às condições
+do estoque após o treinamento. A recompensa é reformulada como:</p>
+<p><span class="math display">$$R = \frac{1}{1 + \text{FO}} - \delta(D_k
+&lt; \text{Esperado}) - \sum_{i \in \{rd, +b, m\}} \Delta_i$$</span></p>
+<p>Onde: <span class="math display">$$\Delta_i =
+\begin{cases}
+\frac{x}{100}, &amp; \text{se } \left| \text{Propriedade}_{\text{atual}}
+- \text{Propriedade}_{\text{alvo}} \right| &gt; x\%, \\
+0, &amp; \text{caso contrário.}
+\end{cases}$$</span></p>
+<p>Essa modificação incentiva o agente a minimizar gradativamente os
+desvios das propriedades-alvo e a respeitar os limites de quantidade de
+fardos esperados, enquanto a observação do estoque possibilita decisões
+mais informadas. Ademais, ainda é possível definir qual o melhor valor
+de <em>x</em> para o aprendizado do agente.</p>
+<h3 id="rl-iii-aumento-da-punição-para-soluções-infactíveis">RL III:
+AUMENTO DA PUNIÇÃO PARA SOLUÇÕES INFACTÍVEIS</h3>
+<p>Com base no RL II, esta versão aumenta a penalização para misturas
+que contenham menos fardos do que o esperado, passando de <span
+class="math inline">−1</span> para <span class="math inline">−2</span>.
+Esse ajuste reforça a importância de atender à restrição de quantidade
+total de fardos, diferenciando-a das penalizações proporcionais
+associadas aos desvios das características <span
+class="math inline"><em>r</em><em>d</em></span>, <span
+class="math inline">+<em>b</em></span> e <span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span>.
+A recompensa é reformulada como:</p>
+<p><span class="math display">$$R = \frac{1}{1 + \text{FO}} - \delta(D_k
+&lt; \text{Esperado}) \cdot 2 - \sum_{i \in \{rd, +b, m\}}
+\Delta_i$$</span></p>
+<p>A principal modificação em relação ao RL II é o aumento da
+penalização fixa para soluções infactíveis relacionadas à quantidade
+total de fardos. Essa distinção atribui maior prioridade a essa
+restrição, indicando que, no contexto do problema, soluções com menos
+fardos que o esperado são significativamente mais prejudiciais ao
+sistema do que desvios moderados nas características-alvo.</p>
+<h3 id="rl-iv-inclusão-de-dois-períodos-de-defasagem-nas-observações">RL
+IV: INCLUSÃO DE DOIS PERÍODOS DE DEFASAGEM NAS OBSERVAÇÕES</h3>
+<p>Neste modelo, o histórico de decisões do agente é expandido para
+incluir informações do período anterior (<span
+class="math inline"><em>t</em> − 2</span>), além do período mais recente
+(<span class="math inline"><em>t</em> − 1</span>). Isso permite que o
+agente aprenda padrões mais complexos e ajuste ações com base em
+decisões passadas.</p>
+<h3 id="rl-v-aumento-extremo-das-punições-em-soluções-infactíveis">RL V:
+AUMENTO EXTREMO DAS PUNIÇÕES EM SOLUÇÕES INFACTÍVEIS</h3>
+<p>Nesta versão, a penalização fixa para misturas com menos fardos do
+que o esperado é elevada de <span class="math inline">−2</span> para
+<span class="math inline">−33</span>. Esse valor é suficientemente alto
+para que soluções infactíveis com relação à quantidade de fardos no
+misturador neutralizem todas as recompensas acumuladas em outras
+soluções factíveis. O objetivo é forçar o agente a evitar completamente
+soluções que violem esta restrição crítica. A recompensa é formulada
+como:</p>
+<p><span class="math display">$$R = \frac{1}{1 + \text{FO}} - \delta(D_k
+&lt; \text{Esperado}) \cdot 33 - \sum_{i \in \{rd, +b, m\}}
+\Delta_i$$</span></p>
+<h3 id="rl-vi-recompensa-extra-para-fo-0">RL VI: RECOMPENSA EXTRA PARA
+FO = 0</h3>
+<p>Nesta versão, um incentivo adicional é introduzido para reforçar
+soluções que atingem exatamente os valores-alvo das propriedades (<span
+class="math inline"><em>r</em><em>d</em></span>, <span
+class="math inline">+<em>b</em></span> e <span
+class="math inline"><em>M</em><em>i</em><em>c</em><em>r</em><em>o</em><em>n</em><em>a</em><em>i</em><em>r</em><em>e</em></span>),
+ou seja, quando <span class="math inline">FO = 0</span>. Este incremento
+adiciona uma recompensa fixa de <span class="math inline">+2</span>,
+criando um estímulo significativo para que o agente priorize a busca por
+soluções ótimas nas misturas iniciais. A recompensa é formulada
+como:</p>
+<p><span class="math display">$$R = \frac{1}{1 + \text{FO}} +
+\beta(\text{FO} = 0) \cdot 2 - \delta(D_k &lt; \text{Esperado}) \cdot 2
+- \sum_{i \in \{rd, +b, m\}} \Delta_i$$</span></p>
+<p>O incentivo adicional para <span class="math inline">FO = 0</span>
+diferencia soluções ótimas de outras factíveis, incentivando o agente a
+maximizar a qualidade das misturas.</p>
+<h3 id="rl-vii-observação-binária-do-estoque">RL VII: OBSERVAÇÃO BINÁRIA
+DO ESTOQUE</h3>
+<p>Nesta versão, a observação do ambiente foi ajustada para incluir uma
+variável binária associada a cada procedência, indicando a presença
+(<span class="math inline">1</span>) ou ausência (<span
+class="math inline">0</span>) de fardos em estoque. Esse ajuste foi
+implementado para comparar o desempenho do modelo ao utilizar essa
+representação binária com a abordagem anterior, que fornecia as
+quantidades de fardos restantes em valores inteiros.</p>
+<p>A estrutura da recompensa segue a mesma do RL VI, com o incentivo
+para soluções ótimas e penalizações por desvios e soluções
+infactíveis.</p>
+<h3 id="testes-com-o-hiperparâmetro-clip_range">TESTES COM O
+HIPERPARÂMETRO <em>clip_range</em></h3>
+<p>No PPO, o hiperparâmetro <em>clip_range</em>, correlato à técnica de
+<em>clipping</em>, influencia diretamente a estabilidade e a eficiência
+do treinamento. Este parâmetro controla o tamanho máximo da atualização
+permitida na política do agente, evitando alterações que poderiam levar
+a instabilidades ou perda de desempenho durante o aprendizado <span
+class="citation" data-cites="schulman_proximal_2017"></span>.</p>
+<p>O <em>clip_range</em> define o intervalo permitido para o valor da
+razão entre as probabilidades da política atual e da política anterior
+para as ações realizadas. Se essa razão ultrapassar o limite definido
+(<span class="math inline">1 ± <em>ϵ</em></span>, onde <span
+class="math inline"><em>ϵ</em></span> é o valor de <em>clip_range</em>),
+a atualização é truncada para evitar mudanças excessivas.</p>
+<p>Para avaliar o impacto do <em>clip_range</em> no desempenho do
+agente, testes foram realizados utilizando o modelo RL III com os
+seguintes valores: <span class="math inline">0, 1</span>, <span
+class="math inline">0, 2</span> (padrão), <span
+class="math inline">0, 5</span> e <span
+class="math inline">1, 0</span>.</p>
+<h2 id="abordagem-dinâmica-e-estocástica">ABORDAGEM DINÂMICA E
+ESTOCÁSTICA</h2>
+<p>O estoque inicial, anteriormente conhecido, passa a ser construído de
+forma aleatória. As quantidades totais de fardos em estoque permanecem
+inalteradas; no entanto, as proporções de cada procedência são definidas
+por meio de um sorteio. Além disso, é estabelecido um tempo de
+processamento para o processo de mistura, que consome o estoque
+disponível, bem como um intervalo entre cada reposição desse estoque.
+Ambas as taxas são fictícias, sendo modeladas por uma distribuição
+<em>Normal</em> de probabilidade, com o mesmo desvio padrão e uma média
+ajustada de modo a manter o equilíbrio do sistema ao longo do tempo,
+considerando misturas com quantidades factíveis de fardos.</p>
+<p>O equilíbrio do sistema é definido por:</p>
+<ul>
+<li><p><span class="math inline"><em>C</em></span> – número fixo de
+fardos consumidos por mistura;</p></li>
+<li><p><span class="math inline"><em>T</em><sub><em>m</em></sub></span>
+– tempo médio de processamento de uma mistura;</p></li>
+<li><p><span class="math inline"><em>T</em><sub><em>r</em></sub></span>
+– tempo médio entre reposições do estoque;</p></li>
+<li><p><span class="math inline"><em>R</em></span> – número de fardos
+repostos por chegada.</p></li>
+</ul>
+<p>Embora <span class="math inline"><em>R</em></span> seja sorteado a
+cada reposição, a longo prazo, sua média tende a uma expectativa
+estatística baseada na distribuição do estoque inicial. Assim, o
+equilíbrio é expresso por:</p>
+<p><span class="math display">$$\frac{C}{T_m} =
+\frac{\mathbb{E}[R]}{T_r}$$</span></p>
+<p>Isolando <span
+class="math inline"><em>T</em><sub><em>r</em></sub></span>,
+obtém-se:</p>
+<p><span class="math display">$$T_r = \frac{\mathbb{E}[R]}{C} \cdot
+T_m$$</span></p>
+<p>Logo, para manter o sistema balanceado, o tempo entre reposições
+<span class="math inline"><em>T</em><sub><em>r</em></sub></span> deve
+ser ajustado proporcionalmente ao tempo de mistura <span
+class="math inline"><em>T</em><sub><em>m</em></sub></span>, levando em
+conta a expectativa da quantidade de fardos repostos.</p>
+<p>Assumindo que <span class="math inline"><em>R</em></span> segue uma
+distribuição normal <span
+class="math inline">𝒩(<em>μ</em><sub><em>R</em></sub>, <em>σ</em><sup>2</sup>)</span>,
+a relação esperada entre os tempos é:</p>
+<p><span class="math display">$$\mu_{T_r} = \frac{\mu_R}{C} \cdot
+\mu_{T_m}$$</span></p>
+<p>Onde <span
+class="math inline"><em>μ</em><sub><em>T</em><sub><em>r</em></sub></sub></span>
+representa a média do tempo entre reposições e <span
+class="math inline"><em>μ</em><sub><em>T</em><sub><em>m</em></sub></sub></span>
+a média do tempo de mistura.</p>
+<p>A chegada de novos fardos, por sua vez, utiliza a distribuição do
+estoque inicial como referência para definir as probabilidades de
+seleção das procedências. No modelo estático e determinístico, o estoque
+inicial era previamente conhecido, contendo 60 procedências, cada uma
+com quantidades distintas. No entanto, no modelo atual, a chegada de
+fardos é aleatória, sorteando-se <span
+class="math inline"><em>X</em></span> procedências e suas respectivas
+quantidades a cada chegada.</p>
+<p>A quantidade de procedências <span
+class="math inline"><em>X</em></span> sorteadas em cada chegada é
+definida de modo a respeitar o equilíbrio do sistema a longo prazo,
+conforme estabelecido pela relação entre o tempo de processamento das
+misturas <span
+class="math inline"><em>T</em><sub><em>m</em></sub></span> e o tempo
+entre reposições <span
+class="math inline"><em>T</em><sub><em>r</em></sub></span>.</p>
+<p>As propriedades dos fardos escolhidos, como <em>rd</em>, <em>+b</em>
+e <em>Micronaire</em>, são ajustadas de forma aleatória dentro de uma
+faixa de variação de <span class="math inline">−10%</span> a <span
+class="math inline">+10%</span> em relação aos valores originais.</p>
+<p><span
+class="math display"><em>P</em> = <em>P</em><sub>0</sub> + <em>U</em>(−0.1<em>P</em><sub>0</sub>, 0.1<em>P</em><sub>0</sub>)</span></p>
+<p>Onde:</p>
+<ul>
+<li><p><span class="math inline"><em>P</em></span> – valor ajustado da
+propriedade do fardo;</p></li>
+<li><p><span class="math inline"><em>P</em><sub>0</sub></span> – valor
+original da propriedade;</p></li>
+<li><p><span
+class="math inline"><em>U</em>(−0.1<em>P</em><sub>0</sub>, 0.1<em>P</em><sub>0</sub>)</span>
+– variação aleatória uniforme de até <span
+class="math inline">±10%</span> do valor original.</p></li>
+</ul>
+<h2 id="modelo-de-simulação">MODELO DE SIMULAÇÃO</h2>
+<p>A fim de integrar todas as premissas propostas para o ambiente de
+aprendizado, bem como outras ferramentas de conectividade de dados, o
+simulador de eventos discretos e gêmeo digital <em>FlexSim</em> é
+utilizado.</p>
+<p>Por se tratar de um <em>software</em> com permissividade de
+representação gráfica tridimensional do processo, é possível incorporar
+customizações visuais que aproximam a simulação do contexto real,
+facilitando a compreensão das soluções propostas a posteriori.</p>
+<p>Nesta seção, será tratado apenas do modelo de simulação referente à
+segunda abordagem discutida, que incorpora a aleatoriedade ao
+processo.</p>
+<p>Na Figura <a href="#figure:estoqueemisturador"
+data-reference-type="ref"
+data-reference="figure:estoqueemisturador">5.1</a> temos a representação
+de um fardo de algodão e de parte do processo de fiação têxtil,
+considerando 34 baias de estoque (<em>Box</em>) e um misturador.</p>
+<figure id="figure:estoqueemisturador">
+<img src="figures/simulação.png" style="width:100.0%" />
+<figcaption>Representação 3D do processo e do fardo de
+algodão.</figcaption>
+</figure>
+<p>O simulador se divide em duas partes distintas: <em>Model 3D</em> e
+<em>Process Flow</em>. Ambas seguem os princípios da Programação
+Orientada a Objetos <span class="citation"
+data-cites="poo_1982"></span>, sendo a primeira voltada a objetos
+físicos tridimensionalmente representados e conectados por um fluxo,
+enquanto a segunda é abstrata, organizada por blocos e complementar à
+primeira.</p>
+<p>Dado que o <em>Process Flow</em> permite maior liberdade para a
+modelagem da simulação, o <em>Model 3D</em> se restringe apenas para às
+lógicas de direcionamento do fluxo visto na Figura <a
+href="#figure:fluxoUML" data-reference-type="ref"
+data-reference="figure:fluxoUML">5.2</a>.</p>
+<figure id="figure:fluxoUML">
+<img src="figures/fluxoUML.png" style="width:100.0%" />
+<figcaption>Fluxo dos fardos no processo.</figcaption>
+</figure>
+<p>Para dar início ao fluxo, os fardos são gerados a partir do
+<em>Process Flow</em>, onde lógicas de sorteio e atribuição de
+propriedades são ativadas por um <em>token</em> circulante. O fluxo é
+estruturado em duas partes principais: a primeira reproduz o estoque
+inicial da abordagem estática e determinística, além de gerar novas
+chegadas ao longo do tempo, realizando o sorteio dos fardos e de suas
+respectivas propriedades; a segunda gerencia as portas de entrada e
+saída dos <em>boxes</em> e do misturador, garantindo a sincronização do
+fluxo sequencial dos estados do sistema e sua integração com os gatilhos
+do AR. Na Figura <a href="#figure:ProcessFlow" data-reference-type="ref"
+data-reference="figure:ProcessFlow">5.3</a>, isso pode ser
+observado.</p>
+<figure id="figure:ProcessFlow">
+<img src="figures/ProcessFlow.png" style="width:100.0%" />
+<figcaption><em>Process Flow</em> para gerenciamento do
+fluxo.</figcaption>
+</figure>
+<p>Assim que os fardos são gerados como objetos na simulação, eles são
+alocados nas baias de armazenamento de acordo com uma lógica que busca
+racionalizar a organização dos <em>boxes</em> de estoque e seus
+respectivos fardos.</p>
+<p>Inicialmente, verifica-se se existe uma baia que já contenha itens da
+mesma procedência do novo item. Caso exista e a quantidade de itens
+nessa baia esteja dentro do limite permitido, o item é alocado nela.
+Caso contrário, busca-se uma baia vazia para armazená-lo. Se não houver
+baias vazias disponíveis, o item é direcionado para a baia que possui a
+menor quantidade de itens, garantindo uma distribuição equilibrada da
+carga de armazenamento. O Algoritmo <a href="#alg:alocacao_balanceada"
+data-reference-type="ref"
+data-reference="alg:alocacao_balanceada">[alg:alocacao_balanceada]</a>
+evidencia essas relações.</p>
+<div class="algorithm">
+<p><span
+class="math inline"><em>n</em><em>B</em><em>x</em> ← tamanho(<em>b</em><em>x</em>)</span>
+<span
+class="math inline"><em>s</em><em>e</em><em>l</em><em>B</em><em>x</em> ← 0</span>
+<span
+class="math inline"><em>l</em><em>i</em><em>m</em><em>i</em><em>t</em><em>e</em> ← 2 × <em>n</em><em>B</em><em>x</em></span>
+<span
+class="math inline"><em>p</em><em>r</em><em>o</em><em>c</em> ← <em>i</em><em>t</em>.<em>p</em><em>r</em><em>o</em><em>c</em></span>
+<span
+class="math inline"><em>m</em><em>i</em><em>n</em><em>Q</em><em>t</em><em>d</em> ← ∞</span></p>
+</div>
+<p>O algoritmo recebe um item <span
+class="math inline"><em>i</em><em>t</em></span> e uma lista de baias
+<span class="math inline"><em>b</em><em>x</em></span>, retornando o
+índice do <em>box</em> selecionado <span
+class="math inline"><em>s</em><em>e</em><em>l</em><em>B</em><em>x</em></span>.
+Inicialmente, são definidas as seguintes variáveis:</p>
+<ul>
+<li><p><span class="math inline"><em>n</em><em>B</em><em>x</em></span>:
+número total de <em>boxes</em> contidos na lista <span
+class="math inline"><em>b</em><em>x</em></span>;</p></li>
+<li><p><span
+class="math inline"><em>s</em><em>e</em><em>l</em><em>B</em><em>x</em></span>:
+inicialmente definido como 0, indicando que nenhum box foi
+escolhido;</p></li>
+<li><p><span
+class="math inline"><em>l</em><em>i</em><em>m</em><em>i</em><em>t</em><em>e</em></span>:
+calculado como o dobro do número total de <em>boxes</em>, estabelecendo
+o teto de ocupação aceitável para um <em>box</em>;</p></li>
+<li><p><span
+class="math inline"><em>p</em><em>r</em><em>o</em><em>c</em></span>:
+procedência do item <span
+class="math inline"><em>i</em><em>t</em></span>;</p></li>
+<li><p><span
+class="math inline"><em>m</em><em>i</em><em>n</em><em>Q</em><em>t</em><em>d</em></span>:
+inicializado com <span class="math inline">∞</span>, utilizado para
+identificar o <em>box</em> com a menor quantidade de itens.</p></li>
+</ul>
+<p>Em seguida, o algoritmo utiliza três critérios para selecionar a
+baia:</p>
+<ul>
+<li><p>Critério 1 – Alocação por procedência: O algoritmo percorre a
+lista de <em>boxes</em> e, para cada <em>box</em> <span
+class="math inline"><em>b</em></span>, verifica se ela já contém itens
+com a mesma procedência do item (através da função <span
+class="math inline"><em>p</em><em>o</em><em>s</em><em>s</em><em>u</em><em>i</em><em>P</em><em>r</em><em>o</em><em>c</em>(<em>b</em>, <em>p</em><em>r</em><em>o</em><em>c</em>)</span>)
+e se a quantidade de itens no <em>box</em>, obtida por <span
+class="math inline">tamanho(<em>b</em>)</span>, é inferior ao limite
+estabelecido. Se ambas as condições forem satisfeitas, o <em>box</em> é
+imediatamente selecionado e seu índice é retornado.</p></li>
+<li><p>Critério 2 – Busca por <em>box</em> vazio: Se nenhum <em>box</em>
+atender ao Critério 1, o algoritmo procura por um <em>box</em> que
+esteja completamente vazio, isto é, para o qual <span
+class="math inline">tamanho(<em>b</em><em>x</em>[<em>i</em>]) = 0</span>.
+A escolha de um <em>box</em> vazio permite iniciar a alocação sem
+interferência de itens previamente alocados.</p></li>
+<li><p>Critério 3 – Seleção pela menor ocupação: Caso os dois primeiros
+critérios não resultem na seleção de um <em>box</em>, o algoritmo
+percorre novamente todos os <em>boxes</em> para identificar aquele com a
+menor quantidade de itens. Durante essa etapa, a variável <span
+class="math inline"><em>m</em><em>i</em><em>n</em><em>Q</em><em>t</em><em>d</em></span>
+é atualizada e o <em>box</em> com a menor carga é selecionado.</p></li>
+</ul>
+<p>Por fim, o algoritmo retorna o índice da baia selecionada (<span
+class="math inline"><em>s</em><em>e</em><em>l</em><em>B</em><em>x</em></span>),
+determinando assim onde o item <span
+class="math inline"><em>i</em><em>t</em></span> deverá ser alocado. As
+funções <span
+class="math inline"><em>t</em><em>a</em><em>m</em><em>a</em><em>n</em><em>h</em><em>o</em>(<em>b</em><em>x</em>[<em>i</em>])</span>
+e <span
+class="math inline"><em>p</em><em>o</em><em>s</em><em>s</em><em>u</em><em>i</em><em>P</em><em>r</em><em>o</em><em>c</em>(<em>b</em>, <em>p</em><em>r</em><em>o</em><em>c</em>)</span>
+são responsáveis, respectivamente, por retornar a quantidade de itens
+presentes em uma baia e por verificar se a procedência <span
+class="math inline"><em>p</em><em>r</em><em>o</em><em>c</em></span> já
+se encontra na baia <span class="math inline"><em>b</em></span>.</p>
+<h1 id="sistema-de-informações-gerenciais-1">SISTEMA DE INFORMAÇÕES
+GERENCIAIS</h1>
+<p>O sistema de informações gerenciais desempenha um papel essencial
+neste protocolo, pois, após o treinamento do agente por meio da
+simulação para tomar decisões informadas, busca-se a incorporação de
+dados reais do sistema. Nesse estágio, a aleatoriedade inerente à
+simulação é substituída pelo comissionamento virtual, permitindo uma
+operação baseada em informações concretas e representativas do ambiente
+real.</p>
+<p>Como visto na Figura <a href="#figure:SIG" data-reference-type="ref"
+data-reference="figure:SIG">6.1</a>, o SIG se relaciona com o protocolo
+como uma interface entre o ambiente físico e o digital, sendo por ele
+que se introduz e recebe as informações pertinentes ao auxílio na tomada
+de decisão.</p>
+<figure id="figure:SIG">
+<img src="figures/SIG.png" style="width:100.0%" />
+<figcaption>Diagrama Sequencial do protocolo proposto.</figcaption>
+</figure>
+<p>O sistema em <em>Python</em> utiliza <em>Flask</em>,
+<em>SQLAlchemy</em> e um servidor <em>MODBUS</em> para gerenciar
+procedências e estoques. Uma aplicação <em>web</em> recebe inserções de
+dados, consolidando ocorrências de mesma procedência em uma estrutura de
+Banco de Dados <em>PostgreSQL</em>. O servidor <em>MODBUS</em>,
+executado em paralelo, disponibiliza um conjunto de registros para troca
+de informações, sendo o SIG desempenhando papel de cliente e o modelo de
+simulação o servidor. Os dados entram no <em>FlexSim</em> a partir da
+sincronização do Banco de Dados <em>PostgreSQL</em> com o modelo de
+simulação, por meio da <em>SQLAPI++</em>. Conectado via protocolo
+<em>MODBUS</em>, o <em>FlexSim</em> obtém os valores necessários do
+sistema e retorna resultados de simulações ou execuções associadas às
+procedências.</p>
+<p>Em paralelo, ocorre a execução do modelo treinado por AR, que ajusta
+a tomada de decisão a partir das interações com o ambiente simulado no
+<em>FlexSim</em>, atualizado pelo ambiente real.</p>
+<h2 id="entrada-de-dados">ENTRADA DE DADOS</h2>
+<p>Em um contexto operacional, no qual novos fardos chegam
+periodicamente e se deseja registrá-los de maneira simplificada, o
+colaborador responsável abriria a aplicação <em>web</em> (Figura <a
+href="#figure:TelaInput" data-reference-type="ref"
+data-reference="figure:TelaInput">6.2</a>) em qualquer dispositivo.
+Nessa aplicação, ele selecionaria as procedências e a quantidade de
+fardos a serem adicionados ao Banco de Dados. Ainda nessa interface,
+existe a opção de zerar todos os registros ou, por fins didáticos,
+replicar o perfil de estoque ilustrado na Tabela <a
+href="#tab:estoque_inicial" data-reference-type="ref"
+data-reference="tab:estoque_inicial">9.1</a>.</p>
+<figure id="figure:TelaInput">
+<img src="figures/TelaInput.png" style="width:100.0%" />
+<figcaption>Tela de registro dos novos fardos.</figcaption>
+</figure>
+<h2 id="banco-de-dados-relacional">BANCO DE DADOS RELACIONAL</h2>
+<p>Para armazenar as informações de estoque e registrar quais fardos
+foram efetivamente utilizados em cada mistura, concebe-se um esquema de
+Banco de Dados relacional que se baseia em três tabelas interligadas. A
+tabela Estoque armazena as procedências e suas características (como
+quantidade, rd, +b, Micronaire), enquanto a tabela Mistura identifica
+cada evento ou processo de mistura que ocorre ao longo do tempo (com
+data, observações e demais atributos). Para relacionar os fardos
+escolhidos a cada mistura, define-se uma terceira tabela,
+MisturaEstoque, que funciona como uma ligação entre Mistura e Estoque,
+descrevendo quantos fardos de determinada procedência foram aplicados em
+cada mistura.</p>
+<div id="tab:tb_estoque">
+<table>
+<caption>Tabela Estoque, responsável por manter o estado atual de cada
+procedência.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">estoque_inicial</th>
+<th style="text-align: center;">rd</th>
+<th style="text-align: center;">+b</th>
+<th style="text-align: center;">Micronaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">PK, Inteiro</td>
+<td style="text-align: center;">Inteiro, Default 0</td>
+<td style="text-align: center;">Float</td>
+<td style="text-align: center;">Float</td>
+<td style="text-align: center;">Float</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:tb_estoque" data-label="tab:tb_estoque"></span></p>
+<div id="tab:tb_mistura">
+<table>
+<caption>Tabela Mistura, que registra cada evento de mistura e suas
+informações gerais.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">data_hora</th>
+<th style="text-align: center;">observacao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">PK, Inteiro</td>
+<td style="text-align: center;"><em>DateTime</em></td>
+<td style="text-align: center;">Texto, Opcional</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:tb_mistura" data-label="tab:tb_mistura"></span></p>
+<div id="tab:tb_mistura_estoque">
+<table>
+<caption>Tabela intermediária MisturaEstoque, que liga fardos (Estoque)
+às misturas (Mistura).</caption>
+<thead>
+<tr>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">mistura_id</th>
+<th style="text-align: center;">estoque_id</th>
+<th style="text-align: center;">quantidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">PK, Inteiro</td>
+<td style="text-align: center;">FK em Mistura.id</td>
+<td style="text-align: center;">FK em Estoque.id</td>
+<td style="text-align: center;">Inteiro</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:tb_mistura_estoque"
+data-label="tab:tb_mistura_estoque"></span></p>
+<p>No <em>script</em> em <em>Python</em>, cada uma dessas tabelas é
+criada com o <em>SQLAlchemy</em>. A Estoque guarda o estado atual de
+cada procedência (por exemplo, quantos fardos existem de uma dada
+origem, quais os valores de rd e +b). A Mistura representa o evento em
+si (data e observações). Por fim, a MisturaEstoque define quantos fardos
+de cada procedência foram empregados em determinada mistura, ligando
+Mistura (por meio de mistura_id) à Estoque (via estoque_id).</p>
+<h2 id="saída-de-dados">SAÍDA DE DADOS</h2>
+<p>As decisões produzidas pelo <em>FlexSim</em> e obtidas por meio do
+protocolo <em>MODBUS</em> são apresentadas em uma interface
+<em>web</em>, por intermédio do mesmo <em>script</em> em
+<em>Python</em>. Na aplicação desenvolvida com <em>Flask</em>, o
+servidor <em>MODBUS</em> executa em paralelo, armazenando em registros
+específicos as informações retornadas pelo <em>FlexSim</em>, como a
+procedência selecionada, eventuais ajustes na quantidade de fardos ou
+outra variável operacional. Esses registros são atualizados
+constantemente, de modo que a aplicação consiga refletir o estado atual
+do sistema.</p>
+<p>A Figura <a href="#figure:TelaOutput" data-reference-type="ref"
+data-reference="figure:TelaOutput">6.3</a> ilustra a tela de saída, onde
+as soluções provenientes do <em>FlexSim</em> são exibidas. Cada
+atualização no <em>FlexSim</em> escreve valores nos registradores
+<em>MODBUS</em>, e o <em>script</em> em <em>Python</em> coleta esses
+valores e os organiza em elementos de visualização. Dessa forma, o
+colaborador consegue acompanhar a evolução das variáveis de interesse,
+além de verificar possíveis ajustes sugeridos pelo AR.</p>
+<figure id="figure:TelaOutput">
+<img src="figures/TelaOutput.png" style="width:100.0%" />
+<figcaption>Tela de saída com informações recebidas do <em>FlexSim</em>
+via <em>MODBUS</em>.</figcaption>
+</figure>
+<p>De forma prática, foi construída uma rota <em>/output</em>, na
+aplicação baseada em <em>Flask</em>, que consiste em exibir os dados
+lidos do servidor <em>MODBUS</em>. O <em>script</em> utiliza o objeto
+<em>DataBank</em> para armazenar valores nos registros <em>holding</em>.
+Assim, cada nova decisão ou resultado de simulação, enviados pelo
+<em>FlexSim</em>, é gravado na forma de inteiros ou pontos flutuantes.
+Uma <em>thread</em> no <em>Python</em> lê periodicamente esses valores,
+atualiza uma estrutura de dados e fornece as informações em formato
+<em>JSON</em> para a interface <em>web</em>. A página de saída, por sua
+vez, processa esse <em>JSON</em> e exibe as decisões do sistema,
+permitindo a visualização consolidada das soluções advindas do
+<em>FlexSim</em> e do algoritmo de AR.</p>
+<h1 id="resultados">RESULTADOS</h1>
+<p>No presente capítulo, serão apresentados os resultados computacionais
+do trabalho, podendo afirmar sua robustez, justificar as afirmações
+feitas e responder às questões de pesquisa previamente levantadas.</p>
+<p>Para executar os modelos e <em>scripts</em> citados, foi utilizado o
+CPU Intel(R) Core(TM) i5-11400F, com 6 núcleos físicos e 12
+<em>threads</em>, com <em>clock</em> base de 2,60 GHz e máximo de 4,40
+GHz (<em>stock</em>); 16 GB de memória RAM DDR4 2666 MHz; e GPU Nvidia
+GeForce RTX 3060 TI 8 GB GDDR6.</p>
+<h2 id="modelo-matemático-1">MODELO MATEMÁTICO</h2>
+<p>Devido à alta demanda computacional dos modelos de AR, o problema
+teve de ser discretizado, ou seja, dividido em partes menores,
+preservando seus princípios comportamentais, mas com menos dados. Sob
+fins de comparação, o modelo matemático, sem discretização (MIP D1), que
+resolve o problema ao otimizar as misturas a partir de um estoque
+inicial fixo, de maneira iterativa e sem restrições para repetições de
+misturas, tem seus valores ótimos representados na Figura <a
+href="#figure:MM" data-reference-type="ref"
+data-reference="figure:MM">7.1</a>.</p>
+<figure id="figure:MM">
+<img src="figures/ModeloMatematicoQk1D1.png" style="width:100.0%" />
+<figcaption>Misturas iterativas resolvidas pelo modelo matemático (MIP
+D1).</figcaption>
+</figure>
+<p>O tempo computacional, especialmente no caso do modelo matemático, é
+pouco afetado pelas discretizações. A soma dos objetivos e sua variação
+ao longo das misturas são representados na Tabela <a
+href="#tab:discretizacao_divergencia" data-reference-type="ref"
+data-reference="tab:discretizacao_divergencia">7.1</a> e na Figura <a
+href="#figure:DiscMM" data-reference-type="ref"
+data-reference="figure:DiscMM">7.2</a>, respectivamente.</p>
+<div id="tab:discretizacao_divergencia">
+<table>
+<caption>Impacto da discretização na soma do objetivo e divergência
+percentual, com 32 misturas.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Discretização (D)</th>
+<th style="text-align: center;">Soma Obj.</th>
+<th style="text-align: center;">Divergência (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;">19,67</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;">19,96</td>
+<td style="text-align: center;">+1,47%</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;">17,98</td>
+<td style="text-align: center;">-8,59%</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;">16,92</td>
+<td style="text-align: center;">-13,98%</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;">16,63</td>
+<td style="text-align: center;">-15,46%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:discretizacao_divergencia"
+data-label="tab:discretizacao_divergencia"></span></p>
+<figure id="figure:DiscMM">
+<img src="figures/Discretizacao_comparacao.png" style="width:100.0%" />
+<figcaption>Impacto das discretizações ao longo das misturas no modelo
+matemático.</figcaption>
+</figure>
+<p>Como o AR e o modelo matemático são comparados sob as mesmas
+premissas de discretização, as posteriores análises são válidas e
+viabilizam os testes computacionais, porém divergem da situação
+real.</p>
+<h2 id="aprendizado-por-reforço-1">APRENDIZADO POR REFORÇO</h2>
+<p>A fim de tornar a solução viável computacionalmente e escolher o
+melhor modelo para a aplicação final no Gêmeo Digital Autônomo, uma
+série de testes e comparações foram feitos, entre diferentes
+discretizações, modelos de simulação e funções de recompensa.</p>
+<h3 id="abordagem-estática-e-determinística-1">ABORDAGEM ESTÁTICA E
+DETERMINÍSTICA</h3>
+<p>A Tabela <a href="#tab:discretizacao" data-reference-type="ref"
+data-reference="tab:discretizacao">7.2</a> apresenta o impacto das
+diferentes discretizações propostas no tempo necessário para processar
+os 18.432.000 de <em>timesteps</em> (iterações do modelo de simulação)
+definidos.</p>
+<div id="tab:discretizacao">
+<table>
+<caption>Impacto da discretização no tempo computacional.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Discretização (D)</th>
+<th style="text-align: center;">Tempo (horas)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;">646,71</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;">345,23</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">3</span></td>
+<td style="text-align: center;">156,11</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">5</span></td>
+<td style="text-align: center;">97,62</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">6</span></td>
+<td style="text-align: center;">62,49</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:discretizacao"
+data-label="tab:discretizacao"></span></p>
+<p>Os resultados mostram que o esforço computacional diminui
+significativamente com o aumento da discretização (<span
+class="math inline"><em>D</em></span>), à medida que o problema se
+simplifica. A discretização <span
+class="math inline"><em>D</em> = 6</span> foi escolhida como padrão para
+os experimentos, pois apresentou um tempo computacional aceitável e não
+comprometeu a qualidade das soluções encontradas, como visto na Figura
+<a href="#figure:DiscMM" data-reference-type="ref"
+data-reference="figure:DiscMM">7.2</a> e reafirmado pela Figura <a
+href="#figure:DiscD1D6RLI" data-reference-type="ref"
+data-reference="figure:DiscD1D6RLI">7.3</a>.</p>
+<figure id="figure:DiscD1D6RLI">
+<img src="figures/MIPD1D6RL1.png" style="width:100.0%" />
+<figcaption>Comparação entre os modelos matemáticos (MIP D1), (MIP D6) e
+modelo de AR (RL I).</figcaption>
+</figure>
+<p>No ambiente estático e sem aleatoriedade, os modelos de AR, que são
+inexatos na tratativa do problema, convergiram a um mesmo conjunto de
+soluções, após o treinamento, para todos os testes.</p>
+<p>A fim de encontrar a melhor função de recompensa, dentre aquelas
+propostas, para implementar no modelo dinâmico, testes foram feitos sob
+as mesmas condições de tempo de treino: 18.432.000
+<em>timesteps</em>.</p>
+<div id="tab:comparacao_rl">
+<table>
+<caption>Comparação entre os modelos quanto ao número de misturas
+factíveis, soma dos objetivos e <em>Gap</em> de otimalidade.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Modelo</th>
+<th style="text-align: center;">Mist. Factíveis</th>
+<th style="text-align: center;">Soma dos Objetivos</th>
+<th style="text-align: center;"><em>Gap</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">MIP (D6)</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">19,67</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL I</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">19,26</td>
+<td style="text-align: center;">57,7%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL II</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">13,88</td>
+<td style="text-align: center;">32,9%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL III (0.1)</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">18,53</td>
+<td style="text-align: center;">51,7%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL III (0.2)</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">15,38</td>
+<td style="text-align: center;">25,9%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL III (0.5)</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">16,18</td>
+<td style="text-align: center;">32,4%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL III (1.0)</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">15,10</td>
+<td style="text-align: center;">149,7%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL IV</td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">15,48</td>
+<td style="text-align: center;">48,2%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL V</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">17,83</td>
+<td style="text-align: center;">194,8%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL VI</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">17,33</td>
+<td style="text-align: center;">21,5%</td>
+</tr>
+<tr>
+<td style="text-align: left;">RL VII</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">14,29</td>
+<td style="text-align: center;">17,0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:comparacao_rl"
+data-label="tab:comparacao_rl"></span></p>
+<p>Como dito anteriormente, no modelo matemático, as restrições são
+explicitamente impostas e qualquer solução infactível é descartada,
+garantindo, assim, mistura factível e performance próxima do ótimo
+global. Já no Aprendizado por Reforço (RL), as restrições são
+convertidas em recompensas e punições, o que, embora traga
+flexibilidade, pode levar a explotação local caso as penalizações não
+sejam bem calibradas, ou caso o tempo de treinamento não seja
+suficiente, resultando em buscas por recompensas imediatas e menor
+consistência de soluções.</p>
+<p>Os resultados da Tabela <a href="#tab:comparacao_rl"
+data-reference-type="ref" data-reference="tab:comparacao_rl">7.3</a>
+indicam que o modelo matemático atingiu o melhor desempenho como
+referência. O RL I, com penalização fixa, apresentou um <em>gap</em>
+elevado devido à falta de flexibilidade na adaptação às restrições. O RL
+II, ao incorporar penalizações proporcionais e considerar o estoque,
+melhorou o equilíbrio entre qualidade e factibilidade, embora a
+adaptação tenha ocorrido de forma gradual. No RL III, o ajuste da
+penalização e do <em>cliprange</em> trouxe um melhor equilíbrio, mas
+valores excessivos comprometeram a estabilidade da política. O RL IV,
+com histórico de decisões, não trouxe ganhos significativos, sugerindo
+que a inclusão de dados temporais não foi suficiente para melhorar o
+desempenho. Já o RL V, com penalização extrema, comprometeu severamente
+o aprendizado, resultando em baixa factibilidade e alto
+<em>gap</em>.</p>
+<p>Os modelos RL VI e RL VII apresentaram os melhores desempenhos. O RL
+VI, com incentivo adicional para soluções ótimas, obteve 31 misturas e
+reduziu o <em>gap</em> para 21,5%, sugerindo que recompensas positivas
+melhoram a convergência para soluções de alta qualidade. Já o RL VII,
+utilizando observação binária do estoque, alcançou 30 misturas e o menor
+<em>gap</em> de 17,0%, indicando que uma representação simplificada do
+ambiente contribui para um aprendizado mais eficiente e robusto.</p>
+<p>O modelo matemático resolve as misturas encontrando soluções ótimas
+para a mistura instantânea, sem considerar períodos futuros. Em
+contrapartida, o AR aprimora o conjunto das misturas ao longo do tempo,
+maximizando a soma das recompensas. Conforme observado a partir da
+Mistura 23 na Figura <a href="#figure:ModeloMatematicoRLVII"
+data-reference-type="ref"
+data-reference="figure:ModeloMatematicoRLVII">7.4</a>, o modelo
+matemático seleciona os melhores fardos para o momento presente, sem
+antecipar as necessidades futuras. Isso resulta na acumulação de fardos
+cujas características, em média, desviam significativamente do alvo ao
+longo do tempo. Já no modelo RL VII, com o AR, essa situação é atenuada,
+pois a diferença entre as propriedades das misturas e o alvo se mantém
+mais equilibrada ao longo do tempo.</p>
+<figure id="figure:ModeloMatematicoRLVII">
+<img src="figures/ModeloMatematicoRLVII.png" style="width:100.0%" />
+<figcaption>Comparação entre modelo matemático (MIP D6) e modelo de AR
+(RL VII).</figcaption>
+</figure>
+<h3 id="abordagem-dinâmica-e-estocástica-1">ABORDAGEM DINÂMICA E
+ESTOCÁSTICA</h3>
+<p>A Figura <a href="#figure:DINRLVII" data-reference-type="ref"
+data-reference="figure:DINRLVII">7.5</a> explicita que o modelo dinâmico
+de aprendizado por reforço (RL VII DIN) apresenta um desempenho mais
+consistente ao longo do tempo, resultando em menores variações nos
+valores do objetivo e uma melhor aderência aos parâmetros desejados.
+Como foram definidas múltiplas réplicas para o modelo dinâmico, a média
+dos valores do objetivo foi representada. Esse comportamento pode ser
+explicado pelo fato de o modelo considerar continuamente a chegada de
+novos fardos, ajustando as decisões com base nas condições futuras.</p>
+<p>Em contraste, o modelo estático (RL VII), que opera com um estoque
+fixo e não se renova, tende a apresentar um aumento progressivo dos
+desvios das propriedades da mistura em relação ao alvo. À medida que os
+fardos mais adequados são utilizados, restam opções com características
+menos favoráveis, resultando em uma degradação gradual da qualidade das
+misturas.</p>
+<p>A abordagem dinâmica permite uma gestão mais eficiente dos recursos
+ao distribuir de forma equilibrada os fardos ao longo do horizonte de
+planejamento. Isso se reflete em uma menor dispersão nos valores do
+objetivo e uma menor ocorrência de picos abruptos de erro, como
+evidenciado na comparação gráfica. Já o modelo estático, por não
+incorporar novas informações, apresenta uma variabilidade maior e um
+desempenho que se deteriora conforme o estoque disponível se reduz.</p>
+<p>Como foram definidas múltiplas réplicas para o modelo dinâmico, a
+média dos valores do objetivo foi representada graficamente ao longo das
+misturas.</p>
+<figure id="figure:DINRLVII">
+<img src="figures/DINRLVII.png" style="width:100.0%" />
+<figcaption>Comparação entre modelo de AR (RL VII) e modelo de AR
+dinâmico (RL VII DIN).</figcaption>
+</figure>
+<h4 id="análise-estatística-do-modelo-dinâmico-rl-vii-din">ANÁLISE
+ESTATÍSTICA DO MODELO DINÂMICO (RL VII DIN)</h4>
+<p>Devido à incorporação de variabilidades inerentes ao processo real,
+no modelo de simulação, as soluções propostas não convergem para uma
+mesma escolha de fardos em todas as réplicas, como acontecera no modelo
+estático. Essa dispersão nos resultados mostra a importância de se
+quantificar a precisão estatística das réplicas, permitindo avaliar a
+robustez das estimativas obtidas, como a média e os intervalos de
+confiança.</p>
+<p>Foram previamente definidas 10 misturas e, para cada réplica, o valor
+do objetivo médio de cada mistura foi calculado. Em seguida, os dados
+foram agregados por réplica (calculando-se a média dos valores de
+objetivo médio para cada grupo).</p>
+<p>Os resultados obtidos são resumidos na Tabela <a
+href="#tab:resultados" data-reference-type="ref"
+data-reference="tab:resultados">7.4</a>.</p>
+<div id="tab:resultados">
+<table>
+<caption>Métricas estatísticas agregadas por réplica</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Número de réplicas (grupos únicos)</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr>
+<td style="text-align: left;">Média dos <em>Objetivo Médio</em> por
+réplica</td>
+<td style="text-align: left;">0.2265</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desvio padrão (S)</td>
+<td style="text-align: left;">0.0080</td>
+</tr>
+<tr>
+<td style="text-align: left;">Variância amostral (S<sup>2</sup>)</td>
+<td style="text-align: left;">0.0001</td>
+</tr>
+<tr>
+<td style="text-align: left;">Valor crítico <span
+class="math inline"><em>Z</em></span> (95% de confiança)</td>
+<td style="text-align: left;">1.9600</td>
+</tr>
+<tr>
+<td style="text-align: left;">Número mínimo de réplicas (com <span
+class="math inline"><em>E</em> = 0.5</span>)</td>
+<td style="text-align: left;">0.00 (arredondado para 1)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline"><em>t</em></span> crítico (df = 9)</td>
+<td style="text-align: left;">2.2622</td>
+</tr>
+<tr>
+<td style="text-align: left;">Margem de erro (usando <span
+class="math inline"><em>t</em></span>)</td>
+<td style="text-align: left;">0.0057</td>
+</tr>
+<tr>
+<td style="text-align: left;">Intervalo de confiança para a média</td>
+<td style="text-align: left;">(0.2207, 0.2322)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Quantil qui-quadrado <span
+class="math inline">1 − <em>α</em>/2</span> (df = 9)</td>
+<td style="text-align: left;">19.0228</td>
+</tr>
+<tr>
+<td style="text-align: left;">Quantil qui-quadrado <span
+class="math inline"><em>α</em>/2</span> (df = 9)</td>
+<td style="text-align: left;">2.7004</td>
+</tr>
+<tr>
+<td style="text-align: left;">Intervalo de confiança para a
+variância</td>
+<td style="text-align: left;">(0.0000, 0.0002)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Observa-se que os 10 grupos de réplicas resultaram em uma média de
+0.2265 para o objetivo médio, com um desvio padrão de 0.0080, indicando
+baixa variabilidade entre os grupos. A aplicação da fórmula para o
+número mínimo de réplicas, dada a margem de erro <span
+class="math inline"><em>E</em> = 0.5</span>, resultou em um valor
+inferior a 1 (arredondado para 1), evidenciando que o conjunto de 10
+réplicas utilizado excede amplamente a quantidade mínima necessária para
+obter uma estimativa precisa da média.</p>
+<p>O intervalo de confiança para a média, calculado com a distribuição
+<span class="math inline"><em>t</em></span> de <em>Student</em>, foi
+estimado como <span class="math inline">(0.2207, 0.2322)</span>,
+enquanto o intervalo de confiança para a variância, com base na
+distribuição qui-quadrado, foi determinado como <span
+class="math inline">(0.0000, 0.0002)</span>.</p>
+<p>Na Figura <a href="#figure:replicas" data-reference-type="ref"
+data-reference="figure:replicas">7.6</a>, a variação do objetivo ao
+longo das misturas pode ser observada ao longo das 10 réplicas:</p>
+<figure id="figure:replicas">
+<img src="figures/replicas.png" style="width:100.0%" />
+<figcaption>Réplicas (RL VII DIN).</figcaption>
+</figure>
+<p>Na Tabela <a href="#tab:testes" data-reference-type="ref"
+data-reference="tab:testes">7.5</a> são apresentados os resultados dos
+testes estatísticos realizados. Cada réplica contém os valores de
+objetivo para diversas misturas. Para cada réplica foram calculadas a
+média dos valores, que serviram de insumo para os testes a seguir.</p>
+<div id="tab:testes">
+<table>
+<caption>Resultados dos Testes Estatísticos</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Teste</th>
+<th style="text-align: center;">Estatística</th>
+<th style="text-align: center;">p-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Shapiro–Wilk</td>
+<td style="text-align: center;">0.8201</td>
+<td style="text-align: center;">0.0254</td>
+</tr>
+<tr>
+<td style="text-align: left;">Levene</td>
+<td style="text-align: center;">0.2992</td>
+<td style="text-align: center;">0.9750</td>
+</tr>
+<tr>
+<td style="text-align: left;">ANOVA (one-way)</td>
+<td style="text-align: center;">0.5176</td>
+<td style="text-align: center;">0.8624</td>
+</tr>
+<tr>
+<td style="text-align: left;">Kruskal–Wallis</td>
+<td style="text-align: center;">6.7732</td>
+<td style="text-align: center;">0.6607</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pearson</td>
+<td style="text-align: center;">0.3114</td>
+<td style="text-align: center;">0.0000</td>
+</tr>
+<tr>
+<td style="text-align: left;">Regressão Linear</td>
+<td style="text-align: center;"><span
+class="math inline"><em>β</em> = 0.0014</span>, <span
+class="math inline"><em>r</em> = 0.3114</span></td>
+<td style="text-align: center;">0.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>O teste de Shapiro–Wilk apresentou um p-valor de 0.0254, indicando a
+rejeição da hipótese de normalidade das médias das réplicas ao nível de
+5%. Em contrapartida, o teste de Levene obteve um p-valor de 0.9750,
+confirmando a homogeneidade das variâncias entre as réplicas, o que
+valida o uso de testes paramétricos, mesmo que os dados não sejam
+normalmente distribuídos. Tanto a ANOVA quanto o teste de Kruskal–Wallis
+não detectaram diferenças significativas entre as réplicas (p-valores de
+0.8624 e 0.6607, respectivamente), demonstrando a consistência dos
+resultados do modelo. A análise de correlação de Pearson revelou uma
+correlação positiva moderada (r = 0.3114, p &lt; 0.0001) entre o ID da
+mistura e o valor do objetivo, tendência esta confirmada pela regressão
+linear, que apontou uma inclinação de 0.0014, indicando que conforme as
+misturas são feitas e a incerteza propagada para as misturas à frente, o
+valor do objetivo aumenta gradativamente.</p>
+<h3 id="parâmetros-de-treinamento">PARÂMETROS DE TREINAMENTO</h3>
+<p>A Figura <a href="#fig:Recompensa" data-reference-type="ref"
+data-reference="fig:Recompensa">[fig:Recompensa]</a> apresenta a
+evolução da recompensa nos modelos estático e dinâmico. No modelo
+estático (Figura <a href="#fig:RecompensaESTATICO"
+data-reference-type="ref"
+data-reference="fig:RecompensaESTATICO">7.7</a>), observa-se um
+crescimento gradual e previsível da recompensa, com oscilações reduzidas
+e estabilização rápida. Esse comportamento evidencia a capacidade do
+agente de aprender eficientemente em um ambiente sem incertezas,
+convergindo para uma característica mais explotatória de
+aprendizado.</p>
+<p>No modelo dinâmico (Figura <a href="#fig:RecompensaDINAMICO"
+data-reference-type="ref"
+data-reference="fig:RecompensaDINAMICO">7.9</a>), a recompensa cresce
+menos rapidamente, demorando mais para chegar na política ótima local,
+acompanhada por oscilações significativas na tentativa de encontrar uma
+melhor. Esse padrão reflete a necessidade de constante adaptação do
+agente diante das incertezas do ambiente, exigindo certo balanço entre
+exploração e explotação para lidar com a variabilidade das chegadas e
+propriedades dos itens.</p>
+<figure id="fig:RecompensaDINAMICO">
+<figure id="fig:RecompensaESTATICO">
+<img src="figures/RecompensaESTATICO.png" style="width:100.0%" />
+<figcaption>Modelo Estático.</figcaption>
+</figure>
+<figure id="fig:RecompensaDINAMICO">
+<img src="figures/RecompensaDIN.png" style="width:100.0%" />
+<figcaption>Modelo Dinâmico.</figcaption>
+</figure>
+<figcaption>Modelo Dinâmico.</figcaption>
+</figure>
+<p>A Figura <a href="#fig:ClipFraction" data-reference-type="ref"
+data-reference="fig:ClipFraction">[fig:ClipFraction]</a> apresenta a
+evolução do parâmetro <em>clip_fraction</em> durante o treinamento nos
+modelos estático e dinâmico. Esse parâmetro representa a fração de
+atualizações de política que foram limitadas pelo hiperparâmetro de
+<em>clipping</em>, influenciando diretamente a estabilidade do
+aprendizado, de forma que um valor maior de <em>clip_fraction</em>
+indica uma maior divergência entre políticas naquele instante.</p>
+<p>No modelo estático (Figura <a href="#fig:ClipFractionESTATICO"
+data-reference-type="ref"
+data-reference="fig:ClipFractionESTATICO">7.10</a>), observa-se uma
+queda acentuada do valor do <em>clip_fraction</em> no início do
+treinamento, seguida de oscilações esporádicas em estágios posteriores.
+Isso indica que, impulsionado pela previsibilidade do ambiente, as
+políticas são mais próximas entre si, conforme o treinamento ocorre.</p>
+<p>No modelo dinâmico (Figura <a href="#fig:ClipFractionDINAMICO"
+data-reference-type="ref"
+data-reference="fig:ClipFractionDINAMICO">7.12</a>), o
+<em>clip_fraction</em> apresenta uma redução mais gradual, com
+oscilações intensas e frequentes após alcançar valores mínimos. Essa
+tendência indica que o agente tem maior dificuldade em encontrar
+estabilidade entre as políticas, quando comparada com a anterior.</p>
+<figure id="fig:ClipFractionDINAMICO">
+<figure id="fig:ClipFractionESTATICO">
+<img src="figures/ClipFractionESTATICO.png" style="width:100.0%" />
+<figcaption>Modelo Estático.</figcaption>
+</figure>
+<figure id="fig:ClipFractionDINAMICO">
+<img src="figures/ClipFractionDIN.png" style="width:100.0%" />
+<figcaption>Modelo Dinâmico.</figcaption>
+</figure>
+<figcaption>Modelo Dinâmico.</figcaption>
+</figure>
+<p>A Figura <a href="#fig:AproxKL" data-reference-type="ref"
+data-reference="fig:AproxKL">[fig:AproxKL]</a> apresenta a evolução da
+divergência KL aproximada durante o treinamento nos modelos estático e
+dinâmico. Esse parâmetro avalia a proximidade entre distribuições de
+probabilidade das políticas sucessivas, refletindo a magnitude das
+mudanças na estratégia do agente.</p>
+<p>No modelo estático (Figura <a href="#fig:AproxKLESTATICO"
+data-reference-type="ref"
+data-reference="fig:AproxKLESTATICO">7.13</a>), a divergência KL aumenta
+no início do treinamento, estabiliza-se e depois apresenta uma redução
+gradual. Isso sugere que as atualizações de política se tornam
+progressivamente menores conforme o agente converge para uma
+solução.</p>
+<p>No modelo dinâmico (Figura <a href="#fig:AproxKLDINAMICO"
+data-reference-type="ref"
+data-reference="fig:AproxKLDINAMICO">7.15</a>), a divergência KL
+permanece em níveis mais elevados por mais tempo e exibe picos
+frequentes. Isso indica que o agente realiza ajustes mais frequentes
+devido às mudanças constantes no ambiente.</p>
+<figure id="fig:AproxKLDINAMICO">
+<figure id="fig:AproxKLESTATICO">
+<img src="figures/AproxKLESTATICO.png" style="width:100.0%" />
+<figcaption>Modelo Estático.</figcaption>
+</figure>
+<figure id="fig:AproxKLDINAMICO">
+<img src="figures/AproxKLDINAMICO.png" style="width:100.0%" />
+<figcaption>Modelo Dinâmico.</figcaption>
+</figure>
+<figcaption>Modelo Dinâmico.</figcaption>
+</figure>
+<h1 id="conclusão">CONCLUSÃO</h1>
+<p>O trabalho propõe um método alternativo para a mistura de algodão na
+fiação têxtil, avançando na implementação do Gêmeo Digital Autônomo por
+meio de ferramentas analíticas e de conectividade. O protocolo
+desenvolvido integra dados reais e modelos de Aprendizado por Reforço,
+permitindo uma abordagem adaptativa diante da variabilidade do algodão e
+das condições operacionais do processo produtivo. Diferente dos métodos
+tradicionais que oferecem soluções determinísticas e estáticas, o AR
+possibilita ajustes contínuos conforme novas informações se tornam
+disponíveis.</p>
+<p>Ao atingir o nível 5 de maturidade do Gêmeo Digital, a solução
+proposta automatiza o processo ao conectar ferramentas complementares. A
+integração entre dados operacionais e o modelo de AR garante a
+replicação das dinâmicas do sistema, caracterizando a Dimensão
+Comportamental do Gêmeo Digital. Já a Dimensão Física é representada de
+forma simplificada, proporcionando rastreabilidade e controle das
+operações. Essa estrutura possibilita atualizações contínuas das
+decisões, operando tanto a montante, ao considerar as características
+dos fardos disponíveis, quanto a jusante, ao garantir que as misturas
+atendam às exigências da produção.</p>
+<p>A validação do protocolo envolveu a análise de diferentes
+configurações do modelo de simulação, funções de recompensa e
+observações, resultando em uma abordagem que equilibra restrições
+operacionais e eficiência na resolução das misturas. Nos testes
+realizados, o AR apresentou um <em>gap</em> de otimalidade de 17% (em
+experimentos pareados ao modelo matemático) que, mesmo demonstrando
+viabilidade no planejamento das misturas, melhores resultados poderiam
+ter sido encontrados, caso mais poder computacional estivesse
+disponível. A aplicação em um cenário dinâmico evidenciou a capacidade
+do AR em ajustar a tomada de decisão progressivamente diante da chegada
+de novos fardos, mesmo sem informações exatas sobre suas propriedades e
+procedências.</p>
+<p>A conectividade estabelecida pelo Sistema de Informações Gerenciais,
+aliada ao Banco de Dados Relacional e à transmissão eficiente de dados,
+amplia a aplicabilidade do protocolo em ambientes reais. Novos fardos
+registrados no sistema atualizam automaticamente o Banco de Dados,
+refletindo mudanças no modelo de simulação. O agente de AR ajusta a
+alocação dos fardos e antecipa decisões conforme as expectativas futuras
+de estoque. Após definir a mistura, os dados são transmitidos via
+protocolo <em>MODBUS</em> ao Sistema de Informações Gerenciais,
+permitindo que a solução seja visualizada e implementada na
+operação.</p>
+<p>Esse fluxo contínuo, conectando o ambiente físico e virtual,
+consolida um protocolo de Gêmeo Digital Autônomo de ponta a ponta.</p>
+<section id="dados-e-scripts" class="apendicesenv">
+<h1>DADOS E <em>SCRIPTS</em></h1>
+<div id="tab:estoque_inicial">
+<table>
+<caption>Estoque inicial e características médias por
+procedência.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Procedência</th>
+<th style="text-align: center;">Estoque Inicial</th>
+<th style="text-align: center;">rd</th>
+<th style="text-align: center;"><span
+class="math inline">+<em>b</em></span></th>
+<th style="text-align: center;">Micronaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="5" style="text-align: center;">Table  – Estoque inicial e
+características médias por procedência</td>
+</tr>
+<tr>
+<td style="text-align: center;">Procedência</td>
+<td style="text-align: center;">Estoque Inicial</td>
+<td style="text-align: center;">rd</td>
+<td style="text-align: center;"><span
+class="math inline">+<em>b</em></span></td>
+<td style="text-align: center;">Micronaire</td>
+</tr>
+<tr>
+<td colspan="5" style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">151,00</td>
+<td style="text-align: center;">73,00</td>
+<td style="text-align: center;">8,50</td>
+<td style="text-align: center;">4,64</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">143,00</td>
+<td style="text-align: center;">81,10</td>
+<td style="text-align: center;">6,90</td>
+<td style="text-align: center;">3,52</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">10,00</td>
+<td style="text-align: center;">74,40</td>
+<td style="text-align: center;">8,20</td>
+<td style="text-align: center;">4,28</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">32,00</td>
+<td style="text-align: center;">73,50</td>
+<td style="text-align: center;">11,80</td>
+<td style="text-align: center;">3,78</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">132,00</td>
+<td style="text-align: center;">64,40</td>
+<td style="text-align: center;">13,30</td>
+<td style="text-align: center;">3,73</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">147,00</td>
+<td style="text-align: center;">71,80</td>
+<td style="text-align: center;">11,10</td>
+<td style="text-align: center;">3,82</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">104,00</td>
+<td style="text-align: center;">75,30</td>
+<td style="text-align: center;">9,30</td>
+<td style="text-align: center;">3,99</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">108,00</td>
+<td style="text-align: center;">78,60</td>
+<td style="text-align: center;">8,10</td>
+<td style="text-align: center;">4,09</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">119,00</td>
+<td style="text-align: center;">73,70</td>
+<td style="text-align: center;">10,10</td>
+<td style="text-align: center;">3,07</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">27,00</td>
+<td style="text-align: center;">74,90</td>
+<td style="text-align: center;">11,10</td>
+<td style="text-align: center;">4,58</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">44,00</td>
+<td style="text-align: center;">79,30</td>
+<td style="text-align: center;">7,20</td>
+<td style="text-align: center;">3,88</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">105,00</td>
+<td style="text-align: center;">74,80</td>
+<td style="text-align: center;">10,60</td>
+<td style="text-align: center;">4,31</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">132,00</td>
+<td style="text-align: center;">63,00</td>
+<td style="text-align: center;">9,70</td>
+<td style="text-align: center;">3,59</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">75,10</td>
+<td style="text-align: center;">9,90</td>
+<td style="text-align: center;">4,21</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">95,00</td>
+<td style="text-align: center;">72,90</td>
+<td style="text-align: center;">10,80</td>
+<td style="text-align: center;">4,02</td>
+</tr>
+<tr>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">125,00</td>
+<td style="text-align: center;">73,30</td>
+<td style="text-align: center;">10,60</td>
+<td style="text-align: center;">3,20</td>
+</tr>
+<tr>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">140,00</td>
+<td style="text-align: center;">73,70</td>
+<td style="text-align: center;">9,60</td>
+<td style="text-align: center;">4,16</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">20,00</td>
+<td style="text-align: center;">70,70</td>
+<td style="text-align: center;">10,10</td>
+<td style="text-align: center;">4,77</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">21,00</td>
+<td style="text-align: center;">71,70</td>
+<td style="text-align: center;">10,10</td>
+<td style="text-align: center;">4,71</td>
+</tr>
+<tr>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">21,00</td>
+<td style="text-align: center;">67,40</td>
+<td style="text-align: center;">12,60</td>
+<td style="text-align: center;">4,13</td>
+</tr>
+<tr>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">21,00</td>
+<td style="text-align: center;">72,50</td>
+<td style="text-align: center;">10,50</td>
+<td style="text-align: center;">4,78</td>
+</tr>
+<tr>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">22,00</td>
+<td style="text-align: center;">74,90</td>
+<td style="text-align: center;">12,30</td>
+<td style="text-align: center;">3,81</td>
+</tr>
+<tr>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">118,00</td>
+<td style="text-align: center;">74,30</td>
+<td style="text-align: center;">10,60</td>
+<td style="text-align: center;">3,71</td>
+</tr>
+<tr>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">123,00</td>
+<td style="text-align: center;">73,00</td>
+<td style="text-align: center;">10,80</td>
+<td style="text-align: center;">4,03</td>
+</tr>
+<tr>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">85,00</td>
+<td style="text-align: center;">76,90</td>
+<td style="text-align: center;">7,80</td>
+<td style="text-align: center;">3,89</td>
+</tr>
+<tr>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">98,00</td>
+<td style="text-align: center;">76,90</td>
+<td style="text-align: center;">10,20</td>
+<td style="text-align: center;">3,85</td>
+</tr>
+<tr>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">22,00</td>
+<td style="text-align: center;">75,10</td>
+<td style="text-align: center;">11,30</td>
+<td style="text-align: center;">4,16</td>
+</tr>
+<tr>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">112,00</td>
+<td style="text-align: center;">74,40</td>
+<td style="text-align: center;">11,30</td>
+<td style="text-align: center;">4,07</td>
+</tr>
+<tr>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">3,00</td>
+<td style="text-align: center;">76,00</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">3,94</td>
+</tr>
+<tr>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">74,00</td>
+<td style="text-align: center;">71,90</td>
+<td style="text-align: center;">10,10</td>
+<td style="text-align: center;">4,36</td>
+</tr>
+<tr>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">62,00</td>
+<td style="text-align: center;">76,20</td>
+<td style="text-align: center;">6,30</td>
+<td style="text-align: center;">3,91</td>
+</tr>
+<tr>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">109,00</td>
+<td style="text-align: center;">66,70</td>
+<td style="text-align: center;">9,20</td>
+<td style="text-align: center;">3,15</td>
+</tr>
+<tr>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">0,00</td>
+<td style="text-align: center;">74,30</td>
+<td style="text-align: center;">9,50</td>
+<td style="text-align: center;">0,00</td>
+</tr>
+<tr>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">64,00</td>
+<td style="text-align: center;">72,20</td>
+<td style="text-align: center;">11,50</td>
+<td style="text-align: center;">3,93</td>
+</tr>
+<tr>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">4,00</td>
+<td style="text-align: center;">77,30</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">4,11</td>
+</tr>
+<tr>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">132,00</td>
+<td style="text-align: center;">71,10</td>
+<td style="text-align: center;">8,50</td>
+<td style="text-align: center;">3,49</td>
+</tr>
+<tr>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">75,60</td>
+<td style="text-align: center;">9,70</td>
+<td style="text-align: center;">3,48</td>
+</tr>
+<tr>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">105,00</td>
+<td style="text-align: center;">74,90</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">3,89</td>
+</tr>
+<tr>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">126,00</td>
+<td style="text-align: center;">76,80</td>
+<td style="text-align: center;">10,60</td>
+<td style="text-align: center;">3,78</td>
+</tr>
+<tr>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">132,00</td>
+<td style="text-align: center;">73,80</td>
+<td style="text-align: center;">10,00</td>
+<td style="text-align: center;">4,28</td>
+</tr>
+<tr>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">74,60</td>
+<td style="text-align: center;">10,60</td>
+<td style="text-align: center;">3,69</td>
+</tr>
+<tr>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">106,00</td>
+<td style="text-align: center;">74,60</td>
+<td style="text-align: center;">9,40</td>
+<td style="text-align: center;">3,59</td>
+</tr>
+<tr>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">45,00</td>
+<td style="text-align: center;">75,00</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">3,95</td>
+</tr>
+<tr>
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">124,00</td>
+<td style="text-align: center;">74,80</td>
+<td style="text-align: center;">10,40</td>
+<td style="text-align: center;">4,41</td>
+</tr>
+<tr>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">69,00</td>
+<td style="text-align: center;">74,70</td>
+<td style="text-align: center;">10,30</td>
+<td style="text-align: center;">4,11</td>
+</tr>
+<tr>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">115,00</td>
+<td style="text-align: center;">71,10</td>
+<td style="text-align: center;">10,60</td>
+<td style="text-align: center;">3,98</td>
+</tr>
+<tr>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">78,00</td>
+<td style="text-align: center;">73,10</td>
+<td style="text-align: center;">9,50</td>
+<td style="text-align: center;">3,90</td>
+</tr>
+<tr>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">111,00</td>
+<td style="text-align: center;">77,90</td>
+<td style="text-align: center;">9,40</td>
+<td style="text-align: center;">3,30</td>
+</tr>
+<tr>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">46,00</td>
+<td style="text-align: center;">72,70</td>
+<td style="text-align: center;">12,50</td>
+<td style="text-align: center;">3,83</td>
+</tr>
+<tr>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">46,00</td>
+<td style="text-align: center;">74,90</td>
+<td style="text-align: center;">12,30</td>
+<td style="text-align: center;">3,81</td>
+</tr>
+<tr>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;">132,00</td>
+<td style="text-align: center;">82,80</td>
+<td style="text-align: center;">8,10</td>
+<td style="text-align: center;">3,75</td>
+</tr>
+<tr>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">126,00</td>
+<td style="text-align: center;">76,30</td>
+<td style="text-align: center;">10,50</td>
+<td style="text-align: center;">3,58</td>
+</tr>
+<tr>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">110,00</td>
+<td style="text-align: center;">67,80</td>
+<td style="text-align: center;">7,10</td>
+<td style="text-align: center;">4,36</td>
+</tr>
+<tr>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">182,00</td>
+<td style="text-align: center;">76,10</td>
+<td style="text-align: center;">10,70</td>
+<td style="text-align: center;">3,80</td>
+</tr>
+<tr>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">48,00</td>
+<td style="text-align: center;">73,80</td>
+<td style="text-align: center;">10,30</td>
+<td style="text-align: center;">3,94</td>
+</tr>
+<tr>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">124,00</td>
+<td style="text-align: center;">74,00</td>
+<td style="text-align: center;">9,20</td>
+<td style="text-align: center;">4,32</td>
+</tr>
+<tr>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">93,00</td>
+<td style="text-align: center;">76,50</td>
+<td style="text-align: center;">11,30</td>
+<td style="text-align: center;">3,86</td>
+</tr>
+<tr>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">3,00</td>
+<td style="text-align: center;">75,10</td>
+<td style="text-align: center;">10,40</td>
+<td style="text-align: center;">3,82</td>
+</tr>
+<tr>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">76,00</td>
+<td style="text-align: center;">72,40</td>
+<td style="text-align: center;">9,90</td>
+<td style="text-align: center;">3,84</td>
+</tr>
+<tr>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">116,00</td>
+<td style="text-align: center;">68,40</td>
+<td style="text-align: center;">10,70</td>
+<td style="text-align: center;">3,80</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Scripts</em>, arquivos e demais dados relevantes estão
+disponíveis no repositório do <em>GitHub</em>: <a
+href="https://github.com/FelipePCapalbo/TCC">https://github.com/FelipePCapalbo/TCC</a>.</p>
+</section>
+</body>
+</html>
