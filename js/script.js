@@ -67,18 +67,20 @@ function initThreeJSAnimation() {
         0xeeeeee  // Very Light Gray (near white)
     ];
     
-    const shapes = []; // Renamed from cubes to shapes for clarity
-    for (let i = 0; i < 60; i++) { // Increased number of shapes
+    const shapes = [];
+    for (let i = 0; i < 120; i++) { // Increased number of shapes further
         const geometry = polyhedronGeometries[Math.floor(Math.random() * polyhedronGeometries.length)];
         const material = new THREE.MeshPhongMaterial({
             color: grayscaleColors[Math.floor(Math.random() * grayscaleColors.length)],
-            shininess: 80, // Increased shininess for better definition on grayscale
-            flatShading: true // Flat shading can look nice on low-poly shapes
+            shininess: 80,
+            flatShading: true,
+            transparent: true,
+            opacity: 0.15
         });
         const shape = new THREE.Mesh(geometry, material);
-        shape.position.x = (Math.random() - 0.5) * 30; // Increased spread X
-        shape.position.y = (Math.random() - 0.5) * 30; // Increased spread Y
-        shape.position.z = (Math.random() - 0.5) * 30 - 15; // Positioned further away and spread along Z
+        shape.position.x = (Math.random() - 0.5) * 50; // Increased spread X significantly
+        shape.position.y = (Math.random() - 0.5) * 50; // Increased spread Y significantly
+        shape.position.z = (Math.random() - 0.5) * 50 - 25; // Adjusted Z spread for more depth and distance
         shape.rotation.x = Math.random() * 2 * Math.PI;
         shape.rotation.y = Math.random() * 2 * Math.PI;
         shape.rotation.z = Math.random() * 2 * Math.PI; // Added z rotation for more variety
