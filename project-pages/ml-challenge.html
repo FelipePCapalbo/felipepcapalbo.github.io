@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../assets/images/ProfilePicture.jpeg" />
+    <title>FPCs Portifolio</title>
+    <meta name="description" content="Página do EYF ML Challenge (SBPO 2025)." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/typography.css" />
+    <link rel="stylesheet" href="../css/utilities.css" />
+
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="../js/script.js"></script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://felipepcapalbo.github.io/project-pages/ml-challenge.html" />
+    <meta property="og:title" content="FPCs Portifolio" />
+    <meta property="og:description" content="Página do EYF ML Challenge (SBPO 2025)." />
+    <meta property="og:image" content="https://felipepcapalbo.github.io/assets/images/ProfilePicture.jpeg" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://felipepcapalbo.github.io/project-pages/ml-challenge.html" />
+    <meta name="twitter:title" content="FPCs Portifolio" />
+    <meta name="twitter:description" content="Página do EYF ML Challenge (SBPO 2025)." />
+    <meta name="twitter:image" content="https://felipepcapalbo.github.io/assets/images/ProfilePicture.jpeg" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">FPCs Portifolio</span>
+      </a>
+      <a class="button" href="mailto:felipepcapalbo@outlook.com">
+        <span class="button-text">Contact Me</span>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+        <div class="main-title">EYF ML Challenge (SBPO 2025)</div>
+        <div class="body-text">Visualização do algoritmo e código-fonte principal (ChallengeSolver.java).</div>
+        <img class="project-header-image" src="../assets/images/Heuristica.png" alt="Fluxo do algoritmo" />
+      </div>
+
+      <!-- PROJECT DETAILS: Código -->
+      <div id="project-details">
+        <div class="subheader-text">Código (ChallengeSolver.java)</div>
+        <div class="project-details-content">
+          <div class="body-text">Trecho carregado diretamente do repositório GitHub.</div>
+          <pre class="body-text"><code id="code-challengesolver" class="language-java">// Carregando código...</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <a class="icon-link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/felipecapalbo">
+        <img src="../assets/icons/linkedin.svg" class="footer-icon" alt="LinkedIn" />
+      </a>
+      <a class="icon-link" target="_blank" rel="noopener noreferrer" href="https://github.com/FelipePCapalbo">
+        <img src="../assets/icons/github.svg" class="footer-icon" alt="GitHub" />
+      </a>
+      <a class="icon-link" href="mailto:felipepcapalbo@outlook.com">
+        <img src="../assets/icons/mail.svg" class="footer-icon" alt="Email" />
+      </a>
+    </div>
+
+    <!-- Script para buscar e mostrar o código -->
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const codeElement = document.getElementById('code-challengesolver');
+        if (!codeElement) return;
+
+        const rawUrl = 'https://raw.githubusercontent.com/FelipePCapalbo/EYF_ML_challenge-sbpo-2025/main/src/main/java/org/sbpo2025/challenge/ChallengeSolver.java';
+        try {
+          const response = await fetch(rawUrl);
+          if (!response.ok) throw new Error('Não foi possível baixar o código');
+          const code = await response.text();
+          codeElement.textContent = code;
+          if (window.hljs && typeof window.hljs.highlightElement === 'function') {
+            window.hljs.highlightElement(codeElement);
+          }
+        } catch (err) {
+          codeElement.textContent = `Erro ao carregar: ${err.message}`;
+          console.error(err);
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
