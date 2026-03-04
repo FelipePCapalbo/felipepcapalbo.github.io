@@ -1,8 +1,25 @@
 if (document.getElementById('my-work-link')) {
-  document.getElementById('my-work-link').addEventListener('click', () => {
+  document.getElementById('my-work-link').addEventListener('click', (e) => {
+    e.preventDefault();
     document.getElementById('my-work-section').scrollIntoView({behavior: "smooth"})
   })
 }
+
+// Fade-in animation on page load
+window.addEventListener('load', () => {
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) {
+    mainContent.style.opacity = '0';
+    mainContent.style.transform = 'translateY(16px)';
+    mainContent.style.transition = 'opacity 600ms ease, transform 600ms ease';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        mainContent.style.opacity = '1';
+        mainContent.style.transform = 'translateY(0)';
+      });
+    });
+  }
+});
 
 // Three.js animation
 function initThreeJSAnimation() {
